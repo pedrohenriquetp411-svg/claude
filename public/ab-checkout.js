@@ -14,8 +14,17 @@
     try { if (window.gtag) gtag("event", "ab_checkout_variant", { variant: variant }); } catch (e) {}
   }
 
+  var ready = false;
+  if (variant === "b") {
+    // Only send buyers to the Pix checkout once it can actually take payments.
+    fetch("/api/pix", { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { ready = Boolean(d.ready); rewrite(); })
+      .catch(function () {});
+  }
+
   function rewrite() {
-    if (variant !== "b") return;
+    if (variant !== "b" || !ready) return;
     var links = document.querySelectorAll('a[href*="pay.hotmart.com"]');
     for (var i = 0; i < links.length; i++) {
       links[i].href = "/checkout/";

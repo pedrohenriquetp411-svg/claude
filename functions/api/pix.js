@@ -23,6 +23,11 @@ function validCpf(cpf) {
   return true;
 }
 
+// Lets the A/B script know whether the Pix checkout can take payments.
+export async function onRequestGet({ env }) {
+  return json({ ready: Boolean(env.LOFYPAY_SECRET_KEY) });
+}
+
 export async function onRequestPost({ request, env }) {
   if (!env.LOFYPAY_SECRET_KEY) return json({ error: "Pagamento indisponível no momento." }, 503);
 
