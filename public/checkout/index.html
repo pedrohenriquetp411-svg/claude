@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Checkout - Especialista em Bolos Gelados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --brown:#6b3a1e; --pink:#c2306f; --bg:#fdf6f1; --card:#fff; --muted:#7a6a62; --line:#eadfd8; --green1:#2ee34d; --green2:#2bb389; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:Montserrat,system-ui,sans-serif; background:var(--bg); color:var(--brown); }
+  header { background:linear-gradient(90deg,#fde3ea,#fdf0e6); padding:14px 16px; text-align:center; }
+  header img { height:44px; }
+  main { max-width:960px; margin:24px auto; padding:0 16px; display:grid; gap:20px; grid-template-columns:1.3fr 1fr; }
+  @media (max-width:760px){ main { grid-template-columns:1fr; } .summary { order:-1; } }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; }
+  h1 { font-size:20px; margin:0 0 4px; } h2 { font-size:16px; margin:0 0 14px; }
+  p.sub { margin:0 0 18px; color:var(--muted); font-size:14px; }
+  label { display:block; font-size:13px; font-weight:600; margin:12px 0 6px; }
+  input { width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font:inherit; font-size:15px; color:#333; }
+  input:focus { outline:2px solid var(--pink); border-color:transparent; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; } @media (max-width:480px){ .row { grid-template-columns:1fr; } }
+  .method { margin-top:18px; display:flex; align-items:center; gap:10px; padding:12px 14px; border:2px solid var(--pink); border-radius:10px; font-weight:600; }
+  button { width:100%; margin-top:20px; padding:16px; border:0; border-radius:10px; font:inherit; font-weight:700; font-size:16px; color:#fff; cursor:pointer;
+           background:linear-gradient(90deg,var(--green1),var(--green2)); text-transform:uppercase; }
+  button[disabled] { opacity:.6; cursor:wait; }
+  .btn-secondary { background:var(--brown); text-transform:none; margin-top:12px; }
+  .error { color:#b00020; font-size:14px; margin-top:12px; min-height:1em; }
+  .summary img { width:100%; border-radius:12px; display:block; margin-bottom:14px; }
+  .line { display:flex; justify-content:space-between; font-size:14px; padding:8px 0; border-bottom:1px solid var(--line); }
+  .total { font-size:20px; font-weight:700; color:var(--pink); border:0; }
+  .trust { display:flex; gap:14px; justify-content:center; font-size:12px; color:var(--muted); margin-top:14px; flex-wrap:wrap; }
+  #pix { display:none; text-align:center; }
+  #qr { display:flex; justify-content:center; margin:16px 0; } #qr img, #qr canvas { width:220px; height:220px; }
+  textarea { width:100%; height:84px; font-family:monospace; font-size:12px; border:1px solid var(--line); border-radius:10px; padding:10px; resize:none; }
+  .status { margin-top:14px; font-size:14px; color:var(--muted); }
+  .paid { display:none; text-align:center; } .paid .ok { font-size:56px; }
+  ol { text-align:left; font-size:14px; color:var(--muted); padding-left:20px; }
+</style>
+</head>
+<body>
+<header><a href="/"><img src="/wp-content/uploads/2025/03/logo-especialista-em-bolos-gelados.png" alt="Especialista em Bolos Gelados"></a></header>
+<main>
+  <section class="card">
+    <form id="form" novalidate>
+      <h1>Finalize sua inscrição</h1>
+      <p class="sub">Preencha seus dados para gerar o Pix. O acesso é enviado para o seu e-mail.</p>
+      <label for="name">Nome completo</label>
+      <input id="name" name="name" autocomplete="name" required>
+      <label for="email">E-mail</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+      <div class="row">
+        <div><label for="document">CPF</label><input id="document" name="document" inputmode="numeric" placeholder="000.000.000-00" required></div>
+        <div><label for="phone">Celular (WhatsApp)</label><input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000"></div>
+      </div>
+      <div class="method">◆ Pagamento via Pix — aprovação imediata</div>
+      <button id="submit" type="submit">Gerar Pix de R$ 197,00</button>
+      <div class="error" id="error" role="alert"></div>
+    </form>
+
+    <div id="pix">
+      <h1>Pague com Pix</h1>
+      <p class="sub">Escaneie o QR Code ou copie o código abaixo no app do seu banco.</p>
+      <div id="qr"></div>
+      <textarea id="code" readonly></textarea>
+      <button class="btn-secondary" id="copy" type="button">Copiar código Pix</button>
+      <ol><li>Abra o app do seu banco e escolha Pix.</li><li>Escaneie o QR Code ou use “Pix Copia e Cola”.</li><li>Confirme o pagamento de <b>R$ 197,00</b>.</li></ol>
+      <div class="status" id="status">Aguardando pagamento… o código expira em 30 minutos.</div>
+    </div>
+
+    <div class="paid" id="paid">
+      <div class="ok">✅</div>
+      <h1>Pagamento aprovado!</h1>
+      <p class="sub">Obrigado! Você vai receber o acesso ao curso no e-mail informado em instantes.</p>
+    </div>
+  </section>
+
+  <aside class="card summary">
+    <img src="/wp-content/uploads/2025/03/Massas-Perfeitas-para-Bolos-Gelados.png" alt="">
+    <h2>Especialista em Bolos Gelados</h2>
+    <div class="line"><span>Curso completo + bônus</span><span>R$ 197,00</span></div>
+    <div class="line"><span>Acesso</span><span>1 ano</span></div>
+    <div class="line total"><span>Total</span><span>R$ 197,00</span></div>
+    <div class="trust"><span>🔒 Compra segura</span><span>⚡ Acesso imediato</span><span>🛡️ 7 dias de garantia</span></div>
+  </aside>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $("form"), err = $("error"), btn = $("submit");
+
+  function mask(el, fmt) { el.addEventListener("input", function () { el.value = fmt(el.value.replace(/\D/g, "")); }); }
+  mask($("document"), function (d) { d = d.slice(0, 11); return d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2"); });
+  mask($("phone"), function (d) { d = d.slice(0, 11); return d.length > 10 ? d.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3") : d.replace(/(\d{2})(\d{0,4})(\d{0,4})/, "($1) $2-$3").replace(/-$/, ""); });
+
+  function track(event, data) {
+    try { if (window.fbq) fbq("track", event, data); } catch (e) {}
+    try { if (window.gtag) gtag("event", event, data); } catch (e) {}
+  }
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    err.textContent = ""; btn.disabled = true; btn.textContent = "Gerando Pix…";
+    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, phone: $("phone").value };
+    try {
+      var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+      var data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erro ao gerar o Pix.");
+      showPix(data);
+      track("InitiateCheckout", { value: data.amount, currency: "BRL" });
+    } catch (ex) {
+      err.textContent = ex.message;
+      btn.disabled = false; btn.textContent = "Gerar Pix de R$ 197,00";
+    }
+  });
+
+  function showPix(data) {
+    form.style.display = "none"; $("pix").style.display = "block";
+    $("code").value = data.code;
+    if (data.qrBase64) {
+      var img = new Image(); img.alt = "QR Code Pix";
+      img.src = data.qrBase64.indexOf("data:") === 0 ? data.qrBase64 : "data:image/png;base64," + data.qrBase64;
+      $("qr").appendChild(img);
+    } else if (window.QRCode) {
+      new QRCode($("qr"), { text: data.code, width: 220, height: 220, correctLevel: QRCode.CorrectLevel.M });
+    }
+    poll(data.id, data.amount, Date.now() + data.expiresIn * 1000);
+  }
+
+  $("copy").addEventListener("click", function () {
+    var code = $("code"); code.select();
+    (navigator.clipboard ? navigator.clipboard.writeText(code.value) : Promise.reject()).catch(function () { document.execCommand("copy"); });
+    $("copy").textContent = "Código copiado!";
+    setTimeout(function () { $("copy").textContent = "Copiar código Pix"; }, 2500);
+  });
+
+  function poll(id, amount, until) {
+    var timer = setInterval(async function () {
+      if (Date.now() > until) { clearInterval(timer); $("status").textContent = "O Pix expirou. Recarregue a página para gerar outro."; return; }
+      try {
+        var r = await fetch("/api/status?id=" + encodeURIComponent(id), { cache: "no-store" });
+        var s = await r.json();
+        if (s.paid) {
+          clearInterval(timer);
+          $("pix").style.display = "none"; $("paid").style.display = "block";
+          track("Purchase", { value: amount, currency: "BRL" });
+        } else if (s.status === "EXPIRED" || s.status === "FAILED") {
+          clearInterval(timer); $("status").textContent = "Este Pix não está mais válido. Recarregue a página para gerar outro.";
+        }
+      } catch (e) {}
+    }, 4000);
+  }
+})();
+</script>
+</body>
+</html>
