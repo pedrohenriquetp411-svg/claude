@@ -1,14 +1,12 @@
-// Creates a Pix charge on LofyPay. The price lives here, never in the browser.
-// Requires the LOFYPAY_SECRET_KEY secret on the Pages project (sk_live_... or sk_test_...).
+// Creates a Pix charge on LofyPay and stores the pending order (with the buyer's
+// hashed password) so the member account can be created once it is paid.
+// The price lives here, never in the browser.
+
+import { hashPassword, json, normEmail } from "../../lib/auth.js";
+import { LOFYPAY_API } from "../../lib/lofypay.js";
 
 const PRODUCT = { name: "Especialista em Bolos Gelados", amount: 197.0 };
-const LOFYPAY_API = "https://app.lofypay.com/api/v1";
-
-const json = (body, status = 200) =>
-  new Response(JSON.stringify(body), {
-    status,
-    headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
-  });
+const EXPIRATION = 1800;
 
 const digits = (v) => String(v || "").replace(/\D/g, "");
 
@@ -17,13 +15,12 @@ function validCpf(cpf) {
   for (const len of [9, 10]) {
     let sum = 0;
     for (let i = 0; i < len; i++) sum += Number(cpf[i]) * (len + 1 - i);
-    const check = ((sum * 10) % 11) % 10;
-    if (check !== Number(cpf[len])) return false;
+    if (((sum * 10) % 11) % 10 !== Number(cpf[len])) return false;
   }
   return true;
 }
 
-// Lets the A/B script know whether the Pix checkout can take payments.
+// Lets the checkout know whether it can take payments.
 export async function onRequestGet({ env }) {
   return json({ ready: Boolean(env.LOFYPAY_SECRET_KEY) });
 }
@@ -39,13 +36,15 @@ export async function onRequestPost({ request, env }) {
   }
 
   const name = String(body.name || "").trim().slice(0, 120);
-  const email = String(body.email || "").trim().slice(0, 160);
+  const email = normEmail(body.email).slice(0, 160);
   const document = digits(body.document);
   const phone = digits(body.phone).slice(0, 13);
+  const password = String(body.password || "");
 
   if (name.split(/\s+/).length < 2) return json({ error: "Informe seu nome completo." }, 400);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "E-mail inválido." }, 400);
   if (!validCpf(document)) return json({ error: "CPF inválido." }, 400);
+  if (password.length < 6 || password.length > 128) return json({ error: "A senha precisa ter pelo menos 6 caracteres." }, 400);
 
   const reference = `EBG-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
   const origin = new URL(request.url).origin;
@@ -62,7 +61,7 @@ export async function onRequestPost({ request, env }) {
       method: "pix",
       external_reference: reference,
       notification_url: `${origin}/api/webhook`,
-      expiration: 1800,
+      expiration: EXPIRATION,
       client: { name, email, document, phone },
     }),
   });
@@ -74,13 +73,17 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Não foi possível gerar o Pix. Tente novamente." }, 502);
   }
 
+  const order = { id: String(data.idTransaction), reference, name, email, phone, passwordHash: await hashPassword(password), createdAt: new Date().toISOString() };
+  // Kept for 30 days so a late webhook can still activate the member.
+  await env.MEMBERS.put(`order:${order.id}`, JSON.stringify(order), { expirationTtl: 30 * 86400 });
+
   return json({
-    id: data.idTransaction,
+    id: order.id,
     reference,
     amount: PRODUCT.amount,
     product: PRODUCT.name,
     code: data.paymentCode,
     qrBase64: data.paymentCodeBase64 || null,
-    expiresIn: 1800,
+    expiresIn: EXPIRATION,
   });
 }

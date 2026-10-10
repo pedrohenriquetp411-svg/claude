@@ -55,6 +55,11 @@
         <div><label for="document">CPF</label><input id="document" name="document" inputmode="numeric" placeholder="000.000.000-00" required></div>
         <div><label for="phone">Celular (WhatsApp)</label><input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000"></div>
       </div>
+      <div class="row">
+        <div><label for="password">Crie uma senha</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo 6 caracteres" required></div>
+        <div><label for="password2">Confirme a senha</label><input id="password2" name="password2" type="password" autocomplete="new-password" required></div>
+      </div>
+      <p class="sub" style="margin:8px 0 0">Você vai usar o e-mail e essa senha para entrar na área de membros.</p>
       <div class="method">◆ Pagamento via Pix — aprovação imediata</div>
       <button id="submit" type="submit">Gerar Pix de R$ 197,00</button>
       <div class="error" id="error" role="alert"></div>
@@ -73,7 +78,8 @@
     <div class="paid" id="paid">
       <div class="ok">✅</div>
       <h1>Pagamento aprovado!</h1>
-      <p class="sub">Obrigado! Você vai receber o acesso ao curso no e-mail informado em instantes.</p>
+      <p class="sub">Obrigada! Seu acesso já está liberado.</p>
+      <a class="btn-link" href="/membros/"><button type="button">Acessar a área de membros</button></a>
     </div>
   </section>
 
@@ -104,8 +110,11 @@
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    err.textContent = ""; btn.disabled = true; btn.textContent = "Gerando Pix…";
-    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, phone: $("phone").value };
+    err.textContent = "";
+    if ($("password").value.length < 6) { err.textContent = "A senha precisa ter pelo menos 6 caracteres."; return; }
+    if ($("password").value !== $("password2").value) { err.textContent = "As senhas não conferem."; return; }
+    btn.disabled = true; btn.textContent = "Gerando Pix…";
+    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, phone: $("phone").value, password: $("password").value };
     try {
       var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       var data = await res.json();

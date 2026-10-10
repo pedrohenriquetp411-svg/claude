@@ -11,18 +11,21 @@ Publicado em **https://especialista-bolos-gelados.pages.dev** (projeto Cloudflar
 Cada push no branch `claude/cloudflare-pages-static-j0ehik` publica o site automaticamente.
 Configuração do projeto: sem comando de build, diretório de saída `public`.
 
-## Checkout Pix (LofyPay) e teste A/B
+## Checkout Pix (LofyPay) e área de membros
 
-- `public/ab-checkout.js` sorteia cada visitante (50/50) entre a Hotmart (variante `a`) e o checkout Pix
-  próprio em `/checkout/` (variante `b`). Para forçar uma variante: `?checkout=a` ou `?checkout=b`.
-- `functions/api/pix.js` gera a cobrança Pix na LofyPay (o preço fica no servidor),
-  `functions/api/status.js` consulta o pagamento e `functions/api/webhook.js` recebe o aviso de pagamento.
-- Configure o segredo `LOFYPAY_SECRET_KEY` no projeto do Cloudflare Pages
-  (Settings → Variables and Secrets → tipo *Secret*). Use `sk_test_...` para testar e `sk_live_...` em produção.
+- Todos os botões de compra levam a `/checkout/`. O comprador cria a senha no checkout; quando o Pix é
+  pago (`functions/api/status.js` ou o webhook `functions/api/webhook.js`), a conta é criada no KV `MEMBERS`
+  e ele entra direto em `/membros/`.
+- Conteúdo do curso: `lib/content.js`. Cada módulo tem `unlockAfterDays` (dias após a compra para liberar);
+  preencha `video` com o link de incorporação (YouTube/Vimeo/Panda) e `download` com materiais.
+  Aulas bloqueadas nunca são enviadas ao navegador.
+- Admin: `GET/POST /api/admin/members` com `Authorization: Bearer <ADMIN_KEY>` para listar, adicionar ou
+  bloquear membros (ex.: reembolso).
+- Variáveis do projeto Pages: `LOFYPAY_SECRET_KEY` (você configura), `SESSION_SECRET` e `ADMIN_KEY` (já
+  configuradas), binding KV `MEMBERS`.
 
 ## Observações
-- Links de compra (Hotmart) e pixels (Google Tag Manager, Facebook, TikTok) continuam apontando
-  para os serviços originais.
+- Pixels (Google Tag Manager, Facebook, TikTok) continuam ativos.
 - Chamadas ao `admin-ajax.php` do WordPress (plugin PixelYourSite) não funcionam fora do domínio
   original; isso não afeta a exibição da página.
 - `/especialista-em-bolos-gelados/` redireciona para `/` (ver `public/_redirects`).

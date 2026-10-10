@@ -1,22 +1,20 @@
-// Returns the LofyPay status of a Pix charge so the checkout page can poll it.
+// Polled by the checkout page. When the Pix is paid it creates the member account
+// and signs the buyer in, so they can go straight to the members area.
 
-const LOFYPAY_API = "https://app.lofypay.com/api/v1";
-
-export async function lofypayStatus(env, id) {
-  const res = await fetch(`${LOFYPAY_API}/status`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.LOFYPAY_SECRET_KEY}` },
-    body: JSON.stringify({ idtransaction: id }),
-  });
-  const data = await res.json().catch(() => ({}));
-  return data.status || "UNKNOWN";
-}
+import { json, sessionCookie } from "../../lib/auth.js";
+import { activateOrder, lofypayStatus } from "../../lib/lofypay.js";
 
 export async function onRequestGet({ request, env }) {
   const id = new URL(request.url).searchParams.get("id") || "";
-  if (!/^[\w-]{4,100}$/.test(id) || !env.LOFYPAY_SECRET_KEY) {
-    return Response.json({ status: "UNKNOWN" }, { status: 400 });
+  if (!/^[\w-]{1,100}$/.test(id) || !env.LOFYPAY_SECRET_KEY) return json({ status: "UNKNOWN" }, 400);
+
+  const email = await activateOrder(env, id);
+  if (email) {
+    // Auto sign-in only right after payment; later the member logs in with their password.
+    const order = await env.MEMBERS.get(`order:${id}`, "json");
+    const fresh = order?.paidAt && Date.now() - Date.parse(order.paidAt) < 2 * 3600e3;
+    return json({ status: "PAID_OUT", paid: true }, 200, fresh ? { "Set-Cookie": await sessionCookie(env, email) } : {});
   }
-  const status = await lofypayStatus(env, id);
-  return Response.json({ status, paid: status === "PAID_OUT" }, { headers: { "Cache-Control": "no-store" } });
+
+  return json({ status: await lofypayStatus(env, id), paid: false });
 }

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Área de Membros - Especialista em Bolos Gelados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --brown:#6b3a1e; --pink:#c2306f; --bg:#fdf6f1; --card:#fff; --muted:#7a6a62; --line:#eadfd8; --green1:#2ee34d; --green2:#2bb389; --lock:#b9aaa2; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Montserrat,system-ui,sans-serif; background:var(--bg); color:var(--brown); }
+  header { background:linear-gradient(90deg,#fde3ea,#fdf0e6); padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  header img { height:40px; display:block; }
+  .who { font-size:13px; display:flex; gap:12px; align-items:center; }
+  .link { background:none; border:0; color:var(--pink); font:inherit; font-weight:600; cursor:pointer; padding:0; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; }
+  h1 { font-size:20px; margin:0 0 6px; } p.sub { margin:0 0 16px; color:var(--muted); font-size:14px; }
+  label { display:block; font-size:13px; font-weight:600; margin:12px 0 6px; }
+  input { width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font:inherit; font-size:15px; }
+  input:focus { outline:2px solid var(--pink); border-color:transparent; }
+  .btn { display:inline-block; width:100%; margin-top:18px; padding:14px; border:0; border-radius:10px; font:inherit; font-weight:700; color:#fff; cursor:pointer;
+         background:linear-gradient(90deg,var(--green1),var(--green2)); text-align:center; text-decoration:none; }
+  .error { color:#b00020; font-size:14px; margin-top:12px; min-height:1em; }
+  #login { max-width:420px; margin:48px auto; padding:0 16px; }
+  #app { display:none; max-width:1100px; margin:20px auto; padding:0 16px; }
+  .progress { margin:0 0 18px; } .bar { height:10px; background:var(--line); border-radius:99px; overflow:hidden; margin-top:8px; }
+  .bar span { display:block; height:100%; background:linear-gradient(90deg,var(--pink),#9b5fc0); width:0; transition:width .4s; }
+  .layout { display:grid; grid-template-columns:320px 1fr; gap:20px; align-items:start; }
+  @media (max-width:820px){ .layout { grid-template-columns:1fr; } }
+  .modules { padding:8px; }
+  .module { border-bottom:1px solid var(--line); } .module:last-child { border:0; }
+  .module > button { width:100%; text-align:left; background:none; border:0; padding:14px 12px; font:inherit; font-weight:700; color:var(--brown); cursor:pointer; display:flex; justify-content:space-between; gap:8px; }
+  .module.locked > button { color:var(--lock); cursor:default; }
+  .module small { display:block; font-weight:400; font-size:12px; color:var(--muted); margin-top:3px; }
+  .lessons { list-style:none; margin:0; padding:0 0 10px; display:none; } .module.open .lessons { display:block; }
+  .lessons button { width:100%; text-align:left; background:none; border:0; padding:9px 12px 9px 18px; font:inherit; font-size:14px; color:var(--brown); cursor:pointer; border-radius:8px; display:flex; gap:8px; }
+  .lessons button:hover:not([disabled]) { background:#fbeef2; } .lessons button.active { background:#fbe1ea; font-weight:600; }
+  .lessons button[disabled] { color:var(--lock); cursor:not-allowed; }
+  .player .video { position:relative; padding-top:56.25%; background:#2a1a12; border-radius:12px; overflow:hidden; margin-bottom:16px; }
+  .player iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .soon { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; text-align:center; padding:20px; }
+  .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; } .actions .btn { width:auto; margin:0; padding:12px 18px; }
+  .btn.alt { background:var(--brown); }
+  .locked-box { text-align:center; padding:40px 20px; color:var(--muted); } .locked-box .ic { font-size:44px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="/membros/"><img src="/wp-content/uploads/2025/03/logo-especialista-em-bolos-gelados.png" alt="Especialista em Bolos Gelados"></a>
+  <div class="who" id="who" hidden><span id="hello"></span><button class="link" id="logout">Sair</button></div>
+</header>
+
+<section id="login">
+  <form class="card" id="loginForm">
+    <h1>Área de Membros</h1>
+    <p class="sub">Entre com o e-mail e a senha que você criou na compra.</p>
+    <label for="email">E-mail</label><input id="email" type="email" autocomplete="email" required>
+    <label for="password">Senha</label><input id="password" type="password" autocomplete="current-password" required>
+    <button class="btn" type="submit">Entrar</button>
+    <div class="error" id="loginError" role="alert"></div>
+    <p class="sub" style="margin-top:16px">Ainda não é aluna? <a href="/checkout/" style="color:var(--pink)">Garanta sua vaga</a>.</p>
+  </form>
+</section>
+
+<section id="app">
+  <div class="card progress"><b id="courseTitle"></b> · <span id="progressText"></span><div class="bar"><span id="progressBar"></span></div></div>
+  <div class="layout">
+    <nav class="card modules" id="modules"></nav>
+    <article class="card player" id="player"></article>
+  </div>
+</section>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var state = null, current = null;
+  var fmtDate = function (iso) { return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "long" }); };
+  var esc = function (s) { var d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; };
+
+  async function load() {
+    var r = await fetch("/api/members/content", { cache: "no-store" });
+    if (r.status === 401) { $("login").style.display = "block"; $("app").style.display = "none"; $("who").hidden = true; return; }
+    state = await r.json();
+    $("login").style.display = "none"; $("app").style.display = "block"; $("who").hidden = false;
+    $("hello").textContent = "Olá, " + (state.member.name || "").split(" ")[0] + "!";
+    render();
+  }
+
+  function render() {
+    $("courseTitle").textContent = state.course;
+    var p = state.progress, pct = p.total ? Math.round(p.done / p.total * 100) : 0;
+    $("progressText").textContent = p.done + " de " + p.total + " aulas concluídas (" + pct + "%)";
+    $("progressBar").style.width = pct + "%";
+
+    var nav = $("modules"); nav.innerHTML = "";
+    state.modules.forEach(function (m) {
+      var div = document.createElement("div");
+      div.className = "module" + (m.unlocked ? "" : " locked") + (m.unlocked && (!current || current.module === m.id) ? " open" : "");
+      var sub = m.unlocked ? m.lessons.filter(function (l) { return l.done; }).length + "/" + m.lessons.length + " aulas" : "🔒 Libera em " + fmtDate(m.unlockAt);
+      div.innerHTML = "<button type='button'><span>" + esc(m.title) + "<small>" + sub + "</small></span><span>" + (m.unlocked ? "▾" : "🔒") + "</span></button><ul class='lessons'></ul>";
+      if (m.unlocked) div.firstChild.onclick = function () { div.classList.toggle("open"); };
+      var ul = div.querySelector("ul");
+      m.lessons.forEach(function (l) {
+        var li = document.createElement("li"), b = document.createElement("button");
+        b.type = "button"; b.disabled = !l.unlocked;
+        b.innerHTML = "<span>" + (l.done ? "✅" : l.unlocked ? "▶️" : "🔒") + "</span><span>" + esc(l.title) + "</span>";
+        if (current && current.lesson === l.id) b.className = "active";
+        if (l.unlocked) b.onclick = function () { open(m, l); };
+        else if (l.lockReason) b.title = l.lockReason;
+        li.appendChild(b); ul.appendChild(li);
+      });
+      nav.appendChild(div);
+    });
+
+    if (!current) {
+      var first = null;
+      state.modules.some(function (m) { return m.lessons.some(function (l) { if (l.unlocked && !l.done) { first = [m, l]; return true; } }); });
+      if (!first) state.modules.some(function (m) { return m.lessons.some(function (l) { if (l.unlocked) { first = [m, l]; return true; } }); });
+      if (first) open(first[0], first[1]); else $("player").innerHTML = "<div class='locked-box'><div class='ic'>🔒</div>Seu conteúdo será liberado em breve.</div>";
+    }
+  }
+
+  function open(m, l) {
+    current = { module: m.id, lesson: l.id };
+    var video = l.video
+      ? "<div class='video'><iframe src='" + esc(l.video) + "' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen></iframe></div>"
+      : "<div class='video'><div class='soon'>🎬 Vídeo em breve</div></div>";
+    $("player").innerHTML = video + "<small style='color:var(--muted)'>" + esc(m.title) + "</small><h1>" + esc(l.title) + "</h1>" +
+      (l.body ? "<p>" + esc(l.body) + "</p>" : "") +
+      "<div class='actions'>" + (l.download ? "<a class='btn alt' href='" + esc(l.download) + "' target='_blank' rel='noopener'>⬇️ Baixar material</a>" : "") +
+      "<button class='btn' id='doneBtn' type='button'>" + (l.done ? "↩️ Marcar como não concluída" : "✅ Marcar como concluída") + "</button></div>";
+    $("doneBtn").onclick = async function () {
+      this.disabled = true;
+      await fetch("/api/members/progress", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lessonId: l.id, done: !l.done }) });
+      var keep = current; await load(); current = keep;
+      state.modules.forEach(function (mm) { mm.lessons.forEach(function (ll) { if (ll.id === keep.lesson) open(mm, ll); }); });
+      render();
+    };
+    render();
+    if (window.innerWidth < 820) $("player").scrollIntoView({ behavior: "smooth" });
+  }
+
+  $("loginForm").addEventListener("submit", async function (e) {
+    e.preventDefault(); $("loginError").textContent = "";
+    var r = await fetch("/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: $("email").value, password: $("password").value }) });
+    if (!r.ok) { $("loginError").textContent = (await r.json()).error || "Não foi possível entrar."; return; }
+    load();
+  });
+  $("logout").onclick = async function () { await fetch("/api/logout", { method: "POST" }); current = null; load(); };
+  load();
+})();
+</script>
+</body>
+</html>
