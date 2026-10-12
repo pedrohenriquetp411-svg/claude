@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Área de Membros - Especialista em Bolos Gelados</title>
+<title>Área de Membros - Bolos Gelados Lucrativos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -12,7 +12,7 @@
   * { box-sizing:border-box; }
   body { margin:0; font-family:Montserrat,system-ui,sans-serif; background:var(--bg); color:var(--brown); }
   header { background:linear-gradient(90deg,#fde3ea,#fdf0e6); padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
-  header img { height:40px; display:block; }
+  .logo { display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:18px; text-decoration:none; color:var(--brown); } .logo b { color:var(--pink); }
   .who { font-size:13px; display:flex; gap:12px; align-items:center; }
   .link { background:none; border:0; color:var(--pink); font:inherit; font-weight:600; cursor:pointer; padding:0; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; }
@@ -51,7 +51,7 @@
 </head>
 <body>
 <header>
-  <a href="/membros/"><img src="/wp-content/uploads/2025/03/logo-especialista-em-bolos-gelados.png" alt="Especialista em Bolos Gelados"></a>
+  <a class="logo" href="/membros/"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--pink)"><path d="M4 21h16v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M4 16c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M12 11V8"/><circle cx="12" cy="5.5" r="1"/></svg>Bolos <b>Gelados</b></a>
   <div class="who" id="who" hidden><span id="hello"></span><button class="link" id="logout">Sair</button></div>
 </header>
 

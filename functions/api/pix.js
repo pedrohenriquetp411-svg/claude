@@ -5,14 +5,14 @@
 import { hashPassword, isTestToken, json, normEmail } from "../../lib/auth.js";
 import { LOFYPAY_API } from "../../lib/lofypay.js";
 
-const PRODUCT = { name: "Especialista em Bolos Gelados", amount: 197.0 };
+const PRODUCT = { name: "Bolos Gelados Lucrativos", amount: 197.0 };
 const TEST_AMOUNT = 10.0;
 
-// "test": private R$ 10 link (?teste=<token>). "live": public sales, only once SALES_OPEN=true.
+// "test": private R$ 10 link (?teste=<token>). "live": public sales; set SALES_OPEN=false to pause them.
 async function saleMode(env, token) {
   if (!env.LOFYPAY_SECRET_KEY) return null;
   if (await isTestToken(env, token)) return { test: true, amount: TEST_AMOUNT };
-  if (env.SALES_OPEN === "true") return { test: false, amount: PRODUCT.amount };
+  if (env.SALES_OPEN !== "false") return { test: false, amount: PRODUCT.amount };
   return null;
 }
 const EXPIRATION = 1800;
