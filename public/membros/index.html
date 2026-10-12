@@ -47,6 +47,37 @@
   .ic { flex:none; vertical-align:middle; } .is-done { color:var(--green2); } .module.open .chev { transform:rotate(180deg); }
   .lessons button .ic { color:var(--pink); } .lessons button[disabled] .ic { color:var(--lock); }
   .module small .ic { vertical-align:-2px; } .soon { gap:10px; } .btn .ic { vertical-align:-4px; }
+
+  #bonusWrap { margin-top:22px; }
+  .bonus-h { font-size:20px; margin:0 0 12px; color:var(--brown); }
+  .bonus { margin-bottom:16px; }
+  .bonus h3 { margin:0 0 4px; font-size:18px; color:var(--pink); }
+  .bonus-desc { margin:0 0 16px; color:var(--muted); font-size:14px; }
+  .cardapio { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .cal { background:#fdf6f1; border:1px solid var(--line); border-radius:12px; padding:14px 16px; }
+  .cal h4 { margin:0 0 4px; color:var(--brown); font-size:15px; }
+  .cal p { margin:0 0 8px; color:var(--muted); font-size:13px; }
+  .cal ul { margin:0; padding-left:18px; font-size:13.5px; } .cal li { margin-bottom:4px; }
+  .cardapio .tips { grid-column:1/-1; background:#fbe9f0; border:1px solid #f0cbdc; border-radius:12px; padding:14px 16px; }
+  .cardapio .tips b { color:var(--pink); } .cardapio .tips ul { margin:8px 0 0; padding-left:18px; font-size:14px; }
+  .pgrid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .pgrid label { display:block; font-size:13px; font-weight:600; color:var(--brown); }
+  .pgrid input, .pgrid select { width:100%; margin-top:5px; padding:10px 12px; border:1px solid var(--line); border-radius:9px; font:inherit; font-size:15px; }
+  .pout { margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pout > div { background:#fdf6f1; border:1px solid var(--line); border-radius:10px; padding:11px 14px; }
+  .pout span { display:block; font-size:12px; color:var(--muted); } .pout b { font-size:20px; } .pout b.hi { color:var(--pink); }
+  .labels-preview { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0; }
+  .lbl { border:2px solid; border-radius:10px; overflow:hidden; background:#fff; }
+  .lbl-top { color:#fff; font-weight:700; text-align:center; padding:6px; font-size:13px; }
+  .lbl-body { padding:10px; text-align:center; } .lbl-body b { display:block; font-size:14px; color:#333; }
+  .lbl-body span { display:block; font-size:11.5px; color:#777; margin:3px 0; } .lbl-body em { font-style:normal; font-size:11px; color:#999; }
+  @media (max-width:620px) { .cardapio, .pgrid, .pout { grid-template-columns:1fr; } .labels-preview { grid-template-columns:1fr 1fr; } }
+  @media print {
+    body * { visibility:hidden; }
+    .labels-preview, .labels-preview * { visibility:visible; }
+    .labels-preview { position:absolute; inset:0; grid-template-columns:repeat(2,1fr); gap:14px; padding:20px; }
+    .lbl { break-inside:avoid; }
+  }
 </style>
 </head>
 <body>
@@ -89,6 +120,7 @@
     <nav class="card modules" id="modules"></nav>
     <article class="card player" id="player"></article>
   </div>
+  <div id="bonusWrap"></div>
 </section>
 
 <script>
@@ -117,6 +149,93 @@
     $("login").style.display = "none"; $("app").style.display = "block"; $("who").hidden = false;
     $("hello").textContent = "Olá, " + (state.member.name || "").split(" ")[0] + "!";
     render();
+    renderBonuses(state.bonuses || []);
+  }
+
+  function renderBonuses(bonuses) {
+    var wrap = $("bonusWrap");
+    if (!bonuses.length) { wrap.innerHTML = ""; return; }
+    var html = '<h2 class="bonus-h">Seus bônus</h2>';
+    bonuses.forEach(function (b) {
+      html += '<div class="card bonus"><h3>' + esc(b.title) + "</h3><p class='bonus-desc'>" + esc(b.desc) + "</p>";
+      if (b.type === "content") html += renderCardapio(b);
+      else if (b.tool === "pricing") html += '<div class="tool" data-tool="pricing"></div>';
+      else if (b.tool === "labels") html += '<div class="tool" data-tool="labels"></div>';
+      html += "</div>";
+    });
+    wrap.innerHTML = html;
+    wrap.querySelectorAll('.tool[data-tool="pricing"]').forEach(buildPricingTool);
+    wrap.querySelectorAll('.tool[data-tool="labels"]').forEach(buildLabelsTool);
+  }
+
+  function renderCardapio(b) {
+    var h = '<div class="cardapio">';
+    (b.sections || []).forEach(function (s) {
+      h += '<div class="cal"><h4>' + esc(s.h) + "</h4><p>" + esc(s.p) + "</p><ul>";
+      (s.items || []).forEach(function (it) { h += "<li>" + esc(it) + "</li>"; });
+      h += "</ul></div>";
+    });
+    if (b.tips && b.tips.length) {
+      h += '<div class="tips"><b>Dicas de venda</b><ul>';
+      b.tips.forEach(function (t) { h += "<li>" + esc(t) + "</li>"; });
+      h += "</ul></div>";
+    }
+    return h + "</div>";
+  }
+
+  function buildPricingTool(el) {
+    el.innerHTML =
+      '<div class="pcalc">' +
+      '<div class="pgrid">' +
+      '<label>Custo dos ingredientes (por bolo)<input type="number" min="0" step="0.01" data-f="ing" placeholder="R$ 0,00"></label>' +
+      '<label>Embalagem + rótulo<input type="number" min="0" step="0.01" data-f="emb" placeholder="R$ 0,00"></label>' +
+      '<label>Gás, luz e outros (por bolo)<input type="number" min="0" step="0.01" data-f="fix" placeholder="R$ 0,00"></label>' +
+      '<label>Seu tempo (por bolo)<input type="number" min="0" step="0.01" data-f="mao" placeholder="R$ 0,00"></label>' +
+      '<label>Margem de lucro<select data-f="mar"><option value="0.5">50%</option><option value="0.8">80%</option><option value="1" selected>100%</option><option value="1.5">150%</option><option value="2">200%</option></select></label>' +
+      '<label>Rende quantas fatias?<input type="number" min="1" step="1" data-f="fat" value="1"></label>' +
+      "</div>" +
+      '<div class="pout"><div><span>Custo total</span><b data-o="cost">R$ 0,00</b></div><div><span>Preço de venda sugerido</span><b data-o="price" class="hi">R$ 0,00</b></div><div><span>Preço por fatia</span><b data-o="slice">R$ 0,00</b></div><div><span>Lucro por bolo</span><b data-o="profit">R$ 0,00</b></div></div>' +
+      "</div>";
+    function num(f) { var v = parseFloat(el.querySelector('[data-f="' + f + '"]').value); return isNaN(v) ? 0 : v; }
+    function calc() {
+      var cost = num("ing") + num("emb") + num("fix") + num("mao");
+      var price = cost * (1 + num("mar"));
+      var fat = Math.max(1, Math.round(num("fat")) || 1);
+      el.querySelector('[data-o="cost"]').textContent = money(cost);
+      el.querySelector('[data-o="price"]').textContent = money(price);
+      el.querySelector('[data-o="slice"]').textContent = money(price / fat);
+      el.querySelector('[data-o="profit"]').textContent = money(price - cost);
+    }
+    el.querySelectorAll("input,select").forEach(function (i) { i.addEventListener("input", calc); });
+    calc();
+  }
+
+  function money(v) { return "R$ " + Number(v || 0).toFixed(2).replace(".", ","); }
+
+  function buildLabelsTool(el) {
+    el.innerHTML =
+      '<div class="lab">' +
+      '<div class="pgrid">' +
+      '<label>Nome da sua marca<input data-l="brand" maxlength="28" placeholder="Doces da Ana"></label>' +
+      '<label>Sabor<input data-l="flavor" maxlength="34" placeholder="Bolo gelado de Ninho"></label>' +
+      '<label>Validade<input data-l="valid" maxlength="24" placeholder="Consumir em 5 dias"></label>' +
+      '<label>Contato / @<input data-l="contact" maxlength="30" placeholder="@docesdaana · (00) 90000-0000"></label>' +
+      '<label>Cor<select data-l="color"><option value="#c2306f">Rosa</option><option value="#6b3a1e">Marrom</option><option value="#2db189">Verde</option><option value="#928dc2">Lilás</option></select></label>' +
+      "</div>" +
+      '<div class="labels-preview" data-preview></div>' +
+      '<button type="button" class="btn alt" data-print>Imprimir / salvar em PDF</button>' +
+      "</div>";
+    function val(k) { return el.querySelector('[data-l="' + k + '"]').value; }
+    function draw() {
+      var color = val("color"), brand = esc(val("brand") || "Sua Marca"), flavor = esc(val("flavor") || "Sabor do bolo"),
+        valid = esc(val("valid") || "Consumir em X dias"), contact = esc(val("contact") || "@seuperfil");
+      var one = '<div class="lbl" style="border-color:' + color + '"><div class="lbl-top" style="background:' + color + '">' + brand + "</div>" +
+        '<div class="lbl-body"><b>' + flavor + "</b><span>" + valid + "</span><em>" + contact + "</em></div></div>";
+      el.querySelector("[data-preview]").innerHTML = new Array(6).fill(one).join("");
+    }
+    el.querySelectorAll("input,select").forEach(function (i) { i.addEventListener("input", draw); });
+    el.querySelector("[data-print]").addEventListener("click", function () { window.print(); });
+    draw();
   }
 
   function render() {

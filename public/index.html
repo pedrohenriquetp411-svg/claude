@@ -129,6 +129,38 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   .offer .foot { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:16px; color:var(--muted); font-size:12px; }
   .offer .foot span { display:inline-flex; align-items:center; gap:5px; }
 
+  .plans { display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:820px; margin:34px auto 0; align-items:start; }
+  .plan { background:var(--cream); border:1px solid var(--line); border-radius:20px; overflow:hidden; text-align:left; position:relative; }
+  .plan.featured { border:2px solid var(--pink); box-shadow:0 22px 46px rgba(201,49,110,.16); }
+  .plan .flag { background:var(--pink); color:#fff; text-align:center; font-weight:700; font-size:12.5px; letter-spacing:.03em; padding:8px; }
+  .plan .pad { padding:24px 22px; }
+  .plan .name { font-family:var(--head); font-weight:800; font-size:20px; color:var(--brown); }
+  .plan .tagline { color:var(--muted); font-size:13.5px; margin:3px 0 14px; }
+  .plan ul { list-style:none; padding:0; margin:0 0 18px; display:grid; gap:9px; }
+  .plan li { display:flex; gap:9px; align-items:flex-start; font-size:14px; }
+  .plan li .ic { margin-top:2px; flex:none; } .plan li.on .ic { color:var(--green2); } .plan li.off { color:#b9aca3; } .plan li.off .ic { color:#cdbfb5; }
+  .plan .pr { margin:4px 0 2px; } .plan .pr .old { color:var(--muted); text-decoration:line-through; font-size:15px; margin-right:7px; }
+  .plan .pr .now { font-family:var(--head); font-weight:800; font-size:40px; color:var(--pink); line-height:1; }
+  .plan .pr .now small { font-size:18px; vertical-align:top; }
+  .plan .save { display:inline-block; background:#e3f3ea; color:var(--green-d); font-weight:700; font-size:12px; padding:3px 10px; border-radius:99px; margin:6px 0 2px; }
+  .plan .cta { width:100%; margin-top:14px; }
+  .plan.basic .cta { background:#fff; color:var(--brown); border:1.5px solid var(--line); box-shadow:none; }
+  .plan.basic .cta:hover { filter:none; border-color:var(--pink); color:var(--pink); }
+  .offer-foot { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:22px; color:var(--muted); font-size:12.5px; }
+  .offer-foot span { display:inline-flex; align-items:center; gap:6px; }
+
+  .modal { position:fixed; inset:0; background:rgba(74,59,50,.55); display:none; align-items:center; justify-content:center; padding:18px; z-index:50; }
+  .modal.on { display:flex; }
+  .modal .box { background:var(--cream); border-radius:20px; max-width:420px; width:100%; padding:28px 24px; text-align:center; position:relative; box-shadow:0 30px 60px rgba(74,59,50,.3); }
+  .modal .close { position:absolute; top:12px; right:14px; background:none; border:0; font-size:22px; color:var(--muted); cursor:pointer; line-height:1; }
+  .modal .kick { display:inline-block; background:var(--pink); color:#fff; font-weight:700; font-size:12px; letter-spacing:.04em; padding:5px 12px; border-radius:99px; margin-bottom:12px; }
+  .modal h3 { font-size:23px; color:var(--brown); margin-bottom:10px; }
+  .modal p { color:var(--muted); font-size:14.5px; margin:0 0 16px; }
+  .modal .pr { margin-bottom:16px; } .modal .pr .old { color:var(--muted); text-decoration:line-through; font-size:18px; margin-right:8px; }
+  .modal .pr b { font-family:var(--head); font-weight:800; font-size:40px; color:var(--pink); }
+  .modal .cta { width:100%; }
+  .modal .no { display:inline-block; margin-top:12px; color:var(--muted); font-size:13px; text-decoration:underline; text-underline-offset:2px; cursor:pointer; }
+
   .faq { max-width:760px; margin:30px auto 0; }
   details { border-bottom:1px solid var(--tint2); }
   summary { cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:14px; align-items:center; padding:18px 0; font-weight:700; font-size:16px; color:var(--brown); }
@@ -185,7 +217,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
 </svg>
 
-<div class="topbar">Oferta de lançamento: <b>acesso completo no Pix</b> · 26 receitas em videoaula, liberadas na hora</div>
+<div class="topbar">Oferta de lançamento: <b>pacotes a partir de R$ 10 no Pix</b> · 26 receitas em videoaula</div>
 
 <header>
   <div class="wrap">
@@ -356,28 +388,44 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   <section id="oferta">
     <div class="wrap center">
       <p class="eyebrow">A oferta</p>
-      <h2 class="sec">Garanta seu acesso</h2>
-      <p class="sec-sub">Pagamento no Pix. Acesso imediato a todas as 26 receitas.</p>
-      <div class="offer">
-        <div class="ribbon">ACESSO COMPLETO · 26 RECEITAS EM VIDEOAULA</div>
-        <div class="pad">
-          <h3>Bolos Gelados Lucrativos</h3>
-          <ul>
-            <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>26 receitas de bolos gelados em videoaula</li>
-            <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>4 módulos organizados por tipo de bolo</li>
-            <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>Técnicas de massa, recheio, montagem e conservação</li>
-            <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>Área de membros com seu progresso, no celular ou PC</li>
-          </ul>
-          <div class="price"><span class="now"><small>R$</small>197</span></div>
-          <div class="note">no Pix à vista, com acesso imediato</div>
-          <a class="cta lg" href="/checkout/">Quero minhas receitas agora</a>
-          <div class="foot">
-            <span><svg class="ic" width="14" height="14"><use href="#i-pix"/></svg>Pix</span>
-            <span><svg class="ic" width="14" height="14"><use href="#i-lock"/></svg>Compra segura</span>
-            <span><svg class="ic" width="14" height="14"><use href="#i-bolt"/></svg>Acesso na hora</span>
-            <span><svg class="ic" width="14" height="14"><use href="#i-shield"/></svg>7 dias de garantia</span>
+      <h2 class="sec">Escolha seu acesso</h2>
+      <p class="sec-sub">Pagamento único no Pix, sem mensalidade. Acesso imediato às 26 receitas.</p>
+      <div class="plans">
+        <div class="plan basic">
+          <div class="pad">
+            <div class="name">Básico</div>
+            <div class="tagline">Só as 26 receitas em videoaula.</div>
+            <ul>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>26 receitas nos 4 módulos</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Acesso imediato, no celular ou PC</li>
+              <li class="off"><svg class="ic" width="18" height="18"><use href="#i-x"/></svg>Sem os bônus</li>
+            </ul>
+            <div class="pr"><span class="now"><small>R$</small>10</span></div>
+            <button class="cta" type="button" id="btnBasico">Quero o básico por R$ 10</button>
           </div>
         </div>
+        <div class="plan featured">
+          <div class="flag">MAIS ESCOLHIDO · VEM COM OS 3 BÔNUS</div>
+          <div class="pad">
+            <div class="name">Completo</div>
+            <div class="tagline">As receitas + os 3 bônus pra vender mais.</div>
+            <ul>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>26 receitas nos 4 módulos</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Planilha de Precificação Inteligente</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Cardápio de Datas Comemorativas</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Pack de Embalagens e Rótulos</li>
+            </ul>
+            <div class="save">economize R$ 60</div>
+            <div class="pr"><span class="old">R$ 97</span><span class="now"><small>R$</small>37</span></div>
+            <a class="cta" href="/checkout/?plano=completo">Quero o completo por R$ 37</a>
+          </div>
+        </div>
+      </div>
+      <div class="offer-foot">
+        <span><svg class="ic" width="14" height="14"><use href="#i-pix"/></svg>Pix</span>
+        <span><svg class="ic" width="14" height="14"><use href="#i-lock"/></svg>Compra segura</span>
+        <span><svg class="ic" width="14" height="14"><use href="#i-bolt"/></svg>Acesso na hora</span>
+        <span><svg class="ic" width="14" height="14"><use href="#i-shield"/></svg>7 dias de garantia</span>
       </div>
     </div>
   </section>
@@ -390,7 +438,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
         <details><summary>Como recebo o acesso?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">No checkout você cria uma senha. Assim que o Pix é confirmado, a página libera o botão da área de membros e você entra com seu e-mail e essa senha.</div></details>
         <details><summary>Preciso ter experiência na confeitaria?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Não. As receitas são em vídeo, feitas do começo ao fim, com utensílios comuns de cozinha. Dá pra começar do zero.</div></details>
         <details><summary>Todas as receitas são liberadas na hora?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Sim. Assim que o pagamento é confirmado, você tem acesso imediato a todas as 26 receitas, nos 4 módulos.</div></details>
-        <details><summary>Quais formas de pagamento são aceitas?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">No momento, apenas Pix à vista, no valor de R$ 197, com acesso imediato após a confirmação.</div></details>
+        <details><summary>Quais formas de pagamento são aceitas?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">No momento, apenas Pix à vista. O plano básico sai por R$ 10 e o completo, com os 3 bônus, por R$ 37 — com acesso imediato após a confirmação.</div></details>
         <details><summary>Consigo assistir pelo celular?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Sim. A área de membros funciona no celular, no tablet e no computador, por onde você preferir.</div></details>
         <details><summary>E se eu não gostar?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Você tem 7 dias a partir da compra para desistir e receber o valor de volta, conforme o Código de Defesa do Consumidor.</div></details>
       </div>
@@ -404,6 +452,17 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       <a class="cta lg" href="/checkout/">Quero começar agora</a>
     </div>
   </section>
+  <div class="modal" id="upsell" role="dialog" aria-modal="true" aria-labelledby="upT">
+    <div class="box">
+      <button class="close" id="upClose" aria-label="Fechar">&times;</button>
+      <span class="kick">OFERTA ÚNICA</span>
+      <h3 id="upT">Leve o completo quase pelo preço do básico</h3>
+      <p>Adicione os 3 bônus — Planilha de Precificação, Cardápio de Datas Comemorativas e Pack de Embalagens e Rótulos — por uma fração do valor.</p>
+      <div class="pr"><span class="old">R$ 37</span><b>R$ 19,90</b></div>
+      <a class="cta lg" href="/checkout/?plano=completo_oferta">Quero o completo por R$ 19,90</a>
+      <div><span class="no" id="upNo">Não, quero só o básico por R$ 10</span></div>
+    </div>
+  </div>
 </main>
 
 <footer>
@@ -418,6 +477,15 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     var t = document.getElementById("navToggle"), n = document.getElementById("nav");
     t.addEventListener("click", function () { n.classList.toggle("open"); });
     n.addEventListener("click", function (e) { if (e.target.tagName === "A") n.classList.remove("open"); });
+
+    var modal = document.getElementById("upsell");
+    function openUp() { modal.classList.add("on"); try { if (window.fbq) fbq("trackCustom", "UpsellView"); } catch (e) {} }
+    function closeUp() { modal.classList.remove("on"); }
+    document.getElementById("btnBasico").addEventListener("click", openUp);
+    document.getElementById("upClose").addEventListener("click", closeUp);
+    document.getElementById("upNo").addEventListener("click", function () { location.href = "/checkout/?plano=basico"; });
+    modal.addEventListener("click", function (e) { if (e.target === modal) closeUp(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeUp(); });
   })();
 </script>
 </body>

@@ -40,6 +40,11 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   input:focus { outline:2px solid var(--pink); border-color:transparent; }
   .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; } @media (max-width:480px){ .row { grid-template-columns:1fr; } }
   .method { margin-top:18px; display:flex; align-items:center; gap:10px; padding:12px 14px; border:2px solid var(--pink); border-radius:10px; font-weight:600; }
+  .bumps-title { margin:20px 0 8px; font-weight:700; font-size:14px; color:var(--brown); }
+  .bump { display:flex; gap:10px; align-items:flex-start; padding:12px 14px; border:1.5px dashed var(--pink); border-radius:10px; margin-bottom:8px; cursor:pointer; background:#fdf1f5; }
+  .bump input { width:18px; height:18px; margin-top:1px; accent-color:var(--pink); flex:none; }
+  .bump span { font-size:14px; } .bump b { font-weight:600; } .bump em { font-style:normal; color:var(--pink); font-weight:700; }
+  .bump small { display:block; color:var(--muted); font-size:12.5px; margin-top:2px; }
   button { width:100%; margin-top:20px; padding:16px; border:0; border-radius:10px; font:inherit; font-weight:700; font-size:16px; color:#fff; cursor:pointer;
            background:linear-gradient(90deg,var(--green1),var(--green2)); text-transform:uppercase; }
   button[disabled] { opacity:.6; cursor:wait; }
@@ -78,6 +83,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
         <div><label for="password2">Confirme a senha</label><input id="password2" name="password2" type="password" autocomplete="new-password" required></div>
       </div>
       <p class="sub" style="margin:8px 0 0">Você vai usar o e-mail e essa senha para entrar na área de membros.</p>
+      <div id="bumps"></div>
       <div class="method"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="m8 12 4-4 4 4-4 4z"/></svg> Pagamento via Pix — aprovação imediata</div>
       <button id="submit" type="submit" disabled>Carregando…</button>
       <div class="error" id="error" role="alert"></div>
@@ -89,7 +95,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       <div id="qr"></div>
       <textarea id="code" readonly></textarea>
       <button class="btn-secondary" id="copy" type="button">Copiar código Pix</button>
-      <ol><li>Abra o app do seu banco e escolha Pix.</li><li>Escaneie o QR Code ou use “Pix Copia e Cola”.</li><li>Confirme o pagamento de <b class="price">R$ 197,00</b>.</li></ol>
+      <ol><li>Abra o app do seu banco e escolha Pix.</li><li>Escaneie o QR Code ou use “Pix Copia e Cola”.</li><li>Confirme o pagamento de <b id="pixAmount">—</b>.</li></ol>
       <div class="status" id="status">Aguardando pagamento… o código expira em 30 minutos.</div>
     </div>
 
@@ -102,11 +108,10 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   </section>
 
   <aside class="card summary">
-    <img src="https://i.ytimg.com/vi/EBy_jC46flU/maxresdefault.jpg" alt="" style="aspect-ratio:16/9;object-fit:cover">
-    <h2>Bolos Gelados Lucrativos</h2>
-    <div class="line"><span>26 videoaulas · 4 módulos</span><span class="price">R$ 197,00</span></div>
-    <div class="line"><span>Pagamento</span><span>Pix à vista</span></div>
-    <div class="line total"><span>Total</span><span class="price">R$ 197,00</span></div>
+    <img src="https://i.ytimg.com/vi/6_7lRJYssoc/maxresdefault.jpg" alt="" style="aspect-ratio:16/9;object-fit:cover">
+    <h2 id="sumTitle">Bolos Gelados Lucrativos</h2>
+    <div id="sumLines"></div>
+    <div class="line total"><span>Total</span><span id="sumTotal">—</span></div>
     <div class="trust"><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Compra segura</span><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg> Acesso imediato</span><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 7 dias para desistir</span></div>
   </aside>
 </main>
@@ -116,18 +121,58 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var form = $("form"), err = $("error"), btn = $("submit");
-  var label = "";
   var brl = function (v) { return "R$ " + Number(v).toFixed(2).replace(".", ","); };
+  var BONUS = { planilha: "Planilha de Precificação Inteligente", cardapio: "Cardápio de Datas Comemorativas", pack: "Pack de Embalagens e Rótulos" };
+  var VALID = { basico: 1, completo: 1, completo_oferta: 1 };
+
+  var plan = new URLSearchParams(location.search).get("plano");
+  if (!VALID[plan]) plan = "completo";
+  var cfg = null, bumps = [];
+
+  function planBonuses() { return (cfg.plans[plan] && cfg.plans[plan].bonuses) || []; }
+  function total() {
+    if (!cfg) return 0;
+    var t = cfg.plans[plan].amount;
+    bumps.forEach(function (b) { t += cfg.bumps[b].amount; });
+    return Math.round(t * 100) / 100;
+  }
 
   fetch("/api/pix", { cache: "no-store" })
     .then(function (r) { return r.json(); })
-    .then(function (cfg) {
-      document.querySelectorAll(".price").forEach(function (el) { el.textContent = brl(cfg.amount); });
-      label = "Gerar Pix de " + brl(cfg.amount);
-      if (cfg.ready) { btn.disabled = false; btn.textContent = label; }
-      else { btn.textContent = "Vendas em breve"; err.textContent = "As inscrições ainda não estão abertas."; }
+    .then(function (c) {
+      cfg = c;
+      if (!c.ready) { btn.textContent = "Vendas em breve"; err.textContent = "As inscrições ainda não estão abertas."; renderSummary(); return; }
+      buildBumps(); renderSummary();
+      btn.disabled = false; btn.textContent = "Gerar Pix de " + brl(total());
     })
     .catch(function () { btn.textContent = "Vendas em breve"; });
+
+  function buildBumps() {
+    if (planBonuses().length) { $("bumps").innerHTML = ""; return; }   // completo já inclui os bônus
+    var html = '<div class="bumps-title">Turbine seu acesso (opcional)</div>';
+    Object.keys(cfg.bumps).forEach(function (id) {
+      html += '<label class="bump"><input type="checkbox" data-bump="' + id + '"><span><b>' + BONUS[id] + '</b> <em>+' + brl(cfg.bumps[id].amount) + "</em></span></label>";
+    });
+    $("bumps").innerHTML = html;
+    $("bumps").querySelectorAll("input[data-bump]").forEach(function (cb) {
+      cb.addEventListener("change", function () {
+        bumps = Array.prototype.map.call($("bumps").querySelectorAll("input[data-bump]:checked"), function (x) { return x.getAttribute("data-bump"); });
+        renderSummary();
+      });
+    });
+  }
+
+  function renderSummary() {
+    var complete = plan !== "basico";
+    $("sumTitle").textContent = "Bolos Gelados Lucrativos — " + (complete ? "Completo" : "Básico");
+    if (!cfg) { $("sumTotal").textContent = "—"; return; }
+    var lines = '<div class="line"><span>' + (complete ? "26 receitas + 3 bônus" : "26 receitas em videoaula") + "</span><span>" + brl(cfg.plans[plan].amount) + "</span></div>";
+    bumps.forEach(function (b) { lines += '<div class="line"><span>' + BONUS[b] + "</span><span>" + brl(cfg.bumps[b].amount) + "</span></div>"; });
+    lines += '<div class="line"><span>Pagamento</span><span>Pix à vista</span></div>';
+    $("sumLines").innerHTML = lines;
+    $("sumTotal").textContent = brl(total());
+    if (cfg.ready) btn.textContent = "Gerar Pix de " + brl(total());
+  }
 
   function mask(el, fmt) { el.addEventListener("input", function () { el.value = fmt(el.value.replace(/\D/g, "")); }); }
   mask($("document"), function (d) { d = d.slice(0, 11); return d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2"); });
@@ -144,7 +189,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     if ($("password").value.length < 6) { err.textContent = "A senha precisa ter pelo menos 6 caracteres."; return; }
     if ($("password").value !== $("password2").value) { err.textContent = "As senhas não conferem."; return; }
     btn.disabled = true; btn.textContent = "Gerando Pix…";
-    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, phone: $("phone").value, password: $("password").value };
+    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, phone: $("phone").value, password: $("password").value, plan: plan, bumps: bumps };
     try {
       var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       var data = await res.json();
@@ -153,12 +198,13 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       track("InitiateCheckout", { value: data.amount, currency: "BRL" });
     } catch (ex) {
       err.textContent = ex.message;
-      btn.disabled = false; btn.textContent = label;
+      btn.disabled = false; btn.textContent = "Gerar Pix de " + brl(total());
     }
   });
 
   function showPix(data) {
     form.style.display = "none"; $("pix").style.display = "block";
+    $("pixAmount").textContent = brl(data.amount);
     $("code").value = data.code;
     if (data.qrBase64) {
       var img = new Image(); img.alt = "QR Code Pix";

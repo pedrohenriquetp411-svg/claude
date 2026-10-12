@@ -1,8 +1,10 @@
-// Returns the course for the signed-in member. Locked modules only expose their
-// title and unlock date; the video is sent only once the module is unlocked.
+// Returns the course and the bonuses the signed-in member is entitled to.
+// All modules are open now (unlockAfterDays = 0); locked content is never sent.
+// Bonus content (e.g. the cardápio text) is only included when the member owns it.
 
 import { currentMember, json } from "../../../lib/auth.js";
-import { COURSE, allLessonIds } from "../../../lib/content.js";
+import { BONUSES, COURSE, allLessonIds, bonusIds } from "../../../lib/content.js";
+import { entitlementsFor } from "../../../lib/pricing.js";
 
 const embed = (id) => `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
 
@@ -21,7 +23,6 @@ export async function onRequestGet({ request, env }) {
       id: m.id,
       title: m.title,
       unlocked,
-      unlockAt: new Date(unlockAt).toISOString(),
       lessons: m.lessons.map((l) => {
         const base = { id: l.id, title: l.title, unlocked, done: Boolean(progress[l.id]) };
         return unlocked && l.youtube ? { ...base, video: embed(l.youtube) } : base;
@@ -29,10 +30,21 @@ export async function onRequestGet({ request, env }) {
     };
   });
 
+  // Legacy members (no entitlements recorded) keep full access.
+  const ent = member.entitlements || entitlementsFor(null);
+  const bonuses = bonusIds()
+    .filter((id) => ent[id])
+    .map((id) => {
+      const b = BONUSES[id];
+      if (b.type === "content") return { id: b.id, type: "content", title: b.title, desc: b.desc, sections: b.sections, tips: b.tips };
+      return { id: b.id, type: "tool", tool: b.tool, title: b.title, desc: b.desc };
+    });
+
   return json({
     member: { name: member.name, email: member.email, since: member.since },
     course: COURSE.title,
     progress: { done: ids.filter((id) => progress[id]).length, total: ids.length },
     modules,
+    bonuses,
   });
 }

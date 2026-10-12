@@ -1,13 +1,11 @@
 // Creates a Pix charge on LofyPay and stores the pending order (with the buyer's
 // hashed password) so the member account can be created once it is paid.
-// The price lives here, never in the browser.
+// The amount is computed from the price table, never trusted from the browser.
 
 import { hashPassword, json, normEmail } from "../../lib/auth.js";
 import { LOFYPAY_API } from "../../lib/lofypay.js";
+import { BUMPS, PLANS, PRODUCT, priceSelection } from "../../lib/pricing.js";
 
-const PRODUCT = { name: "Bolos Gelados Lucrativos", amount: 197.0 };
-
-// Sales are open whenever LofyPay is configured; set SALES_OPEN=false to pause them.
 const salesOpen = (env) => Boolean(env.LOFYPAY_SECRET_KEY) && env.SALES_OPEN !== "false";
 const EXPIRATION = 1800;
 
@@ -23,9 +21,15 @@ function validCpf(cpf) {
   return true;
 }
 
-// Lets the checkout know whether it can take payments, and at what price.
+// Tells the checkout whether it can sell and the full price table so it can show
+// the plan, order bumps and live total without ever setting the amount itself.
 export async function onRequestGet({ env }) {
-  return json({ ready: salesOpen(env), amount: PRODUCT.amount });
+  return json({
+    ready: salesOpen(env),
+    product: PRODUCT,
+    plans: Object.fromEntries(Object.entries(PLANS).map(([id, p]) => [id, { amount: p.amount, from: p.from || null, bonuses: p.bonuses }])),
+    bumps: Object.fromEntries(Object.entries(BUMPS).map(([id, b]) => [id, { amount: b.amount, title: b.title }])),
+  });
 }
 
 export async function onRequestPost({ request, env }) {
@@ -37,6 +41,9 @@ export async function onRequestPost({ request, env }) {
   }
 
   if (!salesOpen(env)) return json({ error: "Pagamento indisponível no momento." }, 503);
+
+  const sel = priceSelection(body.plan, body.bumps);
+  if (!sel) return json({ error: "Selecione um plano válido." }, 400);
 
   const name = String(body.name || "").trim().slice(0, 120);
   const email = normEmail(body.email).slice(0, 160);
@@ -60,7 +67,7 @@ export async function onRequestPost({ request, env }) {
       "Idempotency-Key": reference,
     },
     body: JSON.stringify({
-      amount: PRODUCT.amount,
+      amount: sel.amount,
       method: "pix",
       external_reference: reference,
       notification_url: `${origin}/api/webhook`,
@@ -76,15 +83,20 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Não foi possível gerar o Pix. Tente novamente." }, 502);
   }
 
-  const order = { id: String(data.idTransaction), reference, name, email, phone, passwordHash: await hashPassword(password), amount: PRODUCT.amount, createdAt: new Date().toISOString() };
+  const order = {
+    id: String(data.idTransaction), reference, name, email, phone,
+    passwordHash: await hashPassword(password),
+    plan: sel.plan, bumps: sel.bumps, bonuses: sel.bonuses, amount: sel.amount,
+    createdAt: new Date().toISOString(),
+  };
   // Kept for 30 days so a late webhook can still activate the member.
   await env.MEMBERS.put(`order:${order.id}`, JSON.stringify(order), { expirationTtl: 30 * 86400 });
 
   return json({
     id: order.id,
     reference,
-    amount: PRODUCT.amount,
-    product: PRODUCT.name,
+    amount: sel.amount,
+    product: PRODUCT,
     code: data.paymentCode,
     qrBase64: data.paymentCodeBase64 || null,
     expiresIn: EXPIRATION,
