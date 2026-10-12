@@ -43,7 +43,10 @@
   .soon { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; text-align:center; padding:20px; }
   .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; } .actions .btn { width:auto; margin:0; padding:12px 18px; }
   .btn.alt { background:var(--brown); }
-  .locked-box { text-align:center; padding:40px 20px; color:var(--muted); } .locked-box .ic { font-size:44px; }
+  .locked-box { text-align:center; padding:40px 20px; color:var(--muted); } .locked-box .big { color:var(--lock); margin-bottom:8px; }
+  .ic { flex:none; vertical-align:middle; } .is-done { color:var(--green2); } .module.open .chev { transform:rotate(180deg); }
+  .lessons button .ic { color:var(--pink); } .lessons button[disabled] .ic { color:var(--lock); }
+  .module small .ic { vertical-align:-2px; } .soon { gap:10px; } .btn .ic { vertical-align:-4px; }
 </style>
 </head>
 <body>
@@ -77,6 +80,18 @@
   var $ = function (id) { return document.getElementById(id); };
   var state = null, current = null;
   var fmtDate = function (iso) { return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "long" }); };
+  var ICON = {
+    lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+    play: '<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z" fill="currentColor"/>',
+    done: '<circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><path d="m7.5 12.5 3 3 6-6.5" stroke="#fff"/>',
+    chevron: '<path d="m6 9 6 6 6-6"/>',
+    film: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h5M2 15h5M17 9h5M17 15h5"/>',
+    undo: '<path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/>',
+    check: '<path d="m5 12.5 4.5 4.5L19 7"/>'
+  };
+  var icon = function (name, size, cls) {
+    return '<svg class="ic ' + (cls || "") + '" width="' + (size || 18) + '" height="' + (size || 18) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[name] + "</svg>";
+  };
   var esc = function (s) { var d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; };
 
   async function load() {
@@ -98,14 +113,14 @@
     state.modules.forEach(function (m) {
       var div = document.createElement("div");
       div.className = "module" + (m.unlocked ? "" : " locked") + (m.unlocked && (!current || current.module === m.id) ? " open" : "");
-      var sub = m.unlocked ? m.lessons.filter(function (l) { return l.done; }).length + "/" + m.lessons.length + " aulas" : "🔒 Libera em " + fmtDate(m.unlockAt);
-      div.innerHTML = "<button type='button'><span>" + esc(m.title) + "<small>" + sub + "</small></span><span>" + (m.unlocked ? "▾" : "🔒") + "</span></button><ul class='lessons'></ul>";
+      var sub = m.unlocked ? m.lessons.filter(function (l) { return l.done; }).length + "/" + m.lessons.length + " aulas" : icon("lock", 12) + " Libera em " + fmtDate(m.unlockAt);
+      div.innerHTML = "<button type='button'><span>" + esc(m.title) + "<small>" + sub + "</small></span><span>" + (m.unlocked ? icon("chevron", 18, "chev") : icon("lock", 18)) + "</span></button><ul class='lessons'></ul>";
       if (m.unlocked) div.firstChild.onclick = function () { div.classList.toggle("open"); };
       var ul = div.querySelector("ul");
       m.lessons.forEach(function (l) {
         var li = document.createElement("li"), b = document.createElement("button");
         b.type = "button"; b.disabled = !l.unlocked;
-        b.innerHTML = "<span>" + (l.done ? "✅" : l.unlocked ? "▶️" : "🔒") + "</span><span>" + esc(l.title) + "</span>";
+        b.innerHTML = "<span>" + (l.done ? icon("done", 18, "is-done") : l.unlocked ? icon("play", 18) : icon("lock", 16)) + "</span><span>" + esc(l.title) + "</span>";
         if (current && current.lesson === l.id) b.className = "active";
         if (l.unlocked) b.onclick = function () { open(m, l); };
         else if (l.lockReason) b.title = l.lockReason;
@@ -118,7 +133,7 @@
       var first = null;
       state.modules.some(function (m) { return m.lessons.some(function (l) { if (l.unlocked && !l.done) { first = [m, l]; return true; } }); });
       if (!first) state.modules.some(function (m) { return m.lessons.some(function (l) { if (l.unlocked) { first = [m, l]; return true; } }); });
-      if (first) open(first[0], first[1]); else $("player").innerHTML = "<div class='locked-box'><div class='ic'>🔒</div>Seu conteúdo será liberado em breve.</div>";
+      if (first) open(first[0], first[1]); else $("player").innerHTML = "<div class='locked-box'><div class='big'>" + icon("lock", 44) + "</div>Seu conteúdo será liberado em breve.</div>";
     }
   }
 
@@ -126,11 +141,10 @@
     current = { module: m.id, lesson: l.id };
     var video = l.video
       ? "<div class='video'><iframe src='" + esc(l.video) + "' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen></iframe></div>"
-      : "<div class='video'><div class='soon'>🎬 Vídeo em breve</div></div>";
+      : "<div class='video'><div class='soon'>" + icon("film", 28) + " Vídeo em breve</div></div>";
     $("player").innerHTML = video + "<small style='color:var(--muted)'>" + esc(m.title) + "</small><h1>" + esc(l.title) + "</h1>" +
-      (l.body ? "<p>" + esc(l.body) + "</p>" : "") +
-      "<div class='actions'>" + (l.download ? "<a class='btn alt' href='" + esc(l.download) + "' target='_blank' rel='noopener'>⬇️ Baixar material</a>" : "") +
-      "<button class='btn' id='doneBtn' type='button'>" + (l.done ? "↩️ Marcar como não concluída" : "✅ Marcar como concluída") + "</button></div>";
+            "<div class='actions'>" + "" +
+      "<button class='btn' id='doneBtn' type='button'>" + (l.done ? icon("undo") + " Marcar como não concluída" : icon("check") + " Marcar como concluída") + "</button></div>";
     $("doneBtn").onclick = async function () {
       this.disabled = true;
       await fetch("/api/members/progress", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lessonId: l.id, done: !l.done }) });

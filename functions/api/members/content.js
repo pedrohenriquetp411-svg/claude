@@ -1,8 +1,10 @@
 // Returns the course for the signed-in member. Locked modules only expose their
-// title and unlock date; lesson videos and text are sent only once unlocked.
+// title and unlock date; the video is sent only once the module is unlocked.
 
 import { currentMember, json } from "../../../lib/auth.js";
 import { COURSE, allLessonIds } from "../../../lib/content.js";
+
+const embed = (id) => `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
 
 export async function onRequestGet({ request, env }) {
   const member = await currentMember(request, env);
@@ -10,9 +12,7 @@ export async function onRequestGet({ request, env }) {
 
   const since = new Date(member.since).getTime();
   const progress = member.progress || {};
-  const total = allLessonIds().filter((id) => !COURSE.modules.some((m) => m.lessons.some((l) => l.id === id && l.requiresCompletion)));
-  const done = total.filter((id) => progress[id]).length;
-  const courseComplete = done === total.length;
+  const ids = allLessonIds();
 
   const modules = COURSE.modules.map((m) => {
     const unlockAt = since + m.unlockAfterDays * 864e5;
@@ -23,10 +23,8 @@ export async function onRequestGet({ request, env }) {
       unlocked,
       unlockAt: new Date(unlockAt).toISOString(),
       lessons: m.lessons.map((l) => {
-        const open = unlocked && (!l.requiresCompletion || courseComplete);
-        const base = { id: l.id, title: l.title, unlocked: open, done: Boolean(progress[l.id]) };
-        if (!open) return { ...base, lockReason: unlocked ? "Conclua todas as aulas para liberar." : null };
-        return { ...base, video: l.video || "", body: l.body || "", download: l.download || "" };
+        const base = { id: l.id, title: l.title, unlocked, done: Boolean(progress[l.id]) };
+        return unlocked && l.youtube ? { ...base, video: embed(l.youtube) } : base;
       }),
     };
   });
@@ -34,7 +32,7 @@ export async function onRequestGet({ request, env }) {
   return json({
     member: { name: member.name, email: member.email, since: member.since },
     course: COURSE.title,
-    progress: { done, total: total.length },
+    progress: { done: ids.filter((id) => progress[id]).length, total: ids.length },
     modules,
   });
 }

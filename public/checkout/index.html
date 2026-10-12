@@ -36,7 +36,8 @@
   #qr { display:flex; justify-content:center; margin:16px 0; } #qr img, #qr canvas { width:220px; height:220px; }
   textarea { width:100%; height:84px; font-family:monospace; font-size:12px; border:1px solid var(--line); border-radius:10px; padding:10px; resize:none; }
   .status { margin-top:14px; font-size:14px; color:var(--muted); }
-  .paid { display:none; text-align:center; } .paid .ok { font-size:56px; }
+  .paid { display:none; text-align:center; } .paid .ok { color:var(--green2); margin-bottom:6px; }
+  .trust span { display:inline-flex; align-items:center; gap:5px; } .method .ic { color:var(--pink); flex:none; }
   ol { text-align:left; font-size:14px; color:var(--muted); padding-left:20px; }
 </style>
 </head>
@@ -60,7 +61,7 @@
         <div><label for="password2">Confirme a senha</label><input id="password2" name="password2" type="password" autocomplete="new-password" required></div>
       </div>
       <p class="sub" style="margin:8px 0 0">Você vai usar o e-mail e essa senha para entrar na área de membros.</p>
-      <div class="method">◆ Pagamento via Pix — aprovação imediata</div>
+      <div class="method"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="m8 12 4-4 4 4-4 4z"/></svg> Pagamento via Pix — aprovação imediata</div>
       <button id="submit" type="submit">Gerar Pix de R$ 197,00</button>
       <div class="error" id="error" role="alert"></div>
     </form>
@@ -76,7 +77,7 @@
     </div>
 
     <div class="paid" id="paid">
-      <div class="ok">✅</div>
+      <div class="ok"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
       <h1>Pagamento aprovado!</h1>
       <p class="sub">Obrigada! Seu acesso já está liberado.</p>
       <a class="btn-link" href="/membros/"><button type="button">Acessar a área de membros</button></a>
@@ -89,7 +90,7 @@
     <div class="line"><span>Curso completo + bônus</span><span>R$ 197,00</span></div>
     <div class="line"><span>Acesso</span><span>1 ano</span></div>
     <div class="line total"><span>Total</span><span>R$ 197,00</span></div>
-    <div class="trust"><span>🔒 Compra segura</span><span>⚡ Acesso imediato</span><span>🛡️ 7 dias de garantia</span></div>
+    <div class="trust"><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Compra segura</span><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg> Acesso imediato</span><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 7 dias de garantia</span></div>
   </aside>
 </main>
 
