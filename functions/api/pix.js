@@ -2,7 +2,7 @@
 // hashed password) so the member account can be created once it is paid.
 // The amount is computed from the price table, never trusted from the browser.
 
-import { hashPassword, json, normEmail } from "../../lib/auth.js";
+import { json, normEmail } from "../../lib/auth.js";
 import { LOFYPAY_API } from "../../lib/lofypay.js";
 import { BUMPS, PLANS, PRODUCT, priceSelection } from "../../lib/pricing.js";
 
@@ -49,12 +49,10 @@ export async function onRequestPost({ request, env }) {
   const email = normEmail(body.email).slice(0, 160);
   const document = digits(body.document);
   const phone = digits(body.phone).slice(0, 13);
-  const password = String(body.password || "");
 
   if (name.split(/\s+/).length < 2) return json({ error: "Informe seu nome completo." }, 400);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "E-mail inválido." }, 400);
   if (!validCpf(document)) return json({ error: "CPF inválido." }, 400);
-  if (password.length < 6 || password.length > 128) return json({ error: "A senha precisa ter pelo menos 6 caracteres." }, 400);
 
   const reference = `EBG-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
   const origin = new URL(request.url).origin;
@@ -85,7 +83,6 @@ export async function onRequestPost({ request, env }) {
 
   const order = {
     id: String(data.idTransaction), reference, name, email, phone,
-    passwordHash: await hashPassword(password),
     plan: sel.plan, bumps: sel.bumps, bonuses: sel.bonuses, amount: sel.amount,
     createdAt: new Date().toISOString(),
   };
