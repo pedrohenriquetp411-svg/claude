@@ -3,97 +3,173 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bolos Gelados Lucrativos · 26 receitas em videoaula</title>
-<meta name="description" content="26 receitas de bolos gelados em videoaula, organizadas em 4 módulos, para fazer e vender em casa. Pagamento via Pix e acesso imediato à área de membros.">
+<title>Bolos Gelados Lucrativos | 26 receitas em videoaula pra fazer e vender</title>
+<meta name="description" content="26 receitas de bolos gelados em videoaula, do embrulhado à fatia gourmet, pra fazer em casa e vender. Pagamento único no Pix e acesso imediato à área de membros.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --brown:#6b3a1e; --pink:#c2306f; --bg:#fdf6f1; --card:#fff; --muted:#7a6a62; --line:#eadfd8; --green1:#2ee34d; --green2:#2bb389; --soft:#fbe9ef; }
+  :root {
+    --ink:#1f2a27; --green:#24493f; --green2:#2e7d57; --orange:#e0472a; --orange-d:#b8361d;
+    --cream:#f4e7b5; --mint:#eaf3f1; --mint2:#d6e6e1; --muted:#56625e; --line:#e4ded0; --white:#fff;
+    --head:"Bricolage Grotesque",system-ui,sans-serif; --body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { margin:0; font-family:Montserrat,system-ui,sans-serif; background:var(--bg); color:var(--brown); line-height:1.5; }
-  a { color:inherit; }
-  .wrap { max-width:1080px; margin:0 auto; padding:0 16px; }
-  .ic { flex:none; vertical-align:middle; }
-  .logo { display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:18px; text-decoration:none; color:var(--brown); }
-  .logo b { color:var(--pink); }
-  header { background:linear-gradient(90deg,#fde3ea,#fdf0e6); position:sticky; top:0; z-index:5; }
-  header .wrap { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:12px; padding-bottom:12px; }
-  .cta { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:15px 26px; border-radius:12px; border:0; font:inherit; font-weight:700; color:#fff; text-decoration:none; text-transform:uppercase; letter-spacing:.02em;
-         background:linear-gradient(90deg,var(--green1),var(--green2)); box-shadow:0 8px 20px rgba(43,179,137,.25); }
-  .cta.small { padding:10px 16px; font-size:13px; box-shadow:none; }
-  .hero { padding:48px 0 40px; }
-  .hero .wrap { display:grid; grid-template-columns:1.05fr 1fr; gap:36px; align-items:center; }
-  h1 { font-size:clamp(30px,4.6vw,46px); line-height:1.12; margin:0 0 16px; font-weight:800; }
-  h1 em { font-style:normal; color:var(--pink); }
-  .lead { font-size:18px; color:var(--muted); margin:0 0 22px; }
-  .chips { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px; padding:0; list-style:none; }
-  .chips li { display:inline-flex; align-items:center; gap:6px; background:var(--brown); color:#fff; font-size:13px; padding:6px 12px; border-radius:99px; }
-  .price-line { margin-top:12px; font-size:14px; color:var(--muted); }
-  .price-line b { color:var(--brown); }
-  .thumbs { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .thumbs img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:14px; display:block; box-shadow:0 10px 24px rgba(107,58,30,.15); }
-  .thumbs img:nth-child(2), .thumbs img:nth-child(4) { transform:translateY(22px); }
-  section { padding:56px 0; }
-  h2 { font-size:clamp(24px,3.4vw,34px); line-height:1.2; margin:0 0 10px; text-align:center; font-weight:800; }
-  .sub { text-align:center; color:var(--muted); margin:0 auto 32px; max-width:640px; }
-  .band { background:linear-gradient(120deg,#9b7fc7,#c2306f); color:#fff; }
-  .band .sub, .band h2 { color:#fff; }
-  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  .step { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); border-radius:16px; padding:22px; }
-  .step .n { width:36px; height:36px; border-radius:50%; background:#fff; color:var(--pink); display:flex; align-items:center; justify-content:center; font-weight:800; margin-bottom:10px; }
-  .step h3 { margin:0 0 6px; font-size:17px; } .step p { margin:0; font-size:14px; opacity:.92; }
-  .modules { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-  .module { background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
-  .module img { width:100%; height:auto; aspect-ratio:16/7; object-fit:cover; display:block; }
-  .module .body { padding:18px 20px 20px; }
-  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--pink); background:var(--soft); padding:4px 10px; border-radius:99px; margin-bottom:8px; }
-  .module h3 { margin:0 0 10px; font-size:19px; }
-  .module ul { margin:0; padding:0; list-style:none; font-size:14px; color:var(--muted); columns:2; column-gap:18px; }
-  .module li { display:flex; gap:6px; align-items:flex-start; break-inside:avoid; margin-bottom:6px; }
-  .module li .ic { color:var(--green2); margin-top:3px; }
-  .offer { max-width:560px; margin:0 auto; background:var(--card); border:2px solid var(--pink); border-radius:22px; padding:30px; text-align:center; }
-  .offer ul { list-style:none; padding:0; margin:0 0 22px; text-align:left; }
-  .offer li { display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line); font-size:15px; }
-  .offer li .ic { color:var(--green2); margin-top:2px; }
-  .amount { font-size:52px; font-weight:800; color:var(--pink); line-height:1; margin:6px 0 4px; }
-  .amount small { font-size:22px; vertical-align:top; }
-  .offer .cta { width:100%; margin-top:18px; }
-  .trust { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:14px; font-size:12px; color:var(--muted); }
-  .trust span { display:inline-flex; align-items:center; gap:5px; }
-  .faq { max-width:760px; margin:0 auto; }
-  details { background:var(--card); border:1px solid var(--line); border-radius:12px; margin-bottom:10px; padding:0 18px; }
-  summary { cursor:pointer; padding:16px 0; font-weight:600; list-style:none; display:flex; justify-content:space-between; gap:12px; }
+  body { margin:0; font-family:var(--body); color:var(--ink); background:var(--white); line-height:1.55; }
+  a { color:inherit; text-decoration:none; }
+  h1,h2,h3 { font-family:var(--head); line-height:1.05; letter-spacing:-.01em; margin:0; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 20px; }
+  .ic { flex:none; }
+  .cta { display:inline-flex; align-items:center; justify-content:center; gap:9px; background:var(--orange); color:#fff; font-family:var(--body); font-weight:700; font-size:16px;
+         padding:16px 26px; border-radius:12px; border:0; cursor:pointer; transition:background .15s, transform .15s; box-shadow:0 10px 22px rgba(224,71,42,.22); }
+  .cta:hover { background:var(--orange-d); transform:translateY(-1px); }
+  .cta.lg { font-size:18px; padding:18px 32px; }
+  .cta.sm { font-size:14px; padding:10px 18px; box-shadow:none; }
+
+  .topbar { background:var(--green); color:#fff; text-align:center; font-size:13.5px; font-weight:500; padding:9px 16px; }
+  .topbar b { color:var(--cream); }
+
+  header { position:sticky; top:0; z-index:20; background:rgba(255,255,255,.92); backdrop-filter:saturate(1.3) blur(8px); border-bottom:1px solid var(--line); }
+  header .wrap { display:flex; align-items:center; justify-content:space-between; height:66px; gap:16px; }
+  .logo { display:inline-flex; align-items:center; gap:10px; font-family:var(--head); font-weight:800; font-size:19px; color:var(--ink); }
+  .logo .mark { width:34px; height:34px; border-radius:9px; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; }
+  nav.main { display:flex; align-items:center; gap:26px; font-weight:600; font-size:15px; }
+  nav.main a:not(.cta) { color:var(--muted); } nav.main a:not(.cta):hover { color:var(--ink); }
+  .nav-toggle { display:none; }
+
+  .hero { padding:62px 0 54px; }
+  .hero .wrap { display:grid; grid-template-columns:1.08fr .92fr; gap:48px; align-items:center; }
+  .hero h1 { font-size:clamp(40px,6vw,64px); font-weight:800; color:var(--green); }
+  .hero h1 em { font-style:normal; color:var(--orange); }
+  .hero .lead { font-size:18px; color:var(--muted); margin:20px 0 22px; max-width:30em; }
+  .checks { list-style:none; margin:0 0 28px; padding:0; display:grid; gap:11px; }
+  .checks li { display:flex; gap:10px; align-items:flex-start; font-size:15.5px; }
+  .checks li .ic { color:var(--green2); margin-top:2px; }
+  .trust { display:flex; flex-wrap:wrap; gap:18px; margin-top:18px; color:var(--muted); font-size:13.5px; }
+  .trust span { display:inline-flex; align-items:center; gap:6px; }
+  .hero-card { position:relative; }
+  .hero-card .photo { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:22px; display:block; box-shadow:0 26px 50px rgba(31,42,39,.18); }
+  .badge { position:absolute; left:-14px; bottom:24px; background:var(--cream); border-radius:12px; padding:12px 16px; box-shadow:0 12px 24px rgba(31,42,39,.16); }
+  .badge b { font-family:var(--head); font-weight:800; font-size:17px; display:block; color:var(--ink); }
+  .badge small { color:#6b6a3a; font-size:12.5px; }
+
+  section { padding:66px 0; }
+  .tint { background:var(--mint); }
+  .green-band { background:var(--green); color:#fff; }
+  .eyebrow { font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--orange); margin:0 0 10px; }
+  h2.sec { font-size:clamp(30px,4.2vw,44px); font-weight:800; color:var(--green); }
+  .green-band h2.sec { color:#fff; }
+  .sec-sub { color:var(--muted); font-size:17px; margin:12px 0 0; max-width:42em; }
+  .green-band .sec-sub { color:#cfe0da; }
+  .center { text-align:center; } .center .sec-sub { margin-left:auto; margin-right:auto; }
+
+  .pains { display:grid; grid-template-columns:1fr 1fr; gap:14px 40px; margin-top:34px; }
+  .pain { display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--mint2); font-size:15.5px; }
+  .pain .ic { color:var(--orange); margin-top:2px; }
+
+  .rec-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:36px; }
+  .rec { border-radius:16px; overflow:hidden; background:var(--white); border:1px solid var(--line); }
+  .rec img { width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; display:block; }
+  .rec .cap { padding:11px 13px; font-weight:600; font-size:13.5px; }
+  .rec .cap small { display:block; color:var(--muted); font-weight:500; font-size:12px; margin-top:2px; }
+
+  .split { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .split img { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:20px; box-shadow:0 20px 40px rgba(31,42,39,.14); }
+  .method { list-style:none; padding:0; margin:22px 0 0; display:grid; gap:14px; }
+  .method li { display:flex; gap:12px; align-items:flex-start; }
+  .method li .n { flex:none; width:30px; height:30px; border-radius:50%; background:var(--green2); color:#fff; font-family:var(--head); font-weight:700; font-size:14px; display:flex; align-items:center; justify-content:center; }
+  .method li b { display:block; }
+
+  .modules { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:38px; }
+  .module { background:var(--white); border:1px solid var(--line); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; }
+  .module img { width:100%; height:auto; aspect-ratio:16/8; object-fit:cover; display:block; }
+  .module .body { padding:20px 22px 22px; }
+  .module .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--green2); background:#e3f3ea; padding:4px 11px; border-radius:99px; margin-bottom:10px; }
+  .module .tag.soon { color:#8a6a1f; background:#f7eccc; }
+  .module h3 { font-size:21px; color:var(--green); margin-bottom:12px; }
+  .module ul { margin:0; padding:0; list-style:none; columns:2; column-gap:20px; font-size:14px; color:var(--muted); }
+  .module li { display:flex; gap:7px; align-items:flex-start; break-inside:avoid; margin-bottom:7px; }
+  .module li .ic { color:var(--green2); margin-top:2px; }
+
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:38px; }
+  .step .n { width:40px; height:40px; border-radius:50%; background:var(--green); color:#fff; font-family:var(--head); font-weight:700; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+  .step h3 { font-size:18px; margin-bottom:6px; } .step p { margin:0; color:var(--muted); font-size:15px; }
+
+  .offer { max-width:560px; margin:40px auto 0; background:var(--white); border:1px solid var(--line); border-radius:24px; overflow:hidden; box-shadow:0 26px 54px rgba(31,42,39,.12); }
+  .offer .ribbon { background:var(--green); color:#fff; text-align:center; font-weight:700; font-size:13.5px; letter-spacing:.04em; padding:10px; }
+  .offer .pad { padding:32px; text-align:center; }
+  .offer h3 { font-size:26px; color:var(--green); margin-bottom:16px; }
+  .offer ul { list-style:none; padding:0; margin:0 0 24px; text-align:left; }
+  .offer li { display:flex; gap:11px; padding:11px 0; border-bottom:1px solid var(--line); font-size:15.5px; }
+  .offer li:last-child { border-bottom:0; } .offer li .ic { color:var(--green2); margin-top:2px; flex:none; }
+  .price { margin:10px 0 4px; } .price .old { color:var(--muted); text-decoration:line-through; font-size:17px; margin-right:8px; }
+  .price .now { font-family:var(--head); font-weight:800; font-size:54px; color:var(--orange); line-height:1; }
+  .price .now small { font-size:24px; vertical-align:top; margin-right:2px; }
+  .offer .note { color:var(--muted); font-size:14px; margin:4px 0 20px; }
+  .offer .cta { width:100%; }
+  .offer .foot { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:16px; color:var(--muted); font-size:12.5px; }
+  .offer .foot span { display:inline-flex; align-items:center; gap:5px; }
+
+  .faq { max-width:760px; margin:34px auto 0; }
+  details { border-bottom:1px solid var(--mint2); }
+  summary { cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:16px; align-items:center; padding:20px 0; font-weight:700; font-size:16.5px; }
   summary::-webkit-details-marker { display:none; }
-  details[open] summary .ic { transform:rotate(180deg); }
-  details p { margin:0 0 16px; color:var(--muted); font-size:15px; }
-  footer { padding:28px 0 40px; text-align:center; font-size:13px; color:var(--muted); }
-  @media (max-width:860px) {
-    .hero .wrap { grid-template-columns:1fr; } .hero { padding-top:28px; }
-    .steps, .modules { grid-template-columns:1fr; }
+  summary .ic { color:var(--orange); transition:transform .2s; flex:none; }
+  details[open] summary .ic { transform:rotate(45deg); }
+  details .ans { padding:0 0 20px; color:var(--muted); font-size:15.5px; max-width:60em; }
+
+  .final { text-align:center; padding:84px 0; }
+  .final h2 { font-size:clamp(32px,4.6vw,48px); font-weight:800; max-width:16em; margin:0 auto; }
+  .final p { color:#cfe0da; margin:16px auto 28px; max-width:34em; font-size:17px; }
+
+  footer { background:var(--green); color:#b6cbc3; padding:26px 0 36px; font-size:13.5px; border-top:1px solid rgba(255,255,255,.08); }
+  footer .wrap { text-align:center; }
+  footer a { color:#dbe8e3; text-decoration:underline; text-underline-offset:2px; } footer a:hover { color:#fff; }
+  footer .fine { margin-top:8px; color:#8aa49b; font-size:12px; }
+
+  @media (max-width:900px) {
+    .hero .wrap, .split { grid-template-columns:1fr; gap:34px; }
+    .hero-card { order:-1; max-width:380px; }
+    .rec-grid { grid-template-columns:1fr 1fr; }
+    .modules, .steps, .pains { grid-template-columns:1fr; }
     .module ul { columns:1; }
   }
-  @media (max-width:480px) { header .cta.small { display:none; } .cta { width:100%; } }
+  @media (max-width:640px) {
+    nav.main { display:none; }
+    nav.main.open { display:flex; position:absolute; top:66px; left:0; right:0; flex-direction:column; align-items:stretch; gap:0; background:#fff; border-bottom:1px solid var(--line); padding:8px 20px 16px; }
+    nav.main.open a:not(.cta) { padding:12px 0; border-bottom:1px solid var(--line); }
+    nav.main.open .cta { margin-top:12px; }
+    .nav-toggle { display:inline-flex; background:none; border:0; cursor:pointer; color:var(--ink); padding:6px; }
+    .badge { left:8px; }
+  }
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="m10 8 6 4-6 4z" fill="currentColor"/></symbol>
-  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z M9 20v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
   <symbol id="i-pix" viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z M8 12l4-4 4 4-4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-cake" viewBox="0 0 24 24"><path d="M4 21h16v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z M4 16c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 M12 11V8 M12 5.5a1 1 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
 </svg>
+
+<div class="topbar">Oferta de lançamento: <b>acesso completo por R$ 197 no Pix</b> · 26 receitas em videoaula</div>
 
 <header>
   <div class="wrap">
-    <a class="logo" href="/"><svg class="ic" width="26" height="26" style="color:var(--pink)"><use href="#i-cake"/></svg>Bolos <b>Gelados</b></a>
-    <a class="cta small" href="#oferta">Quero começar</a>
+    <a class="logo" href="/"><span class="mark"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M4 16c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M12 11V8"/><circle cx="12" cy="5.5" r="1"/></svg></span>bolosgelados</a>
+    <nav class="main" id="nav">
+      <a href="#receitas">Receitas</a>
+      <a href="#modulos">Módulos</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="/membros/">Entrar</a>
+      <a class="cta sm" href="#oferta">Quero as receitas</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><svg class="ic" width="26" height="26"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 
@@ -101,67 +177,107 @@
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1>Aprenda a fazer <em>bolos gelados que vendem</em>, direto da sua cozinha</h1>
-        <p class="lead">26 receitas em videoaula, do bolo embrulhado à fatia gourmet, organizadas em 4 módulos para você aprender no seu ritmo.</p>
-        <ul class="chips">
-          <li><svg class="ic" width="14" height="14"><use href="#i-play"/></svg>26 videoaulas</li>
-          <li><svg class="ic" width="14" height="14"><use href="#i-home"/></svg>Faça em casa</li>
-          <li><svg class="ic" width="14" height="14"><use href="#i-bolt"/></svg>Acesso imediato</li>
+        <h1>Bolos gelados que <em>vendem</em> a semana inteira</h1>
+        <p class="lead">26 receitas em videoaula, do bolo embrulhado à fatia gourmet, pra você fazer em casa com ingredientes simples e vender todo dia.</p>
+        <ul class="checks">
+          <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>Receita feita do começo ao fim, em vídeo</li>
+          <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>Ingredientes de mercado, sem equipamento caro</li>
+          <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>Do zero à venda, mesmo sem experiência</li>
         </ul>
-        <a class="cta" href="#oferta">Quero aprender agora</a>
-        <div class="price-line"><b>R$ 197</b> à vista no Pix · acesso liberado assim que o pagamento é confirmado</div>
+        <a class="cta lg" href="#oferta">Quero aprender a fazer e vender</a>
+        <div class="trust">
+          <span><svg class="ic" width="15" height="15"><use href="#i-pix"/></svg>Pagamento no Pix</span>
+          <span><svg class="ic" width="15" height="15"><use href="#i-bolt"/></svg>Acesso na hora</span>
+          <span><svg class="ic" width="15" height="15"><use href="#i-shield"/></svg>7 dias de garantia</span>
+        </div>
       </div>
-      <div class="thumbs">
-        <img src="https://i.ytimg.com/vi/EBy_jC46flU/maxresdefault.jpg" alt="Bolo gelado embrulhado de coco com abacaxi" width="1280" height="720">
-        <img src="https://i.ytimg.com/vi/3zTKLCdVDgM/maxresdefault.jpg" alt="Fatia gourmet de prestígio" width="1280" height="720">
-        <img src="https://i.ytimg.com/vi/ZQSVQbu886A/maxresdefault.jpg" alt="Bolo gelado de Leite Ninho na marmita" width="1280" height="720">
-        <img src="https://i.ytimg.com/vi/wZ7VOoCaHkw/maxresdefault.jpg" alt="Bolo gelado de Leite Ninho com geleia de morango" width="1280" height="720">
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <h2>Como funciona</h2>
-      <p class="sub">Sem complicação: você paga, cria sua senha e já começa a assistir.</p>
-      <div class="steps">
-        <div class="step"><div class="n">1</div><h3>Pague com Pix</h3><p>Preencha seus dados, crie uma senha e pague o Pix de R$ 197. A confirmação é automática.</p></div>
-        <div class="step"><div class="n">2</div><h3>Entre na área de membros</h3><p>Assim que o pagamento cai, você entra com seu e-mail e senha e o primeiro módulo já está liberado.</p></div>
-        <div class="step"><div class="n">3</div><h3>Novos módulos a cada 2 dias</h3><p>Os módulos seguintes são liberados aos poucos, para você praticar uma etapa de cada vez.</p></div>
+      <div class="hero-card">
+        <img class="photo" src="https://i.ytimg.com/vi/EBy_jC46flU/maxresdefault.jpg" alt="Bolo gelado embrulhado de coco com abacaxi" width="1280" height="720">
+        <div class="badge"><b>26 receitas</b><small>em videoaula · acesso imediato</small></div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="tint">
     <div class="wrap">
-      <h2>O que você vai aprender</h2>
-      <p class="sub">Todas as aulas são em vídeo, com a receita feita do começo ao fim.</p>
+      <p class="eyebrow">Pra quem é</p>
+      <h2 class="sec">Se você quer lucrar com doces,<br>isso vai soar familiar.</h2>
+      <div class="pains">
+        <div class="pain"><svg class="ic" width="20" height="20"><use href="#i-x"/></svg>Quer uma renda extra em casa, mas não sabe por onde começar.</div>
+        <div class="pain"><svg class="ic" width="20" height="20"><use href="#i-x"/></svg>Já tentou vender doce, mas o bolo não dava o lucro esperado.</div>
+        <div class="pain"><svg class="ic" width="20" height="20"><use href="#i-x"/></svg>Acha que precisa de equipamento caro e curso presencial.</div>
+        <div class="pain"><svg class="ic" width="20" height="20"><use href="#i-x"/></svg>Tem medo da massa solar, do recheio talhar ou não dar liga.</div>
+        <div class="pain"><svg class="ic" width="20" height="20"><use href="#i-x"/></svg>Não sabe quanto cobrar pra não vender no prejuízo.</div>
+        <div class="pain"><svg class="ic" width="20" height="20"><use href="#i-x"/></svg>Quer variar o cardápio e atrair mais clientes todo mês.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="receitas">
+    <div class="wrap">
+      <p class="eyebrow">O que você vai aprender</p>
+      <h2 class="sec">Bolo gelado que o cliente volta pra comprar</h2>
+      <p class="sec-sub">Cada receita é uma videoaula completa, com o passo a passo, os ingredientes e os truques que fazem o bolo ficar molhadinho e vender sozinho.</p>
+      <div class="rec-grid">
+        <div class="rec"><img src="https://i.ytimg.com/vi/MjGPA0sM8q4/maxresdefault.jpg" alt="" loading="lazy"><div class="cap">Ninho com brigadeiro<small>Campeão de vendas no delivery</small></div></div>
+        <div class="rec"><img src="https://i.ytimg.com/vi/8Q66NCKqZdM/maxresdefault.jpg" alt="" loading="lazy"><div class="cap">Olho de sogra<small>Igual ao da doceria famosa</small></div></div>
+        <div class="rec"><img src="https://i.ytimg.com/vi/3zTKLCdVDgM/maxresdefault.jpg" alt="" loading="lazy"><div class="cap">Fatia gourmet de prestígio<small>Slice cake pra vender caro</small></div></div>
+        <div class="rec"><img src="https://i.ytimg.com/vi/wZ7VOoCaHkw/maxresdefault.jpg" alt="" loading="lazy"><div class="cap">Ninho com geleia de morango<small>O mais desejado das confeitarias</small></div></div>
+        <div class="rec"><img src="https://i.ytimg.com/vi/mZqrmDCZZD0/maxresdefault.jpg" alt="" loading="lazy"><div class="cap">Brigadeiro na marmita<small>Fácil, lucrativo e vende todo dia</small></div></div>
+        <div class="rec"><img src="https://i.ytimg.com/vi/uOu7itaA92c/maxresdefault.jpg" alt="" loading="lazy"><div class="cap">Super fatia Oreo<small>Recheio que não fica cinza</small></div></div>
+        <div class="rec"><img src="https://i.ytimg.com/vi/6_7lRJYssoc/maxresdefault.jpg" alt="" loading="lazy"><div class="cap">Quatro leites com coco<small>Molhadinho e suculento</small></div></div>
+        <div class="rec"><img src="https://i.ytimg.com/vi/ZQSVQbu886A/maxresdefault.jpg" alt="" loading="lazy"><div class="cap">Leite Ninho na marmita<small>Desmancha na boca</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tint">
+    <div class="wrap split">
+      <img src="https://i.ytimg.com/vi/2O3EA0HWz74/maxresdefault.jpg" alt="Bolo de chocolate recheado, molhadinho e suculento" loading="lazy">
+      <div>
+        <p class="eyebrow">O método</p>
+        <h2 class="sec">Vender bolo gelado não precisa ser complicado.</h2>
+        <p class="sec-sub">Você aprende a fazer em lote, embalar e conservar sem perder a textura — e a precificar pra ter lucro de verdade em cada venda.</p>
+        <ul class="method">
+          <li><span class="n">1</span><div><b>Massa e recheio na medida certa</b>Nada de bolo seco ou recheio que talha: a técnica que deixa tudo molhadinho.</div></li>
+          <li><span class="n">2</span><div><b>Embalagem e conservação</b>Como embrulhar, montar na marmita e manter o bolo lindo até a entrega.</div></li>
+          <li><span class="n">3</span><div><b>Preço que dá lucro</b>Aprenda a calcular o custo e definir o valor pra não vender no prejuízo.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="modulos">
+    <div class="wrap">
+      <p class="eyebrow">O conteúdo</p>
+      <h2 class="sec">4 módulos, liberados aos poucos</h2>
+      <p class="sec-sub">O módulo 1 abre na hora da compra. Os próximos são liberados a cada dois dias, pra você praticar uma etapa de cada vez sem se perder.</p>
       <div class="modules">
         <article class="module">
-          <img src="https://i.ytimg.com/vi/8Q66NCKqZdM/maxresdefault.jpg" alt="" loading="lazy">
+          <img src="https://i.ytimg.com/vi/EBy_jC46flU/maxresdefault.jpg" alt="" loading="lazy">
           <div class="body">
             <span class="tag"><svg class="ic" width="12" height="12"><use href="#i-bolt"/></svg>Liberado na hora</span>
-            <h3>Módulo 1 · Bolos gelados embrulhados</h3>
+            <h3>Módulo 1 · Embrulhados</h3>
             <ul>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Coco com abacaxi</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Ninho com brigadeiro</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Olho de sogra</li>
-              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Coco (toalha felpuda)</li>
+              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Coco toalha felpuda</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Chocolate com brigadeiro</li>
             </ul>
           </div>
         </article>
         <article class="module">
-          <img src="https://i.ytimg.com/vi/mZqrmDCZZD0/maxresdefault.jpg" alt="" loading="lazy">
+          <img src="https://i.ytimg.com/vi/ZQSVQbu886A/maxresdefault.jpg" alt="" loading="lazy">
           <div class="body">
-            <span class="tag"><svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>Liberado no 3º dia</span>
-            <h3>Módulo 2 · Bolos gelados na marmita</h3>
+            <span class="tag soon"><svg class="ic" width="12" height="12"><use href="#i-lock"/></svg>Libera no 3º dia</span>
+            <h3>Módulo 2 · Na marmita</h3>
             <ul>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Leite Ninho</li>
-              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Coco (toalha felpuda)</li>
+              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Coco felpudo</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Brigadeiro com calda</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Limão</li>
-              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Bolo integral fit</li>
+              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Integral fit</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Ninho com Nutella</li>
             </ul>
           </div>
@@ -169,28 +285,27 @@
         <article class="module">
           <img src="https://i.ytimg.com/vi/uOu7itaA92c/maxresdefault.jpg" alt="" loading="lazy">
           <div class="body">
-            <span class="tag"><svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>Liberado no 5º dia</span>
+            <span class="tag soon"><svg class="ic" width="12" height="12"><use href="#i-lock"/></svg>Libera no 5º dia</span>
             <h3>Módulo 3 · Fatias e slice cakes</h3>
             <ul>
-              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Fatia gourmet de prestígio</li>
+              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Fatia de prestígio</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Bombom de morango</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Super fatia Oreo</li>
-              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Red velvet para festival</li>
+              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Red velvet</li>
             </ul>
           </div>
         </article>
         <article class="module">
           <img src="https://i.ytimg.com/vi/6_7lRJYssoc/maxresdefault.jpg" alt="" loading="lazy">
           <div class="body">
-            <span class="tag"><svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>Liberado no 7º dia</span>
-            <h3>Módulo 4 · Bolos gelados clássicos</h3>
+            <span class="tag soon"><svg class="ic" width="12" height="12"><use href="#i-lock"/></svg>Libera no 7º dia</span>
+            <h3>Módulo 4 · Clássicos</h3>
             <ul>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Leite Ninho (3 versões)</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Folhado de morango</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Prestígio</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Chocolate recheado</li>
-              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Mousse de chocolate branco</li>
-              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Chocolate, Ninho e morango</li>
+              <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Mousse de choco branco</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Chocolate com maracujá</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Quatro leites com coco</li>
               <li><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Coco com doce de leite</li>
@@ -201,45 +316,85 @@
     </div>
   </section>
 
-  <section id="oferta" style="background:#fff">
-    <div class="wrap">
-      <h2>Comece hoje</h2>
-      <p class="sub">Tudo o que está incluso na sua inscrição:</p>
+  <section class="tint">
+    <div class="wrap center">
+      <p class="eyebrow">Simples assim</p>
+      <h2 class="sec">Como funciona</h2>
+      <p class="sec-sub">Do pagamento ao primeiro bolo na bancada, sem complicação.</p>
+      <div class="steps" style="text-align:left">
+        <div class="step"><div class="n">1</div><h3>Pague com Pix</h3><p>Preencha seus dados, crie uma senha e pague o Pix. A confirmação é automática.</p></div>
+        <div class="step"><div class="n">2</div><h3>Entre na área de membros</h3><p>Assim que o pagamento cai, você entra com seu e-mail e senha. O módulo 1 já está liberado.</p></div>
+        <div class="step"><div class="n">3</div><h3>Faça e comece a vender</h3><p>Siga as videoaulas, faça em lote e coloque seus bolos gelados à venda.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="oferta">
+    <div class="wrap center">
+      <p class="eyebrow">A oferta</p>
+      <h2 class="sec">Garanta seu acesso</h2>
+      <p class="sec-sub">Pagamento único no Pix. Sem mensalidade.</p>
       <div class="offer">
-        <ul>
-          <li><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>26 receitas de bolos gelados em videoaula</li>
-          <li><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>4 módulos organizados por tipo de bolo</li>
-          <li><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Área de membros com controle do seu progresso</li>
-          <li><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Acesso pelo celular ou computador</li>
-        </ul>
-        <div style="color:var(--muted);font-size:14px">Pagamento único via Pix</div>
-        <div class="amount"><small>R$</small>197</div>
-        <a class="cta" href="/checkout/">Quero minha vaga</a>
-        <div class="trust">
-          <span><svg class="ic" width="14" height="14"><use href="#i-pix"/></svg>Pix</span>
-          <span><svg class="ic" width="14" height="14"><use href="#i-lock"/></svg>Compra segura</span>
-          <span><svg class="ic" width="14" height="14"><use href="#i-bolt"/></svg>Acesso imediato</span>
-          <span><svg class="ic" width="14" height="14"><use href="#i-shield"/></svg>7 dias para desistir</span>
+        <div class="ribbon">ACESSO COMPLETO · 26 RECEITAS EM VIDEOAULA</div>
+        <div class="pad">
+          <h3>Bolos Gelados Lucrativos</h3>
+          <ul>
+            <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>26 receitas de bolos gelados em videoaula</li>
+            <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>4 módulos organizados por tipo de bolo</li>
+            <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>Técnicas de massa, recheio, montagem e conservação</li>
+            <li><svg class="ic" width="20" height="20"><use href="#i-check"/></svg>Área de membros com seu progresso, no celular ou PC</li>
+          </ul>
+          <div class="price"><span class="now"><small>R$</small>197</span></div>
+          <div class="note">ou no Pix à vista, com acesso imediato</div>
+          <a class="cta lg" href="/checkout/">Quero minhas receitas agora</a>
+          <div class="foot">
+            <span><svg class="ic" width="14" height="14"><use href="#i-pix"/></svg>Pix</span>
+            <span><svg class="ic" width="14" height="14"><use href="#i-lock"/></svg>Compra segura</span>
+            <span><svg class="ic" width="14" height="14"><use href="#i-bolt"/></svg>Acesso na hora</span>
+            <span><svg class="ic" width="14" height="14"><use href="#i-shield"/></svg>7 dias de garantia</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="wrap faq">
-      <h2>Perguntas frequentes</h2>
-      <p class="sub">&nbsp;</p>
-      <details><summary>Como recebo o acesso?<svg class="ic" width="18" height="18"><use href="#i-chev"/></svg></summary><p>No checkout você cria uma senha. Assim que o Pix é confirmado, a página libera o botão para a área de membros e você entra com seu e-mail e essa senha.</p></details>
-      <details><summary>Quais formas de pagamento são aceitas?<svg class="ic" width="18" height="18"><use href="#i-chev"/></svg></summary><p>No momento, apenas Pix, à vista, no valor de R$ 197.</p></details>
-      <details><summary>Todo o conteúdo é liberado de uma vez?<svg class="ic" width="18" height="18"><use href="#i-chev"/></svg></summary><p>Não. O módulo 1 é liberado na hora e os demais a cada dois dias (3º, 5º e 7º dia após a compra), para você praticar uma etapa de cada vez.</p></details>
-      <details><summary>E se eu me arrepender?<svg class="ic" width="18" height="18"><use href="#i-chev"/></svg></summary><p>Você tem 7 dias a partir da compra para desistir e receber o valor de volta, conforme o Código de Defesa do Consumidor.</p></details>
-      <details><summary>Preciso de equipamentos profissionais?<svg class="ic" width="18" height="18"><use href="#i-chev"/></svg></summary><p>Não. As receitas são feitas com utensílios de cozinha comuns e ingredientes fáceis de encontrar.</p></details>
+  <section id="duvidas" class="tint">
+    <div class="wrap center">
+      <p class="eyebrow">Dúvidas</p>
+      <h2 class="sec">Perguntas frequentes</h2>
+      <div class="faq" style="text-align:left">
+        <details><summary>Como recebo o acesso?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">No checkout você cria uma senha. Assim que o Pix é confirmado, a página libera o botão da área de membros e você entra com seu e-mail e essa senha.</div></details>
+        <details><summary>Preciso ter experiência na confeitaria?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Não. As receitas são em vídeo, feitas do começo ao fim, com utensílios comuns de cozinha. Dá pra começar do zero.</div></details>
+        <details><summary>Todo o conteúdo é liberado de uma vez?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">O módulo 1 é liberado na hora da compra. Os demais a cada dois dias (3º, 5º e 7º dia), pra você praticar uma etapa de cada vez.</div></details>
+        <details><summary>Quais formas de pagamento são aceitas?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">No momento, apenas Pix à vista, no valor de R$ 197, com acesso imediato após a confirmação.</div></details>
+        <details><summary>Consigo assistir pelo celular?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Sim. A área de membros funciona no celular, no tablet e no computador, por onde você preferir.</div></details>
+        <details><summary>E se eu não gostar?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Você tem 7 dias a partir da compra para desistir e receber o valor de volta, conforme o Código de Defesa do Consumidor.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="green-band final">
+    <div class="wrap">
+      <h2>O próximo bolo gelado pode ser sua próxima venda</h2>
+      <p>26 receitas em videoaula pra fazer e vender, com acesso imediato e 7 dias de garantia.</p>
+      <a class="cta lg" href="/checkout/">Quero começar agora</a>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">Bolos Gelados · bolosgelados.site</div>
+  <div class="wrap">
+    © 2026 Bolos Gelados · <a href="/membros/">Área de membros</a>
+    <div class="fine">Conteúdo culinário. Resultados variam de pessoa pra pessoa. Imagens ilustrativas.</div>
+  </div>
 </footer>
+
+<script>
+  (function () {
+    var t = document.getElementById("navToggle"), n = document.getElementById("nav");
+    t.addEventListener("click", function () { n.classList.toggle("open"); });
+    n.addEventListener("click", function (e) { if (e.target.tagName === "A") n.classList.remove("open"); });
+  })();
+</script>
 </body>
 </html>
