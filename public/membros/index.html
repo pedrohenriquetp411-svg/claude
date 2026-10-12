@@ -63,7 +63,23 @@
     <label for="password">Senha</label><input id="password" type="password" autocomplete="current-password" required>
     <button class="btn" type="submit">Entrar</button>
     <div class="error" id="loginError" role="alert"></div>
-    <p class="sub" style="margin-top:16px">Ainda não é aluna? <a href="/checkout/" style="color:var(--pink)">Garanta sua vaga</a>.</p>
+    <p class="sub" style="margin-top:16px"><button type="button" class="link" id="showForgot">Esqueci minha senha</button></p>
+    <p class="sub">Ainda não é aluna? <a href="/checkout/" style="color:var(--pink)">Garanta sua vaga</a>.</p>
+  </form>
+  <form class="card" id="forgotForm" hidden>
+    <h1>Esqueci minha senha</h1>
+    <p class="sub">Informe o e-mail da sua compra. Se ele estiver cadastrado, você recebe um link para criar uma nova senha.</p>
+    <label for="forgotEmail">E-mail</label><input id="forgotEmail" type="email" autocomplete="email" required>
+    <button class="btn" type="submit">Enviar link</button>
+    <div class="error" id="forgotMsg" role="status"></div>
+    <p class="sub" style="margin-top:16px"><button type="button" class="link" id="backToLogin">Voltar para o login</button></p>
+  </form>
+  <form class="card" id="resetForm" hidden>
+    <h1>Criar nova senha</h1>
+    <label for="newPassword">Nova senha</label><input id="newPassword" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo 6 caracteres" required>
+    <label for="newPassword2">Confirme a nova senha</label><input id="newPassword2" type="password" autocomplete="new-password" required>
+    <button class="btn" type="submit">Salvar e entrar</button>
+    <div class="error" id="resetError" role="alert"></div>
   </form>
 </section>
 
@@ -163,6 +179,28 @@
     load();
   });
   $("logout").onclick = async function () { await fetch("/api/logout", { method: "POST" }); current = null; load(); };
+
+  function showForm(id) { ["loginForm", "forgotForm", "resetForm"].forEach(function (f) { $(f).hidden = f !== id; }); }
+  $("showForgot").onclick = function () { $("forgotEmail").value = $("email").value; $("forgotMsg").textContent = ""; showForm("forgotForm"); };
+  $("backToLogin").onclick = function () { showForm("loginForm"); };
+  $("forgotForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    await fetch("/api/password/forgot", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: $("forgotEmail").value }) });
+    $("forgotMsg").style.color = "var(--green2)";
+    $("forgotMsg").textContent = "Se o e-mail estiver cadastrado, o link chega em alguns minutos. Confira também o spam.";
+  });
+
+  var resetToken = new URLSearchParams(location.search).get("reset");
+  if (resetToken) showForm("resetForm");
+  $("resetForm").addEventListener("submit", async function (e) {
+    e.preventDefault(); $("resetError").textContent = "";
+    if ($("newPassword").value.length < 6) { $("resetError").textContent = "A senha precisa ter pelo menos 6 caracteres."; return; }
+    if ($("newPassword").value !== $("newPassword2").value) { $("resetError").textContent = "As senhas não conferem."; return; }
+    var r = await fetch("/api/password/reset", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ token: resetToken, password: $("newPassword").value }) });
+    if (!r.ok) { $("resetError").textContent = (await r.json()).error || "Não foi possível salvar."; return; }
+    history.replaceState(null, "", "/membros/"); showForm("loginForm"); load();
+  });
+
   load();
 })();
 </script>
