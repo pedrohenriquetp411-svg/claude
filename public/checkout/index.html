@@ -74,14 +74,8 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       <input id="name" name="name" autocomplete="name" required>
       <label for="email">E-mail</label>
       <input id="email" name="email" type="email" autocomplete="email" required>
-      <div class="row">
-        <div><label for="document">CPF</label><input id="document" name="document" inputmode="numeric" placeholder="000.000.000-00" required></div>
-        <div><label for="phone">Celular (WhatsApp)</label><input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000"></div>
-      </div>
-      <div class="row">
-        <div><label for="password">Crie uma senha</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo 6 caracteres" required></div>
-        <div><label for="password2">Confirme a senha</label><input id="password2" name="password2" type="password" autocomplete="new-password" required></div>
-      </div>
+      <label for="document">CPF</label><input id="document" name="document" inputmode="numeric" placeholder="000.000.000-00" required>
+      <label for="password">Crie uma senha</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo 6 caracteres" required>
       <p class="sub" style="margin:8px 0 0">Você vai usar o e-mail e essa senha para entrar na área de membros.</p>
       <div id="bumps"></div>
       <div class="method"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="m8 12 4-4 4 4-4 4z"/></svg> Pagamento via Pix — aprovação imediata</div>
@@ -176,7 +170,6 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 
   function mask(el, fmt) { el.addEventListener("input", function () { el.value = fmt(el.value.replace(/\D/g, "")); }); }
   mask($("document"), function (d) { d = d.slice(0, 11); return d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2"); });
-  mask($("phone"), function (d) { d = d.slice(0, 11); return d.length > 10 ? d.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3") : d.replace(/(\d{2})(\d{0,4})(\d{0,4})/, "($1) $2-$3").replace(/-$/, ""); });
 
   function track(event, data) {
     try { if (window.fbq) fbq("track", event, data); } catch (e) {}
@@ -187,9 +180,8 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     e.preventDefault();
     err.textContent = "";
     if ($("password").value.length < 6) { err.textContent = "A senha precisa ter pelo menos 6 caracteres."; return; }
-    if ($("password").value !== $("password2").value) { err.textContent = "As senhas não conferem."; return; }
     btn.disabled = true; btn.textContent = "Gerando Pix…";
-    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, phone: $("phone").value, password: $("password").value, plan: plan, bumps: bumps };
+    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, password: $("password").value, plan: plan, bumps: bumps };
     try {
       var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       var data = await res.json();
