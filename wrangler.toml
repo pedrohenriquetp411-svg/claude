@@ -1,3 +1,9 @@
 name = "especialista-bolos-gelados"
 pages_build_output_dir = "public"
 compatibility_date = "2026-10-01"
+
+# Members, orders and password-reset tokens. Declared here so the binding is
+# applied on every deploy and cannot be lost by editing settings in the dashboard.
+[[kv_namespaces]]
+binding = "MEMBERS"
+id = "ecd18b8b2a834cc7ad440c0ca15672fa"
