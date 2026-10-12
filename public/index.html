@@ -152,8 +152,9 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 
   .modal { position:fixed; inset:0; background:rgba(74,59,50,.55); display:none; align-items:center; justify-content:center; padding:18px; z-index:50; }
   .modal.on { display:flex; }
-  .modal .box { background:var(--cream); border-radius:20px; max-width:420px; width:100%; padding:0 24px 28px; text-align:center; position:relative; box-shadow:0 30px 60px rgba(74,59,50,.3); overflow:hidden; }
-  .modal .mimg { width:calc(100% + 48px); margin:0 -24px 18px; aspect-ratio:16/9; object-fit:cover; display:block; }
+  .modal .box { background:var(--cream); border-radius:20px; max-width:420px; width:100%; padding:0; text-align:center; position:relative; box-shadow:0 30px 60px rgba(74,59,50,.3); overflow:hidden; }
+  .modal .mimg { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; margin:0; }
+  .modal .mpad { padding:20px 24px 28px; }
   .modal .close { position:absolute; top:10px; right:10px; width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,.9); border:0; font-size:20px; color:#6b3a1e; cursor:pointer; line-height:28px; box-shadow:0 2px 8px rgba(0,0,0,.2); }
   .modal .kick { display:inline-block; background:var(--pink); color:#fff; font-weight:700; font-size:12px; letter-spacing:.04em; padding:5px 12px; border-radius:99px; margin-bottom:12px; }
   .modal h3 { font-size:23px; color:var(--brown); margin-bottom:10px; }
@@ -460,12 +461,14 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     <div class="box">
       <button class="close" id="upClose" aria-label="Fechar">&times;</button>
       <img class="mimg" src="https://i.ytimg.com/vi/2O3EA0HWz74/maxresdefault.jpg" alt="Bolo gelado de chocolate recheado" loading="lazy" width="1280" height="720">
-      <span class="kick">OFERTA ÚNICA</span>
-      <h3 id="upT">Leve o completo quase pelo preço do básico</h3>
-      <p>Adicione os 3 bônus — Planilha de Precificação, Cardápio de Datas Comemorativas e Pack de Embalagens e Rótulos — por uma fração do valor.</p>
-      <div class="pr"><span class="old">R$ 37</span><b>R$ 19,90</b></div>
-      <a class="cta lg" href="/checkout/?plano=completo_oferta">Quero o completo por R$ 19,90</a>
-      <div><span class="no" id="upNo">Não, quero só o básico por R$ 10</span></div>
+      <div class="mpad">
+        <span class="kick">OFERTA ÚNICA</span>
+        <h3 id="upT">Leve o completo quase pelo preço do básico</h3>
+        <p>Adicione os 3 bônus — Planilha de Precificação, Cardápio de Datas Comemorativas e Pack de Embalagens e Rótulos — por uma fração do valor.</p>
+        <div class="pr"><span class="old">R$ 37</span><b>R$ 19,90</b></div>
+        <a class="cta lg" href="/checkout/?plano=completo_oferta">Quero o completo por R$ 19,90</a>
+        <div><span class="no" id="upNo">Não, quero só o básico por R$ 10</span></div>
+      </div>
     </div>
   </div>
 </main>
