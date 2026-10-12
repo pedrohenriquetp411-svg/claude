@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel · Bolos Gelados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --brown:#6b3a1e; --pink:#c2306f; --bg:#fdf6f1; --card:#fff; --muted:#7a6a62; --line:#eadfd8; --green:#2bb389; --green1:#2ee34d; --red:#c0392b; --amber:#b7791f; --soft:#fbe9ef; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Montserrat,system-ui,sans-serif; background:var(--bg); color:var(--brown); font-size:14px; }
+  .ic { flex:none; vertical-align:middle; }
+  header { background:linear-gradient(90deg,#fde3ea,#fdf0e6); padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .logo { display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:17px; color:var(--brown); text-decoration:none; } .logo b { color:var(--pink); }
+  .logo small { font-weight:600; font-size:12px; color:var(--muted); margin-left:4px; }
+  .wrap { max-width:1180px; margin:20px auto; padding:0 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; }
+  h1 { font-size:20px; margin:0 0 6px; } h2 { font-size:16px; margin:0; }
+  .sub { color:var(--muted); margin:0 0 14px; }
+  label { display:block; font-size:12px; font-weight:600; margin:10px 0 5px; }
+  input { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:9px; font:inherit; }
+  input:focus { outline:2px solid var(--pink); border-color:transparent; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:10px 14px; border:0; border-radius:9px; font:inherit; font-weight:700; cursor:pointer; color:#fff; background:linear-gradient(90deg,var(--green1),var(--green)); }
+  .btn.ghost { background:none; color:var(--brown); border:1px solid var(--line); font-weight:600; }
+  .btn.small { padding:6px 10px; font-size:12px; }
+  .btn.danger { background:none; color:var(--red); border:1px solid #f0c9c4; }
+  .btn[disabled] { opacity:.5; cursor:wait; }
+  .link { background:none; border:0; padding:0; font:inherit; font-weight:600; color:var(--pink); cursor:pointer; }
+  .msg { min-height:1.2em; margin-top:10px; font-size:13px; } .msg.err { color:var(--red); } .msg.ok { color:var(--green); }
+  #login { max-width:380px; margin:60px auto; padding:0 16px; }
+  #app { display:none; }
+  .stats { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:16px; }
+  .stat .k { color:var(--muted); font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; }
+  .stat .v { font-size:24px; font-weight:800; margin-top:6px; }
+  .stat .v.money { color:var(--pink); }
+  .tabs { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; align-items:center; }
+  .tab { background:none; border:1px solid var(--line); border-radius:99px; padding:8px 14px; font:inherit; font-weight:600; color:var(--muted); cursor:pointer; }
+  .tab.on { background:var(--brown); color:#fff; border-color:var(--brown); }
+  .tabs .spacer { flex:1; }
+  .toolbar { display:flex; gap:10px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+  .toolbar input { max-width:320px; }
+  .table-wrap { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; min-width:720px; }
+  th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); padding:8px 10px; border-bottom:1px solid var(--line); }
+  td { padding:10px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tr:last-child td { border-bottom:0; }
+  td .muted { color:var(--muted); font-size:12px; display:block; }
+  .pill { display:inline-flex; align-items:center; gap:4px; font-size:12px; font-weight:600; padding:3px 9px; border-radius:99px; }
+  .pill.paid, .pill.active { background:#e3f6ef; color:var(--green); }
+  .pill.pending { background:#fdf1dd; color:var(--amber); }
+  .pill.blocked { background:#fbe4e1; color:var(--red); }
+  .pill.test { background:#ece8f6; color:#6a55a8; }
+  .bar { width:90px; height:6px; background:var(--line); border-radius:99px; overflow:hidden; display:inline-block; vertical-align:middle; margin-right:6px; }
+  .bar span { display:block; height:100%; background:var(--pink); }
+  .actions { display:flex; gap:6px; flex-wrap:wrap; }
+  .empty { text-align:center; color:var(--muted); padding:30px; }
+  .grid2 { display:grid; grid-template-columns:repeat(3,1fr) auto; gap:10px; align-items:end; }
+  @media (max-width:900px) { .stats { grid-template-columns:repeat(2,1fr); } .grid2 { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cake" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M4 16c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M12 11V8"/><circle cx="12" cy="5.5" r="1"/></g></symbol>
+  <symbol id="i-cash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></g></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></g></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.9.7 3.1 2.4 3.5 5.2"/></g></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></g></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></g></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></g></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+</svg>
+
+<header>
+  <a class="logo" href="/admin/"><svg class="ic" width="24" height="24" style="color:var(--pink)"><use href="#i-cake"/></svg>Bolos <b>Gelados</b><small>Painel</small></a>
+  <button class="link" id="logout" hidden>Sair</button>
+</header>
+
+<section id="login">
+  <form class="card" id="loginForm">
+    <h1>Painel administrativo</h1>
+    <p class="sub">Entre com a chave de administrador.</p>
+    <label for="key">Chave de administrador</label>
+    <input id="key" type="password" autocomplete="current-password" required>
+    <button class="btn" type="submit" style="width:100%;margin-top:14px">Entrar</button>
+    <div class="msg err" id="loginMsg" role="alert"></div>
+  </form>
+</section>
+
+<main id="app" class="wrap">
+  <div class="stats">
+    <div class="card stat"><div class="k"><svg class="ic" width="14" height="14"><use href="#i-check"/></svg>Vendas pagas</div><div class="v" id="sPaid">0</div></div>
+    <div class="card stat"><div class="k"><svg class="ic" width="14" height="14"><use href="#i-cash"/></svg>Faturamento</div><div class="v money" id="sRevenue">R$ 0</div></div>
+    <div class="card stat"><div class="k"><svg class="ic" width="14" height="14"><use href="#i-clock"/></svg>Pix pendentes</div><div class="v" id="sPending">0</div></div>
+    <div class="card stat"><div class="k"><svg class="ic" width="14" height="14"><use href="#i-trend"/></svg>Conversão do Pix</div><div class="v" id="sConv">0%</div></div>
+    <div class="card stat"><div class="k"><svg class="ic" width="14" height="14"><use href="#i-users"/></svg>Membros ativos</div><div class="v" id="sMembers">0</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" data-tab="orders">Pedidos</button>
+    <button class="tab" data-tab="members">Membros</button>
+    <span class="spacer"></span>
+    <button class="btn ghost small" id="refresh"><svg class="ic" width="14" height="14"><use href="#i-refresh"/></svg>Atualizar</button>
+  </div>
+
+  <section class="card" id="ordersTab">
+    <div class="toolbar">
+      <input id="orderSearch" type="search" placeholder="Buscar por nome, e-mail ou ID">
+      <button class="btn ghost small" id="exportOrders"><svg class="ic" width="14" height="14"><use href="#i-download"/></svg>Exportar CSV</button>
+      <span class="sub" style="margin:0">Pix não pagos somem da lista após 30 dias.</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data</th><th>Comprador</th><th>Telefone</th><th>Valor</th><th>Status</th><th>ID LofyPay</th></tr></thead>
+      <tbody id="ordersBody"></tbody>
+    </table></div>
+  </section>
+
+  <section id="membersTab" hidden>
+    <form class="card" id="addForm" style="margin-bottom:14px">
+      <h2 style="display:flex;align-items:center;gap:6px"><svg class="ic" width="16" height="16"><use href="#i-plus"/></svg>Adicionar membro manualmente</h2>
+      <div class="grid2">
+        <div><label for="addName">Nome</label><input id="addName" required></div>
+        <div><label for="addEmail">E-mail</label><input id="addEmail" type="email" required></div>
+        <div><label for="addPass">Senha inicial</label><input id="addPass" type="text" minlength="6" placeholder="Mínimo 6 caracteres" required></div>
+        <button class="btn" type="submit">Adicionar</button>
+      </div>
+      <div class="msg" id="addMsg"></div>
+    </form>
+    <div class="card">
+      <div class="toolbar">
+        <input id="memberSearch" type="search" placeholder="Buscar por nome ou e-mail">
+        <button class="btn ghost small" id="exportMembers"><svg class="ic" width="14" height="14"><use href="#i-download"/></svg>Exportar CSV</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Membro</th><th>Desde</th><th>Progresso</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody id="membersBody"></tbody>
+      </table></div>
+      <div class="msg" id="memberMsg"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var data = { orders: [], members: [], summary: {} };
+  var esc = function (s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; });
+  };
+  var brl = function (v) { return Number(v || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); };
+  var when = function (iso) { return iso ? new Date(iso).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" }) : "—"; };
+  var day = function (iso) { return iso ? new Date(iso).toLocaleDateString("pt-BR") : "—"; };
+  var api = function (path, opts) {
+    return fetch(path, Object.assign({ cache: "no-store", headers: { "Content-Type": "application/json" } }, opts || {}))
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); });
+  };
+
+  function showApp(on) { $("login").style.display = on ? "none" : "block"; $("app").style.display = on ? "block" : "none"; $("logout").hidden = !on; }
+
+  async function load() {
+    var res = await Promise.all([api("/api/admin/orders"), api("/api/admin/members")]);
+    if (res[0].status === 401 || res[1].status === 401) { showApp(false); return; }
+    data.orders = res[0].body.orders || []; data.summary = res[0].body.summary || {}; data.members = res[1].body.members || [];
+    showApp(true); render();
+  }
+
+  function render() {
+    var s = data.summary;
+    $("sPaid").textContent = s.paidCount || 0;
+    $("sRevenue").textContent = brl(s.revenue);
+    $("sPending").textContent = s.pendingCount || 0;
+    $("sConv").textContent = Math.round((s.conversion || 0) * 100) + "%";
+    $("sMembers").textContent = data.members.filter(function (m) { return m.active; }).length;
+    renderOrders(); renderMembers();
+  }
+
+  function match(q, fields) { q = q.trim().toLowerCase(); return !q || fields.some(function (f) { return String(f || "").toLowerCase().indexOf(q) !== -1; }); }
+
+  function renderOrders() {
+    var q = $("orderSearch").value;
+    var rows = data.orders.filter(function (o) { return match(q, [o.name, o.email, o.id, o.reference]); });
+    $("ordersBody").innerHTML = rows.length ? rows.map(function (o) {
+      var status = o.test ? "<span class='pill test'>Teste</span>" : o.paid ? "<span class='pill paid'>Pago</span>" : "<span class='pill pending'>Aguardando</span>";
+      return "<tr><td>" + when(o.createdAt) + (o.paidAt ? "<span class='muted'>pago " + when(o.paidAt) + "</span>" : "") + "</td>" +
+        "<td><b>" + esc(o.name) + "</b><span class='muted'>" + esc(o.email) + "</span></td>" +
+        "<td>" + esc(o.phone || "—") + "</td><td>" + brl(o.amount) + "</td><td>" + status + "</td>" +
+        "<td><span class='muted'>" + esc(o.id) + "</span></td></tr>";
+    }).join("") : "<tr><td colspan='6' class='empty'>Nenhum pedido encontrado.</td></tr>";
+  }
+
+  function renderMembers() {
+    var q = $("memberSearch").value;
+    var rows = data.members.filter(function (m) { return match(q, [m.name, m.email]); });
+    $("membersBody").innerHTML = rows.length ? rows.map(function (m, i) {
+      var pct = m.progress.total ? Math.round(m.progress.done / m.progress.total * 100) : 0;
+      return "<tr><td><b>" + esc(m.name || "—") + "</b><span class='muted'>" + esc(m.email) + "</span></td>" +
+        "<td>" + day(m.since) + "</td>" +
+        "<td><span class='bar'><span style='width:" + pct + "%'></span></span>" + m.progress.done + "/" + m.progress.total + "</td>" +
+        "<td>" + (m.active ? "<span class='pill active'>Ativo</span>" : "<span class='pill blocked'>Bloqueado</span>") + "</td>" +
+        "<td><div class='actions'>" +
+          "<button class='btn ghost small' data-act='password' data-email='" + esc(m.email) + "'>Nova senha</button>" +
+          (m.active ? "<button class='btn danger small' data-act='block' data-email='" + esc(m.email) + "'>Bloquear</button>"
+                    : "<button class='btn ghost small' data-act='unblock' data-email='" + esc(m.email) + "'>Desbloquear</button>") +
+        "</div></td></tr>";
+    }).join("") : "<tr><td colspan='5' class='empty'>Nenhum membro encontrado.</td></tr>";
+  }
+
+  function flash(el, text, ok) { el.className = "msg " + (ok ? "ok" : "err"); el.textContent = text; }
+
+  $("membersBody").addEventListener("click", async function (e) {
+    var b = e.target.closest("button[data-act]"); if (!b) return;
+    var email = b.getAttribute("data-email"), act = b.getAttribute("data-act"), payload = { email: email };
+    if (act === "block") { if (!confirm("Bloquear o acesso de " + email + "?")) return; payload.active = false; }
+    if (act === "unblock") payload.active = true;
+    if (act === "password") {
+      var p = prompt("Nova senha para " + email + " (mínimo 6 caracteres):"); if (!p) return;
+      payload.password = p;
+    }
+    b.disabled = true;
+    var r = await api("/api/admin/members", { method: "POST", body: JSON.stringify(payload) });
+    if (!r.ok) { flash($("memberMsg"), r.body.error || "Não foi possível salvar.", false); b.disabled = false; return; }
+    flash($("memberMsg"), act === "password" ? "Senha de " + email + " atualizada." : act === "block" ? email + " bloqueado." : email + " desbloqueado.", true);
+    load();
+  });
+
+  $("addForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var r = await api("/api/admin/members", { method: "POST", body: JSON.stringify({ name: $("addName").value, email: $("addEmail").value, password: $("addPass").value }) });
+    if (!r.ok) { flash($("addMsg"), r.body.error || "Não foi possível adicionar.", false); return; }
+    flash($("addMsg"), r.body.created ? "Membro adicionado." : "Este e-mail já existia: nome e senha foram atualizados.", true);
+    $("addForm").reset(); load();
+  });
+
+  function csv(rows, cols) {
+    var line = function (vals) { return vals.map(function (v) { v = String(v == null ? "" : v); return /[",;\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(";"); };
+    var out = "﻿" + line(cols.map(function (c) { return c[0]; })) + "\n" + rows.map(function (r) { return line(cols.map(function (c) { return c[1](r); })); }).join("\n");
+    return URL.createObjectURL(new Blob([out], { type: "text/csv;charset=utf-8" }));
+  }
+  function download(url, name) { var a = document.createElement("a"); a.href = url; a.download = name; a.click(); setTimeout(function () { URL.revokeObjectURL(url); }, 1000); }
+  $("exportOrders").onclick = function () {
+    download(csv(data.orders, [["data", function (o) { return o.createdAt; }], ["pago_em", function (o) { return o.paidAt || ""; }], ["nome", function (o) { return o.name; }],
+      ["email", function (o) { return o.email; }], ["telefone", function (o) { return o.phone; }], ["valor", function (o) { return o.amount; }],
+      ["status", function (o) { return o.test ? "teste" : o.paid ? "pago" : "aguardando"; }], ["id_lofypay", function (o) { return o.id; }]]), "pedidos.csv");
+  };
+  $("exportMembers").onclick = function () {
+    download(csv(data.members, [["nome", function (m) { return m.name; }], ["email", function (m) { return m.email; }], ["telefone", function (m) { return m.phone; }],
+      ["desde", function (m) { return m.since; }], ["aulas_concluidas", function (m) { return m.progress.done; }], ["ativo", function (m) { return m.active ? "sim" : "não"; }]]), "membros.csv");
+  };
+
+  document.querySelectorAll(".tab").forEach(function (t) {
+    t.onclick = function () {
+      document.querySelectorAll(".tab").forEach(function (x) { x.classList.toggle("on", x === t); });
+      $("ordersTab").hidden = t.dataset.tab !== "orders"; $("membersTab").hidden = t.dataset.tab !== "members";
+    };
+  });
+  $("orderSearch").oninput = renderOrders; $("memberSearch").oninput = renderMembers;
+  $("refresh").onclick = load;
+
+  $("loginForm").addEventListener("submit", async function (e) {
+    e.preventDefault(); $("loginMsg").textContent = "";
+    var r = await api("/api/admin/login", { method: "POST", body: JSON.stringify({ key: $("key").value }) });
+    if (!r.ok) { $("loginMsg").textContent = r.body.error || "Não foi possível entrar."; return; }
+    $("key").value = ""; load();
+  });
+  $("logout").onclick = async function () { await api("/api/admin/logout", { method: "POST" }); showApp(false); };
+
+  load();
+})();
+</script>
+</body>
+</html>

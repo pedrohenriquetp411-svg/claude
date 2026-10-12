@@ -2,19 +2,13 @@
 // hashed password) so the member account can be created once it is paid.
 // The price lives here, never in the browser.
 
-import { hashPassword, isTestToken, json, normEmail } from "../../lib/auth.js";
+import { hashPassword, json, normEmail } from "../../lib/auth.js";
 import { LOFYPAY_API } from "../../lib/lofypay.js";
 
 const PRODUCT = { name: "Bolos Gelados Lucrativos", amount: 197.0 };
-const TEST_AMOUNT = 10.0;
 
-// "test": private R$ 10 link (?teste=<token>). "live": public sales; set SALES_OPEN=false to pause them.
-async function saleMode(env, token) {
-  if (!env.LOFYPAY_SECRET_KEY) return null;
-  if (await isTestToken(env, token)) return { test: true, amount: TEST_AMOUNT };
-  if (env.SALES_OPEN !== "false") return { test: false, amount: PRODUCT.amount };
-  return null;
-}
+// Sales are open whenever LofyPay is configured; set SALES_OPEN=false to pause them.
+const salesOpen = (env) => Boolean(env.LOFYPAY_SECRET_KEY) && env.SALES_OPEN !== "false";
 const EXPIRATION = 1800;
 
 const digits = (v) => String(v || "").replace(/\D/g, "");
@@ -30,9 +24,8 @@ function validCpf(cpf) {
 }
 
 // Lets the checkout know whether it can take payments, and at what price.
-export async function onRequestGet({ request, env }) {
-  const mode = await saleMode(env, new URL(request.url).searchParams.get("teste"));
-  return json({ ready: Boolean(mode), amount: mode?.amount ?? PRODUCT.amount, test: Boolean(mode?.test) });
+export async function onRequestGet({ env }) {
+  return json({ ready: salesOpen(env), amount: PRODUCT.amount });
 }
 
 export async function onRequestPost({ request, env }) {
@@ -43,8 +36,7 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Requisição inválida." }, 400);
   }
 
-  const mode = await saleMode(env, body.teste);
-  if (!mode) return json({ error: "Pagamento indisponível no momento." }, 503);
+  if (!salesOpen(env)) return json({ error: "Pagamento indisponível no momento." }, 503);
 
   const name = String(body.name || "").trim().slice(0, 120);
   const email = normEmail(body.email).slice(0, 160);
@@ -68,7 +60,7 @@ export async function onRequestPost({ request, env }) {
       "Idempotency-Key": reference,
     },
     body: JSON.stringify({
-      amount: mode.amount,
+      amount: PRODUCT.amount,
       method: "pix",
       external_reference: reference,
       notification_url: `${origin}/api/webhook`,
@@ -84,14 +76,14 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Não foi possível gerar o Pix. Tente novamente." }, 502);
   }
 
-  const order = { id: String(data.idTransaction), reference, name, email, phone, passwordHash: await hashPassword(password), amount: mode.amount, test: mode.test, createdAt: new Date().toISOString() };
+  const order = { id: String(data.idTransaction), reference, name, email, phone, passwordHash: await hashPassword(password), amount: PRODUCT.amount, createdAt: new Date().toISOString() };
   // Kept for 30 days so a late webhook can still activate the member.
   await env.MEMBERS.put(`order:${order.id}`, JSON.stringify(order), { expirationTtl: 30 * 86400 });
 
   return json({
     id: order.id,
     reference,
-    amount: mode.amount,
+    amount: PRODUCT.amount,
     product: PRODUCT.name,
     code: data.paymentCode,
     qrBase64: data.paymentCodeBase64 || null,

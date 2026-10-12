@@ -99,11 +99,10 @@
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var form = $("form"), err = $("error"), btn = $("submit");
-  var teste = new URLSearchParams(location.search).get("teste") || "";
   var label = "";
   var brl = function (v) { return "R$ " + Number(v).toFixed(2).replace(".", ","); };
 
-  fetch("/api/pix?teste=" + encodeURIComponent(teste), { cache: "no-store" })
+  fetch("/api/pix", { cache: "no-store" })
     .then(function (r) { return r.json(); })
     .then(function (cfg) {
       document.querySelectorAll(".price").forEach(function (el) { el.textContent = brl(cfg.amount); });
@@ -128,7 +127,7 @@
     if ($("password").value.length < 6) { err.textContent = "A senha precisa ter pelo menos 6 caracteres."; return; }
     if ($("password").value !== $("password2").value) { err.textContent = "As senhas não conferem."; return; }
     btn.disabled = true; btn.textContent = "Gerando Pix…";
-    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, phone: $("phone").value, password: $("password").value, teste: teste };
+    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, phone: $("phone").value, password: $("password").value };
     try {
       var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       var data = await res.json();
