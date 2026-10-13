@@ -148,7 +148,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 
   function buildBumps() {
     if (planBonuses().length) { $("bumps").innerHTML = ""; return; }   // completo já inclui os bônus
-    var html = '<div class="bumps-title">Turbine seu acesso (opcional)</div>';
+    var html = '<div class="bumps-title">Turbine seu acesso</div>';
     Object.keys(cfg.bumps).forEach(function (id) {
       html += '<label class="bump"><input type="checkbox" data-bump="' + id + '"><span><b>' + BONUS[id] + '</b> <em>+' + brl(cfg.bumps[id].amount) + "</em></span></label>";
     });
