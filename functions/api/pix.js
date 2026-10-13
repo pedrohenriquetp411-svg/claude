@@ -28,7 +28,7 @@ export async function onRequestGet({ env }) {
     ready: salesOpen(env),
     product: PRODUCT,
     plans: Object.fromEntries(Object.entries(PLANS).map(([id, p]) => [id, { amount: p.amount, from: p.from || null, bonuses: p.bonuses }])),
-    bumps: Object.fromEntries(Object.entries(BUMPS).map(([id, b]) => [id, { amount: b.amount, title: b.title }])),
+    bumps: Object.fromEntries(Object.entries(BUMPS).map(([id, b]) => [id, { amount: b.amount, title: b.title, desc: b.desc, image: b.image }])),
   });
 }
 
@@ -47,12 +47,12 @@ export async function onRequestPost({ request, env }) {
 
   const name = String(body.name || "").trim().slice(0, 120);
   const email = normEmail(body.email).slice(0, 160);
-  const document = digits(body.document);
+  const document = digits(body.document); // optional; only validated when provided
   const phone = digits(body.phone).slice(0, 13);
 
   if (name.split(/\s+/).length < 2) return json({ error: "Informe seu nome completo." }, 400);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "E-mail inválido." }, 400);
-  if (!validCpf(document)) return json({ error: "CPF inválido." }, 400);
+  if (document && !validCpf(document)) return json({ error: "CPF inválido." }, 400);
 
   const reference = `EBG-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
   const origin = new URL(request.url).origin;

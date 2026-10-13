@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Checkout - Bolos Gelados Lucrativos</title>
+<title>Checkout — Bolos Gelados Lucrativos</title>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -23,63 +23,112 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --brown:#6b3a1e; --pink:#c2306f; --bg:#fdf6f1; --card:#fff; --muted:#7a6a62; --line:#eadfd8; --green1:#2ee34d; --green2:#2bb389; }
-  * { box-sizing: border-box; }
-  body { margin:0; font-family:Montserrat,system-ui,sans-serif; background:var(--bg); color:var(--brown); }
-  header { background:linear-gradient(90deg,#fde3ea,#fdf0e6); padding:14px 16px; text-align:center; }
-  .logo { display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:18px; text-decoration:none; color:var(--brown); } .logo b { color:var(--pink); }
-  main { max-width:960px; margin:24px auto; padding:0 16px; display:grid; gap:20px; grid-template-columns:1.3fr 1fr; }
+  :root { --brown:#733c1d; --pink:#c9316e; --pink-d:#a7275a; --cream:#fffbf6; --tint:#f7eef3; --line:#ece2d6; --ink:#4a3b32; --muted:#8a7a70;
+          --green1:#22c55e; --green2:#16a34a; --head:"Bricolage Grotesque",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:var(--body); background:var(--cream); color:var(--ink); line-height:1.5; }
+  h1,h2,h3 { font-family:var(--head); margin:0; letter-spacing:-.01em; }
+  .ic { flex:none; vertical-align:middle; }
+  header { background:linear-gradient(90deg,#fde3ea,#fdf0e6); border-bottom:1px solid var(--line); }
+  header .in { max-width:960px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .logo { display:inline-flex; align-items:center; gap:9px; font-family:var(--head); font-weight:800; font-size:18px; color:var(--brown); text-decoration:none; }
+  .logo .mark { width:30px; height:30px; border-radius:8px; background:var(--pink); color:#fff; display:flex; align-items:center; justify-content:center; }
+  .secure { font-size:12.5px; color:var(--muted); display:inline-flex; align-items:center; gap:6px; }
+  main { max-width:960px; margin:22px auto; padding:0 16px; display:grid; gap:18px; grid-template-columns:1.35fr 1fr; align-items:start; }
   @media (max-width:760px){ main { grid-template-columns:1fr; } .summary { order:-1; } }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; }
-  h1 { font-size:20px; margin:0 0 4px; } h2 { font-size:16px; margin:0 0 14px; }
-  p.sub { margin:0 0 18px; color:var(--muted); font-size:14px; }
-  label { display:block; font-size:13px; font-weight:600; margin:12px 0 6px; }
-  input { width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font:inherit; font-size:15px; color:#333; }
-  input:focus { outline:2px solid var(--pink); border-color:transparent; }
-  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; } @media (max-width:480px){ .row { grid-template-columns:1fr; } }
-  .method { margin-top:18px; display:flex; align-items:center; gap:10px; padding:12px 14px; border:2px solid var(--pink); border-radius:10px; font-weight:600; }
-  .bumps-title { margin:20px 0 8px; font-weight:700; font-size:14px; color:var(--brown); }
-  .bump { display:flex; gap:10px; align-items:flex-start; padding:12px 14px; border:1.5px dashed var(--pink); border-radius:10px; margin-bottom:8px; cursor:pointer; background:#fdf1f5; }
-  .bump input { width:18px; height:18px; margin-top:1px; accent-color:var(--pink); flex:none; }
-  .bump span { font-size:14px; } .bump b { font-weight:600; } .bump em { font-style:normal; color:var(--pink); font-weight:700; }
-  .bump small { display:block; color:var(--muted); font-size:12.5px; margin-top:2px; }
-  button { width:100%; margin-top:20px; padding:16px; border:0; border-radius:10px; font:inherit; font-weight:700; font-size:16px; color:#fff; cursor:pointer;
-           background:linear-gradient(90deg,var(--green1),var(--green2)); text-transform:uppercase; }
-  button[disabled] { opacity:.6; cursor:wait; }
-  .btn-secondary { background:var(--brown); text-transform:none; margin-top:12px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; }
+  .steps { display:flex; gap:8px; margin-bottom:18px; }
+  .steps div { flex:1; display:flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--muted); }
+  .steps b { width:22px; height:22px; border-radius:50%; background:var(--line); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--head); font-size:12px; flex:none; }
+  .steps div.on { color:var(--brown); } .steps div.on b { background:var(--pink); }
+  h1 { font-size:22px; color:var(--brown); margin-bottom:4px; }
+  p.sub { margin:0 0 16px; color:var(--muted); font-size:14px; }
+  label.f { display:block; font-size:13px; font-weight:600; margin:12px 0 6px; color:var(--brown); }
+  input.t { width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font:inherit; font-size:15px; color:#333; }
+  input.t:focus { outline:2px solid var(--pink); border-color:transparent; }
+  .btn { width:100%; margin-top:18px; padding:16px; border:0; border-radius:12px; font:inherit; font-weight:700; font-size:16px; color:#fff; cursor:pointer;
+         background:linear-gradient(95deg,var(--green1),var(--green2)); box-shadow:0 10px 22px rgba(45,177,137,.25); text-transform:uppercase; letter-spacing:.02em; }
+  .btn[disabled] { opacity:.6; cursor:wait; }
+  .btn.alt { background:var(--brown); box-shadow:none; text-transform:none; }
   .error { color:#b00020; font-size:14px; margin-top:12px; min-height:1em; }
-  .summary img { width:100%; border-radius:12px; display:block; margin-bottom:14px; }
-  .line { display:flex; justify-content:space-between; font-size:14px; padding:8px 0; border-bottom:1px solid var(--line); }
-  .total { font-size:20px; font-weight:700; color:var(--pink); border:0; }
-  .trust { display:flex; gap:14px; justify-content:center; font-size:12px; color:var(--muted); margin-top:14px; flex-wrap:wrap; }
-  #pix { display:none; text-align:center; }
+
+  .bumps { margin-top:22px; border-top:1px dashed var(--line); padding-top:18px; }
+  .bumps h2 { font-size:16px; color:var(--brown); }
+  .bumps .lead { color:var(--muted); font-size:13px; margin:2px 0 12px; }
+  .bump { display:flex; gap:12px; align-items:center; padding:10px; border:1.5px dashed var(--pink); border-radius:12px; margin-bottom:10px; cursor:pointer; background:#fdf1f5; transition:background .12s; }
+  .bump:hover { background:#fce7ef; }
+  .bump.inc { border-style:solid; border-color:var(--green2); background:#eafaf3; cursor:default; }
+  .bump img { width:66px; height:66px; border-radius:9px; object-fit:cover; flex:none; }
+  .bump .mid { flex:1; min-width:0; } .bump .mid b { font-size:14px; display:block; color:#3a2d25; } .bump .mid small { color:var(--muted); font-size:12.5px; }
+  .bump .pr { font-weight:800; color:var(--pink); font-size:14px; white-space:nowrap; } .bump.inc .pr { color:var(--green2); }
+  .bump input { width:20px; height:20px; accent-color:var(--pink); flex:none; }
+  .bump input[disabled] { accent-color:var(--green2); }
+
+  .method { margin-top:18px; display:flex; align-items:center; gap:10px; padding:12px 14px; border:2px solid var(--pink); border-radius:10px; font-weight:600; color:var(--brown); }
+  .method .ic { color:var(--pink); }
+
+  #pix, #paid { display:none; text-align:center; }
   #qr { display:flex; justify-content:center; margin:16px 0; } #qr img, #qr canvas { width:220px; height:220px; }
-  textarea { width:100%; height:84px; font-family:monospace; font-size:12px; border:1px solid var(--line); border-radius:10px; padding:10px; resize:none; }
-  .status { margin-top:14px; font-size:14px; color:var(--muted); }
-  .paid { display:none; text-align:center; } .paid .ok { color:var(--green2); margin-bottom:6px; }
-  .trust span { display:inline-flex; align-items:center; gap:5px; } .method .ic { color:var(--pink); flex:none; }
+  textarea { width:100%; height:80px; font-family:monospace; font-size:12px; border:1px solid var(--line); border-radius:10px; padding:10px; resize:none; }
   ol { text-align:left; font-size:14px; color:var(--muted); padding-left:20px; }
+  .status { margin-top:12px; font-size:14px; color:var(--muted); }
+  #paid .ok { color:var(--green2); }
+  #setpwForm { text-align:left; max-width:360px; margin:10px auto 0; }
+
+  .summary h2 { font-size:16px; color:var(--brown); margin-bottom:14px; }
+  .summary img.prod { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:10px; margin-bottom:14px; }
+  .line { display:flex; justify-content:space-between; gap:10px; font-size:14px; padding:9px 0; border-bottom:1px solid var(--line); }
+  .line.total { font-size:20px; font-weight:800; color:var(--pink); border-bottom:0; font-family:var(--head); }
+  .guarantee { margin-top:14px; font-size:12.5px; color:var(--muted); display:flex; gap:7px; align-items:flex-start; }
+  .trust { display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; font-size:12px; color:var(--muted); }
+  .trust span { display:inline-flex; align-items:center; gap:5px; }
 </style>
 </head>
 <body>
-<header><a class="logo" href="/"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--pink)"><path d="M4 21h16v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M4 16c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M12 11V8"/><circle cx="12" cy="5.5" r="1"/></svg>Bolos <b>Gelados</b></a></header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pix" viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z M8 12l4-4 4 4-4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="m7.5 12.5 3 3 6-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header>
+  <div class="in">
+    <a class="logo" href="/"><span class="mark"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M4 16c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M12 11V8"/><circle cx="12" cy="5.5" r="1"/></svg></span>bolosgelados</a>
+    <span class="secure"><svg class="ic" width="14" height="14"><use href="#i-lock"/></svg>Pagamento seguro</span>
+  </div>
+</header>
+
 <main>
   <section class="card">
+    <div class="steps">
+      <div id="st1" class="on"><b>1</b>Seus dados</div>
+      <div id="st2"><b>2</b>Pix</div>
+      <div id="st3"><b>3</b>Acesso</div>
+    </div>
+
     <form id="form" novalidate>
       <h1>Finalize sua inscrição</h1>
-      <p class="sub">Preencha seus dados para gerar o Pix. O acesso é enviado para o seu e-mail.</p>
-      <label for="name">Nome completo</label>
-      <input id="name" name="name" autocomplete="name" required>
-      <label for="email">E-mail</label>
-      <input id="email" name="email" type="email" autocomplete="email" required>
-      <label for="document">CPF</label><input id="document" name="document" inputmode="numeric" placeholder="000.000.000-00" required>
-      <p class="sub" style="margin:8px 0 0">Depois do pagamento você cria sua senha de acesso à área de membros.</p>
-      <div id="bumps"></div>
-      <div class="method"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="m8 12 4-4 4 4-4 4z"/></svg> Pagamento via Pix — aprovação imediata</div>
-      <button id="submit" type="submit" disabled>Carregando…</button>
+      <p class="sub">Preencha seus dados para gerar o Pix.</p>
+      <label class="f" for="name">Nome completo</label>
+      <input class="t" id="name" autocomplete="name" required>
+      <label class="f" for="email">E-mail <span style="font-weight:400;color:var(--muted)">(é por ele que você acessa o conteúdo)</span></label>
+      <input class="t" id="email" type="email" autocomplete="email" required>
+
+      <div class="bumps" id="bumps" hidden>
+        <h2>Aproveite e leve junto</h2>
+        <p class="lead">Ofertas que só aparecem aqui. Marque para adicionar ao pedido.</p>
+        <div id="bumpList"></div>
+      </div>
+
+      <div class="method"><svg class="ic" width="20" height="20"><use href="#i-pix"/></svg> Pagamento via Pix — aprovação imediata</div>
+      <button class="btn" id="submit" type="submit" disabled>Carregando…</button>
       <div class="error" id="error" role="alert"></div>
+      <p class="sub" style="margin-top:14px;text-align:center">Leva menos de 1 minuto. O acesso chega no seu e-mail assim que o Pix cair.</p>
     </form>
 
     <div id="pix">
@@ -87,31 +136,36 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       <p class="sub">Escaneie o QR Code ou copie o código abaixo no app do seu banco.</p>
       <div id="qr"></div>
       <textarea id="code" readonly></textarea>
-      <button class="btn-secondary" id="copy" type="button">Copiar código Pix</button>
+      <button class="btn alt" id="copy" type="button" style="margin-top:12px">Copiar código Pix</button>
       <ol><li>Abra o app do seu banco e escolha Pix.</li><li>Escaneie o QR Code ou use “Pix Copia e Cola”.</li><li>Confirme o pagamento de <b id="pixAmount">—</b>.</li></ol>
       <div class="status" id="status">Aguardando pagamento… o código expira em 30 minutos.</div>
     </div>
 
-    <div class="paid" id="paid">
-      <div class="ok"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
+    <div id="paid">
+      <div class="ok"><svg class="ic" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
       <h1>Pagamento aprovado!</h1>
       <p class="sub">Falta só criar sua senha para entrar na área de membros.</p>
       <form id="setpwForm">
-        <label for="setpw">Crie sua senha de acesso</label>
-        <input id="setpw" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo 6 caracteres" required>
-        <button type="submit">Criar senha e acessar</button>
+        <label class="f" for="setpw">Crie sua senha de acesso</label>
+        <input class="t" id="setpw" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo 6 caracteres" required>
+        <button class="btn" type="submit">Criar senha e acessar</button>
         <div class="error" id="setpwErr" role="alert"></div>
       </form>
-      <p class="sub" id="setpwFallback" style="display:none;margin-top:14px">Não conseguiu criar aqui? Enviamos um link de criação de senha para o seu e-mail. Confira também a caixa de spam.</p>
+      <p class="sub" id="setpwFallback" style="display:none;margin-top:14px">Enviamos um link de criação de senha para o seu e-mail. Confira também a caixa de spam.</p>
     </div>
   </section>
 
   <aside class="card summary">
-    <img src="https://i.ytimg.com/vi/6_7lRJYssoc/maxresdefault.jpg" alt="" style="aspect-ratio:16/9;object-fit:cover">
-    <h2 id="sumTitle">Bolos Gelados Lucrativos</h2>
+    <h2>Seu pedido</h2>
+    <img class="prod" src="https://i.ytimg.com/vi/6_7lRJYssoc/maxresdefault.jpg" alt="">
     <div id="sumLines"></div>
     <div class="line total"><span>Total</span><span id="sumTotal">—</span></div>
-    <div class="trust"><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Compra segura</span><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg> Acesso imediato</span><span><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 7 dias para desistir</span></div>
+    <div class="guarantee"><svg class="ic" width="16" height="16" style="color:var(--green2)"><use href="#i-shield"/></svg><span>7 dias de garantia. Não gostou, devolvemos 100% do valor.</span></div>
+    <div class="trust">
+      <span><svg class="ic" width="13" height="13"><use href="#i-pix"/></svg>Pix</span>
+      <span><svg class="ic" width="13" height="13"><use href="#i-lock"/></svg>Compra segura</span>
+      <span><svg class="ic" width="13" height="13"><use href="#i-bolt"/></svg>Acesso na hora</span>
+    </div>
   </aside>
 </main>
 
@@ -121,7 +175,6 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   var $ = function (id) { return document.getElementById(id); };
   var form = $("form"), err = $("error"), btn = $("submit");
   var brl = function (v) { return "R$ " + Number(v).toFixed(2).replace(".", ","); };
-  var BONUS = { planilha: "Planilha de Precificação Inteligente", cardapio: "Cardápio de Datas Comemorativas", pack: "Pack de Embalagens e Rótulos" };
   var VALID = { basico: 1, completo: 1, completo_oferta: 1 };
 
   var plan = new URLSearchParams(location.search).get("plano");
@@ -129,12 +182,14 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   var cfg = null, bumps = [];
 
   function planBonuses() { return (cfg.plans[plan] && cfg.plans[plan].bonuses) || []; }
+  function included() { return planBonuses(); }            // bumps already in the plan
   function total() {
     if (!cfg) return 0;
     var t = cfg.plans[plan].amount;
     bumps.forEach(function (b) { t += cfg.bumps[b].amount; });
     return Math.round(t * 100) / 100;
   }
+  function setStep(n) { [1, 2, 3].forEach(function (i) { $("st" + i).classList.toggle("on", i <= n); }); }
 
   fetch("/api/pix", { cache: "no-store" })
     .then(function (r) { return r.json(); })
@@ -147,15 +202,21 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     .catch(function () { btn.textContent = "Vendas em breve"; });
 
   function buildBumps() {
-    if (planBonuses().length) { $("bumps").innerHTML = ""; return; }   // completo já inclui os bônus
-    var html = '<div class="bumps-title">Turbine seu acesso</div>';
+    var inc = included();
+    var html = "";
     Object.keys(cfg.bumps).forEach(function (id) {
-      html += '<label class="bump"><input type="checkbox" data-bump="' + id + '"><span><b>' + BONUS[id] + '</b> <em>+' + brl(cfg.bumps[id].amount) + "</em></span></label>";
+      var b = cfg.bumps[id], isInc = inc.indexOf(id) !== -1;
+      html += '<label class="bump' + (isInc ? " inc" : "") + '">' +
+        '<img src="' + b.image + '" alt="" loading="lazy">' +
+        '<span class="mid"><b>' + b.title + "</b><small>" + b.desc + "</small></span>" +
+        '<span class="pr">' + (isInc ? "Incluído" : "+" + brl(b.amount)) + "</span>" +
+        '<input type="checkbox" data-bump="' + id + '"' + (isInc ? " checked disabled" : "") + "></label>";
     });
-    $("bumps").innerHTML = html;
-    $("bumps").querySelectorAll("input[data-bump]").forEach(function (cb) {
+    $("bumpList").innerHTML = html;
+    $("bumps").hidden = false;
+    $("bumpList").querySelectorAll("input[data-bump]:not([disabled])").forEach(function (cb) {
       cb.addEventListener("change", function () {
-        bumps = Array.prototype.map.call($("bumps").querySelectorAll("input[data-bump]:checked"), function (x) { return x.getAttribute("data-bump"); });
+        bumps = Array.prototype.map.call($("bumpList").querySelectorAll("input[data-bump]:checked:not([disabled])"), function (x) { return x.getAttribute("data-bump"); });
         renderSummary();
       });
     });
@@ -163,43 +224,33 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 
   function renderSummary() {
     var complete = plan !== "basico";
-    $("sumTitle").textContent = "Bolos Gelados Lucrativos — " + (complete ? "Completo" : "Básico");
     if (!cfg) { $("sumTotal").textContent = "—"; return; }
-    var lines = '<div class="line"><span>' + (complete ? "26 receitas + 3 bônus" : "26 receitas em videoaula") + "</span><span>" + brl(cfg.plans[plan].amount) + "</span></div>";
-    bumps.forEach(function (b) { lines += '<div class="line"><span>' + BONUS[b] + "</span><span>" + brl(cfg.bumps[b].amount) + "</span></div>"; });
+    var lines = '<div class="line"><span>' + (complete ? "Completo — 26 receitas + 3 bônus" : "Básico — 26 receitas") + "</span><span>" + brl(cfg.plans[plan].amount) + "</span></div>";
+    bumps.forEach(function (b) { lines += '<div class="line"><span>' + cfg.bumps[b].title + "</span><span>" + brl(cfg.bumps[b].amount) + "</span></div>"; });
     lines += '<div class="line"><span>Pagamento</span><span>Pix à vista</span></div>';
     $("sumLines").innerHTML = lines;
     $("sumTotal").textContent = brl(total());
     if (cfg.ready) btn.textContent = "Gerar Pix de " + brl(total());
   }
 
-  function mask(el, fmt) { el.addEventListener("input", function () { el.value = fmt(el.value.replace(/\D/g, "")); }); }
-  mask($("document"), function (d) { d = d.slice(0, 11); return d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2"); });
-
-  function track(event, data) {
-    try { if (window.fbq) fbq("track", event, data); } catch (e) {}
-    try { if (window.gtag) gtag("event", event, data); } catch (e) {}
-  }
+  function track(event, data) { try { if (window.fbq) fbq("track", event, data); } catch (e) {} try { if (window.gtag) gtag("event", event, data); } catch (e) {} }
 
   form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    err.textContent = "";
+    e.preventDefault(); err.textContent = "";
     btn.disabled = true; btn.textContent = "Gerando Pix…";
-    var payload = { name: $("name").value, email: $("email").value, document: $("document").value, plan: plan, bumps: bumps };
+    var payload = { name: $("name").value, email: $("email").value, plan: plan, bumps: bumps };
     try {
       var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       var data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro ao gerar o Pix.");
-      showPix(data);
-      track("InitiateCheckout", { value: data.amount, currency: "BRL" });
+      showPix(data); track("InitiateCheckout", { value: data.amount, currency: "BRL" });
     } catch (ex) {
-      err.textContent = ex.message;
-      btn.disabled = false; btn.textContent = "Gerar Pix de " + brl(total());
+      err.textContent = ex.message; btn.disabled = false; btn.textContent = "Gerar Pix de " + brl(total());
     }
   });
 
   function showPix(data) {
-    form.style.display = "none"; $("pix").style.display = "block";
+    form.style.display = "none"; $("pix").style.display = "block"; setStep(2);
     $("pixAmount").textContent = brl(data.amount);
     $("code").value = data.code;
     if (data.qrBase64) {
@@ -222,8 +273,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       if (!r.ok) throw new Error((await r.json()).error || "Não foi possível salvar.");
       location.href = "/membros/";
     } catch (ex) {
-      $("setpwErr").textContent = ex.message;
-      $("setpwFallback").style.display = "block";
+      $("setpwErr").textContent = ex.message; $("setpwFallback").style.display = "block";
       b.disabled = false; b.textContent = "Criar senha e acessar";
     }
   });
@@ -243,7 +293,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
         var s = await r.json();
         if (s.paid) {
           clearInterval(timer);
-          $("pix").style.display = "none"; $("paid").style.display = "block";
+          $("pix").style.display = "none"; $("paid").style.display = "block"; setStep(3);
           track("Purchase", { value: amount, currency: "BRL" });
         } else if (s.status === "EXPIRED" || s.status === "FAILED") {
           clearInterval(timer); $("status").textContent = "Este Pix não está mais válido. Recarregue a página para gerar outro.";
