@@ -4,7 +4,7 @@
 
 import { json, normEmail } from "../../lib/auth.js";
 import { LOFYPAY_API } from "../../lib/lofypay.js";
-import { BUMPS, PLANS, PRODUCT, priceSelection } from "../../lib/pricing.js";
+import { BUMPS, COMBO, PLANS, PRODUCT, priceSelection } from "../../lib/pricing.js";
 
 const salesOpen = (env) => Boolean(env.LOFYPAY_SECRET_KEY) && env.SALES_OPEN !== "false";
 const EXPIRATION = 1800;
@@ -27,8 +27,9 @@ export async function onRequestGet({ env }) {
   return json({
     ready: salesOpen(env),
     product: PRODUCT,
-    plans: Object.fromEntries(Object.entries(PLANS).map(([id, p]) => [id, { amount: p.amount, from: p.from || null, bonuses: p.bonuses }])),
+    plans: Object.fromEntries(Object.entries(PLANS).map(([id, p]) => [id, { amount: p.amount, from: p.from || null }])),
     bumps: Object.fromEntries(Object.entries(BUMPS).map(([id, b]) => [id, { amount: b.amount, title: b.title, desc: b.desc, image: b.image }])),
+    combo: { amount: COMBO.amount, full: COMBO.full, off: COMBO.off, title: COMBO.title, desc: COMBO.desc, bumps: COMBO.bumps },
   });
 }
 
@@ -42,7 +43,7 @@ export async function onRequestPost({ request, env }) {
 
   if (!salesOpen(env)) return json({ error: "Pagamento indisponível no momento." }, 503);
 
-  const sel = priceSelection(body.plan, body.bumps);
+  const sel = priceSelection(body.plan, body.bumps, body.combo);
   if (!sel) return json({ error: "Selecione um plano válido." }, 400);
 
   // Marketing attribution (UTMs + fbclid), sanitized.
@@ -90,7 +91,7 @@ export async function onRequestPost({ request, env }) {
 
   const order = {
     id: String(data.idTransaction), reference, name, email, phone,
-    plan: sel.plan, recipes: sel.recipes, bumps: sel.bumps, amount: sel.amount,
+    plan: sel.plan, recipes: sel.recipes, bumps: sel.bumps, combo: sel.combo, amount: sel.amount,
     utm,
     createdAt: new Date().toISOString(),
   };

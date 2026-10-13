@@ -66,6 +66,17 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   .bump .pr { font-weight:800; color:var(--pink); font-size:14px; white-space:nowrap; } .bump.inc .pr { color:var(--green2); }
   .bump input { width:20px; height:20px; accent-color:var(--pink); flex:none; }
   .bump input[disabled] { accent-color:var(--green2); }
+  .bump.sel { border-style:solid; background:#fce7ef; }
+
+  .bump.combo { border:1.5px solid var(--green2); background:linear-gradient(90deg,#eafaf3,#fff7fb); }
+  .bump.combo:hover { background:#e2f7ee; }
+  .bump.combo.sel { background:#d9f5e8; }
+  .bump.combo input { accent-color:var(--green2); }
+  .bump.combo .comboMark { width:66px; height:66px; border-radius:9px; flex:none; background:linear-gradient(145deg,var(--green1),var(--green2)); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; }
+  .bump.combo .comboMark em { font-style:normal; font-family:var(--head); font-weight:800; font-size:13px; }
+  .bump.combo .mid b { color:#1f7a4d; }
+  .bump.combo .pr { display:flex; flex-direction:column; align-items:flex-end; line-height:1.15; color:var(--green2); }
+  .bump.combo .pr s { color:var(--muted); font-weight:600; font-size:12px; }
 
   .method { margin-top:18px; display:flex; align-items:center; gap:10px; padding:12px 14px; border:2px solid var(--pink); border-radius:10px; font-weight:600; color:var(--brown); }
   .method .ic { color:var(--pink); }
@@ -178,7 +189,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 
   var plan = new URLSearchParams(location.search).get("plano");
   if (!VALID[plan]) plan = "completo";
-  var cfg = null, bumps = [];
+  var cfg = null, bumps = [], combo = false;
 
   // UTM attribution: merge any utms on this URL with what was captured on the landing.
   var utm = {};
@@ -192,7 +203,8 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   function total() {
     if (!cfg) return 0;
     var t = cfg.plans[plan].amount;
-    bumps.forEach(function (b) { t += cfg.bumps[b].amount; });
+    if (combo && cfg.combo) t += cfg.combo.amount;
+    else bumps.forEach(function (b) { t += cfg.bumps[b].amount; });
     return Math.round(t * 100) / 100;
   }
   function setStep(n) { [1, 2, 3].forEach(function (i) { $("st" + i).classList.toggle("on", i <= n); }); }
@@ -209,7 +221,8 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     })
     .catch(function () { btn.textContent = "Vendas em breve"; });
 
-  // Order bumps are standalone products, selectable on every plan.
+  // Order bumps are standalone products, selectable on every plan. The combo
+  // bundles all three at 40% off and is mutually exclusive with them.
   function buildBumps() {
     var html = "";
     Object.keys(cfg.bumps).forEach(function (id) {
@@ -220,14 +233,36 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
         '<span class="pr">+' + brl(b.amount) + "</span>" +
         '<input type="checkbox" data-bump="' + id + "\"></label>";
     });
+    if (cfg.combo) {
+      var c = cfg.combo;
+      html += '<label class="bump combo">' +
+        '<span class="comboMark"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M22 7H2v5h20z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg><em>-40%</em></span>' +
+        '<span class="mid"><b>' + c.title + "</b><small>" + c.desc + "</small></span>" +
+        '<span class="pr"><s>' + brl(c.full) + "</s>+" + brl(c.amount) + "</span>" +
+        '<input type="checkbox" data-combo></label>';
+    }
     $("bumpList").innerHTML = html;
     $("bumps").hidden = false;
-    $("bumpList").querySelectorAll("input[data-bump]").forEach(function (cb) {
+    var indiv = Array.prototype.slice.call($("bumpList").querySelectorAll("input[data-bump]"));
+    var comboCb = $("bumpList").querySelector("input[data-combo]");
+
+    function sync() {
+      combo = Boolean(comboCb && comboCb.checked);
+      bumps = combo ? [] : indiv.filter(function (x) { return x.checked; }).map(function (x) { return x.getAttribute("data-bump"); });
+      $("bumpList").querySelectorAll(".bump").forEach(function (l) { l.classList.toggle("sel", l.querySelector("input").checked); });
+      renderSummary();
+    }
+    indiv.forEach(function (cb) {
       cb.addEventListener("change", function () {
-        bumps = Array.prototype.map.call($("bumpList").querySelectorAll("input[data-bump]:checked"), function (x) { return x.getAttribute("data-bump"); });
+        if (cb.checked && comboCb) comboCb.checked = false;
+        sync();
         if (cb.checked) track("AddToCart", { value: cfg.bumps[cb.getAttribute("data-bump")].amount, currency: "BRL", content_name: cfg.bumps[cb.getAttribute("data-bump")].title });
-        renderSummary();
       });
+    });
+    if (comboCb) comboCb.addEventListener("change", function () {
+      if (comboCb.checked) indiv.forEach(function (x) { x.checked = false; });
+      sync();
+      if (comboCb.checked) track("AddToCart", { value: cfg.combo.amount, currency: "BRL", content_name: cfg.combo.title });
     });
   }
 
@@ -235,7 +270,8 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   function renderSummary() {
     if (!cfg) { $("sumTotal").textContent = "—"; return; }
     var lines = '<div class="line"><span>' + planName() + "</span><span>" + brl(cfg.plans[plan].amount) + "</span></div>";
-    bumps.forEach(function (b) { lines += '<div class="line"><span>' + cfg.bumps[b].title + "</span><span>" + brl(cfg.bumps[b].amount) + "</span></div>"; });
+    if (combo && cfg.combo) lines += '<div class="line"><span>' + cfg.combo.title + "</span><span>" + brl(cfg.combo.amount) + "</span></div>";
+    else bumps.forEach(function (b) { lines += '<div class="line"><span>' + cfg.bumps[b].title + "</span><span>" + brl(cfg.bumps[b].amount) + "</span></div>"; });
     lines += '<div class="line"><span>Pagamento</span><span>Pix à vista</span></div>';
     $("sumLines").innerHTML = lines;
     $("sumTotal").textContent = brl(total());
@@ -247,7 +283,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   form.addEventListener("submit", async function (e) {
     e.preventDefault(); err.textContent = "";
     btn.disabled = true; btn.textContent = "Gerando Pix…";
-    var payload = { name: $("name").value, email: $("email").value, plan: plan, bumps: bumps, utm: utm };
+    var payload = { name: $("name").value, email: $("email").value, plan: plan, bumps: bumps, combo: combo, utm: utm };
     try {
       var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       var data = await res.json();
@@ -303,7 +339,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
         if (s.paid) {
           clearInterval(timer);
           $("pix").style.display = "none"; $("paid").style.display = "block"; setStep(3);
-          track("Purchase", { value: amount, currency: "BRL", content_name: planName(), content_type: "product", num_items: 1 + bumps.length });
+          track("Purchase", { value: amount, currency: "BRL", content_name: planName(), content_type: "product", num_items: 1 + (combo ? 3 : bumps.length) });
         } else if (s.status === "EXPIRED" || s.status === "FAILED") {
           clearInterval(timer); $("status").textContent = "Este Pix não está mais válido. Recarregue a página para gerar outro.";
         }
