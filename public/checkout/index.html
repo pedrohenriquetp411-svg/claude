@@ -27,7 +27,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root { --brown:#733c1d; --pink:#c9316e; --pink-d:#a7275a; --cream:#fffbf6; --tint:#f7eef3; --line:#ece2d6; --ink:#4a3b32; --muted:#8a7a70;
-          --green1:#22c55e; --green2:#16a34a; --head:"Bricolage Grotesque",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif; }
+          --green1:#4cc47f; --green2:#35a86a; --head:"Bricolage Grotesque",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif; }
   * { box-sizing:border-box; }
   body { margin:0; font-family:var(--body); background:var(--cream); color:var(--ink); line-height:1.5; }
   h1,h2,h3 { font-family:var(--head); margin:0; letter-spacing:-.01em; }
@@ -125,7 +125,6 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
         <div id="bumpList"></div>
       </div>
 
-      <div class="method"><svg class="ic" width="20" height="20"><use href="#i-pix"/></svg> Pagamento via Pix — aprovação imediata</div>
       <button class="btn" id="submit" type="submit" disabled>Carregando…</button>
       <div class="error" id="error" role="alert"></div>
       <p class="sub" style="margin-top:14px;text-align:center">Leva menos de 1 minuto. O acesso chega no seu e-mail assim que o Pix cair.</p>
@@ -181,8 +180,6 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   if (!VALID[plan]) plan = "completo";
   var cfg = null, bumps = [];
 
-  function planBonuses() { return (cfg.plans[plan] && cfg.plans[plan].bonuses) || []; }
-  function included() { return planBonuses(); }            // bumps already in the plan
   function total() {
     if (!cfg) return 0;
     var t = cfg.plans[plan].amount;
@@ -190,6 +187,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     return Math.round(t * 100) / 100;
   }
   function setStep(n) { [1, 2, 3].forEach(function (i) { $("st" + i).classList.toggle("on", i <= n); }); }
+  function payLabel() { return "Pagar " + brl(total()) + " com Pix"; }
 
   fetch("/api/pix", { cache: "no-store" })
     .then(function (r) { return r.json(); })
@@ -197,40 +195,42 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       cfg = c;
       if (!c.ready) { btn.textContent = "Vendas em breve"; err.textContent = "As inscrições ainda não estão abertas."; renderSummary(); return; }
       buildBumps(); renderSummary();
-      btn.disabled = false; btn.textContent = "Gerar Pix de " + brl(total());
+      btn.disabled = false; btn.textContent = payLabel();
+      track("InitiateCheckout", { value: total(), currency: "BRL", content_name: planName(), content_type: "product" });
     })
     .catch(function () { btn.textContent = "Vendas em breve"; });
 
+  // Order bumps are standalone products, selectable on every plan.
   function buildBumps() {
-    var inc = included();
     var html = "";
     Object.keys(cfg.bumps).forEach(function (id) {
-      var b = cfg.bumps[id], isInc = inc.indexOf(id) !== -1;
-      html += '<label class="bump' + (isInc ? " inc" : "") + '">' +
+      var b = cfg.bumps[id];
+      html += '<label class="bump">' +
         '<img src="' + b.image + '" alt="" loading="lazy">' +
         '<span class="mid"><b>' + b.title + "</b><small>" + b.desc + "</small></span>" +
-        '<span class="pr">' + (isInc ? "Incluído" : "+" + brl(b.amount)) + "</span>" +
-        '<input type="checkbox" data-bump="' + id + '"' + (isInc ? " checked disabled" : "") + "></label>";
+        '<span class="pr">+' + brl(b.amount) + "</span>" +
+        '<input type="checkbox" data-bump="' + id + "\"></label>";
     });
     $("bumpList").innerHTML = html;
     $("bumps").hidden = false;
-    $("bumpList").querySelectorAll("input[data-bump]:not([disabled])").forEach(function (cb) {
+    $("bumpList").querySelectorAll("input[data-bump]").forEach(function (cb) {
       cb.addEventListener("change", function () {
-        bumps = Array.prototype.map.call($("bumpList").querySelectorAll("input[data-bump]:checked:not([disabled])"), function (x) { return x.getAttribute("data-bump"); });
+        bumps = Array.prototype.map.call($("bumpList").querySelectorAll("input[data-bump]:checked"), function (x) { return x.getAttribute("data-bump"); });
+        if (cb.checked) track("AddToCart", { value: cfg.bumps[cb.getAttribute("data-bump")].amount, currency: "BRL", content_name: cfg.bumps[cb.getAttribute("data-bump")].title });
         renderSummary();
       });
     });
   }
 
+  function planName() { return plan === "basico" ? "Básico — 11 receitas" : "Completo — 26 receitas"; }
   function renderSummary() {
-    var complete = plan !== "basico";
     if (!cfg) { $("sumTotal").textContent = "—"; return; }
-    var lines = '<div class="line"><span>' + (complete ? "Completo — 26 receitas + 3 bônus" : "Básico — 26 receitas") + "</span><span>" + brl(cfg.plans[plan].amount) + "</span></div>";
+    var lines = '<div class="line"><span>' + planName() + "</span><span>" + brl(cfg.plans[plan].amount) + "</span></div>";
     bumps.forEach(function (b) { lines += '<div class="line"><span>' + cfg.bumps[b].title + "</span><span>" + brl(cfg.bumps[b].amount) + "</span></div>"; });
     lines += '<div class="line"><span>Pagamento</span><span>Pix à vista</span></div>';
     $("sumLines").innerHTML = lines;
     $("sumTotal").textContent = brl(total());
-    if (cfg.ready) btn.textContent = "Gerar Pix de " + brl(total());
+    if (cfg.ready) btn.textContent = payLabel();
   }
 
   function track(event, data) { try { if (window.fbq) fbq("track", event, data); } catch (e) {} try { if (window.gtag) gtag("event", event, data); } catch (e) {} }
@@ -243,9 +243,9 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       var data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro ao gerar o Pix.");
-      showPix(data); track("InitiateCheckout", { value: data.amount, currency: "BRL" });
+      showPix(data); track("AddPaymentInfo", { value: data.amount, currency: "BRL", content_name: planName() });
     } catch (ex) {
-      err.textContent = ex.message; btn.disabled = false; btn.textContent = "Gerar Pix de " + brl(total());
+      err.textContent = ex.message; btn.disabled = false; btn.textContent = payLabel();
     }
   });
 
@@ -294,7 +294,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
         if (s.paid) {
           clearInterval(timer);
           $("pix").style.display = "none"; $("paid").style.display = "block"; setStep(3);
-          track("Purchase", { value: amount, currency: "BRL" });
+          track("Purchase", { value: amount, currency: "BRL", content_name: planName(), content_type: "product", num_items: 1 + bumps.length });
         } else if (s.status === "EXPIRED" || s.status === "FAILED") {
           clearInterval(timer); $("status").textContent = "Este Pix não está mais válido. Recarregue a página para gerar outro.";
         }

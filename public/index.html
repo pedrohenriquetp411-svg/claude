@@ -17,6 +17,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1620128322940014');
 fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: 'Bolos Gelados Lucrativos', content_type: 'product', content_category: 'curso'});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
@@ -29,7 +30,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   :root {
     --brown:#733c1d; --pink:#c9316e; --pink-d:#a7275a; --purple:#928dc2; --cream:#fffbf6;
     --tint:#f7eef3; --tint2:#efe6ef; --line:#ece2d6; --ink:#4a3b32; --muted:#8a7a70;
-    --green1:#22c55e; --green2:#16a34a; --green-d:#15803d;
+    --green1:#4cc47f; --green2:#35a86a; --green-d:#2e8b57;
     --head:"Bricolage Grotesque",system-ui,sans-serif; --body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
   * { box-sizing:border-box; }
@@ -206,6 +207,18 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     .badge { left:6px; bottom:-12px; padding:9px 13px; }
   }
   @media (max-width:380px) { .rec-grid { grid-template-columns:1fr; } }
+
+  @media (max-width:640px) {
+    .plans { grid-template-columns:1fr; gap:18px; max-width:420px; }
+    .plan .phead { aspect-ratio:4/3; }
+    .plan .pad { padding:20px 20px 22px; }
+    .plan .name { font-size:24px; }
+    .plan .tagline { font-size:15px; }
+    .plan li { font-size:15px; }
+    .plan .pr .now { font-size:46px; }
+    .plan .cta { padding:16px; font-size:16px; }
+    .plan .flag { font-size:13px; padding:9px; }
+  }
 </style>
 </head>
 <body>
@@ -392,33 +405,33 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
     <div class="wrap center">
       <p class="eyebrow">A oferta</p>
       <h2 class="sec">Escolha seu acesso</h2>
-      <p class="sec-sub">Pagamento único no Pix, sem mensalidade. Acesso imediato às 26 receitas.</p>
+      <p class="sec-sub">Pagamento único no Pix, sem mensalidade. Acesso imediato, no celular ou PC.</p>
       <div class="plans">
         <div class="plan basic">
-          <img class="phead" src="https://i.ytimg.com/vi/wZ7VOoCaHkw/maxresdefault.jpg" alt="Bolo gelado de Leite Ninho com morango" loading="lazy" width="1280" height="720">
+          <img class="phead" src="https://i.ytimg.com/vi/EBy_jC46flU/maxresdefault.jpg" alt="Bolo gelado embrulhado de coco" loading="lazy" width="1280" height="720">
           <div class="pad">
             <div class="name">Básico</div>
-            <div class="tagline">Só as 26 receitas em videoaula.</div>
+            <div class="tagline">Comece pelas receitas essenciais.</div>
             <ul>
-              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>26 receitas nos 4 módulos</li>
-              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Acesso imediato, no celular ou PC</li>
-              <li class="off"><svg class="ic" width="18" height="18"><use href="#i-x"/></svg>Sem os bônus</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>11 receitas (módulos 1 e 2)</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Embrulhados e bolos na marmita</li>
+              <li class="off"><svg class="ic" width="18" height="18"><use href="#i-x"/></svg>Sem as fatias, slice cakes e clássicos</li>
             </ul>
             <div class="pr"><span class="now"><small>R$</small>10</span></div>
             <button class="cta" type="button" id="btnBasico">Quero o básico por R$ 10</button>
           </div>
         </div>
         <div class="plan featured">
-          <div class="flag">MAIS ESCOLHIDO · VEM COM OS 3 BÔNUS</div>
+          <div class="flag">MAIS ESCOLHIDO · TODAS AS 26 RECEITAS</div>
           <img class="phead" src="https://i.ytimg.com/vi/3zTKLCdVDgM/maxresdefault.jpg" alt="Fatia gourmet de prestígio" loading="lazy" width="1280" height="720">
           <div class="pad">
             <div class="name">Completo</div>
-            <div class="tagline">As receitas + os 3 bônus pra vender mais.</div>
+            <div class="tagline">Todas as receitas, dos embrulhados aos slice cakes.</div>
             <ul>
-              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>26 receitas nos 4 módulos</li>
-              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Planilha de Precificação Inteligente</li>
-              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Cardápio de Datas Comemorativas</li>
-              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Pack de Embalagens e Rótulos</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>As 26 receitas nos 4 módulos</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Embrulhados e bolos na marmita</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Fatias, slice cakes e clássicos</li>
+              <li class="on"><svg class="ic" width="18" height="18"><use href="#i-check"/></svg>Acesso imediato, no celular ou PC</li>
             </ul>
             <div class="save">economize R$ 60</div>
             <div class="pr"><span class="old">R$ 97</span><span class="now"><small>R$</small>37</span></div>
@@ -442,7 +455,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       <div class="faq" style="text-align:left">
         <details><summary>Como recebo o acesso?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">No checkout você cria uma senha. Assim que o Pix é confirmado, a página libera o botão da área de membros e você entra com seu e-mail e essa senha.</div></details>
         <details><summary>Preciso ter experiência na confeitaria?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Não. As receitas são em vídeo, feitas do começo ao fim, com utensílios comuns de cozinha. Dá pra começar do zero.</div></details>
-        <details><summary>Todas as receitas são liberadas na hora?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Sim. Assim que o pagamento é confirmado, você tem acesso imediato a todas as 26 receitas, nos 4 módulos.</div></details>
+        <details><summary>Qual a diferença entre o Básico e o Completo?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">O Básico libera os módulos 1 e 2 (11 receitas: embrulhados e na marmita). O Completo libera as 26 receitas, nos 4 módulos. Tudo é liberado na hora, sem espera.</div></details>
         <details><summary>Quais formas de pagamento são aceitas?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">No momento, apenas Pix à vista. O plano básico sai por R$ 10 e o completo, com os 3 bônus, por R$ 37 — com acesso imediato após a confirmação.</div></details>
         <details><summary>Consigo assistir pelo celular?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Sim. A área de membros funciona no celular, no tablet e no computador, por onde você preferir.</div></details>
         <details><summary>E se eu não gostar?<svg class="ic" width="22" height="22"><use href="#i-plus"/></svg></summary><div class="ans">Você tem 7 dias a partir da compra para desistir e receber o valor de volta, conforme o Código de Defesa do Consumidor.</div></details>
@@ -463,10 +476,10 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
       <img class="mimg" src="https://i.ytimg.com/vi/2O3EA0HWz74/maxresdefault.jpg" alt="Bolo gelado de chocolate recheado" loading="lazy" width="1280" height="720">
       <div class="mpad">
         <span class="kick">OFERTA ÚNICA</span>
-        <h3 id="upT">Leve o completo quase pelo preço do básico</h3>
-        <p>Adicione os 3 bônus — Planilha de Precificação, Cardápio de Datas Comemorativas e Pack de Embalagens e Rótulos — por uma fração do valor.</p>
+        <h3 id="upT">Leve todas as receitas quase pelo preço do básico</h3>
+        <p>São as 26 receitas, dos embrulhados às fatias gourmet — tudo liberado pra você fazer e vender a semana inteira.</p>
         <div class="pr"><span class="old">R$ 37</span><b>R$ 19,90</b></div>
-        <a class="cta lg" href="/checkout/?plano=completo_oferta">Quero o completo por R$ 19,90</a>
+        <a class="cta lg" href="/checkout/?plano=completo_oferta">Quero todas as receitas por R$ 19,90</a>
         <div><span class="no" id="upNo">Não, quero só o básico por R$ 10</span></div>
       </div>
     </div>

@@ -83,7 +83,7 @@ export async function onRequestPost({ request, env }) {
 
   const order = {
     id: String(data.idTransaction), reference, name, email, phone,
-    plan: sel.plan, bumps: sel.bumps, bonuses: sel.bonuses, amount: sel.amount,
+    plan: sel.plan, recipes: sel.recipes, bumps: sel.bumps, amount: sel.amount,
     createdAt: new Date().toISOString(),
   };
   // Kept for 30 days so a late webhook can still activate the member.
