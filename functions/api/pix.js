@@ -45,6 +45,13 @@ export async function onRequestPost({ request, env }) {
   const sel = priceSelection(body.plan, body.bumps);
   if (!sel) return json({ error: "Selecione um plano válido." }, 400);
 
+  // Marketing attribution (UTMs + fbclid), sanitized.
+  const utm = {};
+  const u = body.utm && typeof body.utm === "object" ? body.utm : {};
+  for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"]) {
+    if (typeof u[k] === "string" && u[k]) utm[k] = u[k].slice(0, 100);
+  }
+
   const name = String(body.name || "").trim().slice(0, 120);
   const email = normEmail(body.email).slice(0, 160);
   const document = digits(body.document); // optional; only validated when provided
@@ -84,6 +91,7 @@ export async function onRequestPost({ request, env }) {
   const order = {
     id: String(data.idTransaction), reference, name, email, phone,
     plan: sel.plan, recipes: sel.recipes, bumps: sel.bumps, amount: sel.amount,
+    utm,
     createdAt: new Date().toISOString(),
   };
   // Kept for 30 days so a late webhook can still activate the member.

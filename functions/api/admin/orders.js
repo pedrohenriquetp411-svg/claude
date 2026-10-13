@@ -23,6 +23,7 @@ export async function onRequestGet({ request, env }) {
         paid: Boolean(o.paid),
         createdAt: o.createdAt,
         paidAt: o.paidAt || null,
+        utm: o.utm || {},
       });
     }
     cursor = page.list_complete ? null : page.cursor;

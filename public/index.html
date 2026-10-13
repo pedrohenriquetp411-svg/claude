@@ -495,6 +495,15 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
 
 <script>
   (function () {
+    // Capture UTMs / fbclid so the order can be attributed to the creative.
+    try {
+      var q = new URLSearchParams(location.search), u = {};
+      ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"].forEach(function (k) { var v = q.get(k); if (v) u[k] = v.slice(0, 100); });
+      if (Object.keys(u).length) localStorage.setItem("ebg_utm", JSON.stringify(u));
+    } catch (e) {}
+  })();
+
+  (function () {
     var t = document.getElementById("navToggle"), n = document.getElementById("nav");
     t.addEventListener("click", function () { n.classList.toggle("open"); });
     n.addEventListener("click", function (e) { if (e.target.tagName === "A") n.classList.remove("open"); });

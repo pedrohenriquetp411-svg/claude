@@ -180,6 +180,15 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   if (!VALID[plan]) plan = "completo";
   var cfg = null, bumps = [];
 
+  // UTM attribution: merge any utms on this URL with what was captured on the landing.
+  var utm = {};
+  try { utm = JSON.parse(localStorage.getItem("ebg_utm") || "{}"); } catch (e) {}
+  try {
+    var q = new URLSearchParams(location.search);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"].forEach(function (k) { var v = q.get(k); if (v) utm[k] = v.slice(0, 100); });
+    if (Object.keys(utm).length) localStorage.setItem("ebg_utm", JSON.stringify(utm));
+  } catch (e) {}
+
   function total() {
     if (!cfg) return 0;
     var t = cfg.plans[plan].amount;
@@ -238,7 +247,7 @@ src="https://www.facebook.com/tr?id=1620128322940014&ev=PageView&noscript=1"
   form.addEventListener("submit", async function (e) {
     e.preventDefault(); err.textContent = "";
     btn.disabled = true; btn.textContent = "Gerando Pix…";
-    var payload = { name: $("name").value, email: $("email").value, plan: plan, bumps: bumps };
+    var payload = { name: $("name").value, email: $("email").value, plan: plan, bumps: bumps, utm: utm };
     try {
       var res = await fetch("/api/pix", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       var data = await res.json();

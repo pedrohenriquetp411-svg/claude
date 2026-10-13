@@ -112,7 +112,7 @@
       <span class="sub" style="margin:0">Pix não pagos somem da lista após 30 dias.</span>
     </div>
     <div class="table-wrap"><table>
-      <thead><tr><th>Data</th><th>Comprador</th><th>Telefone</th><th>Valor</th><th>Status</th><th>ID LofyPay</th></tr></thead>
+      <thead><tr><th>Data</th><th>Comprador</th><th>Origem (criativo)</th><th>Valor</th><th>Status</th><th>ID LofyPay</th></tr></thead>
       <tbody id="ordersBody"></tbody>
     </table></div>
   </section>
@@ -180,12 +180,14 @@
 
   function renderOrders() {
     var q = $("orderSearch").value;
-    var rows = data.orders.filter(function (o) { return match(q, [o.name, o.email, o.id, o.reference]); });
+    var rows = data.orders.filter(function (o) { return match(q, [o.name, o.email, o.id, o.reference, (o.utm || {}).utm_content, (o.utm || {}).utm_campaign]); });
     $("ordersBody").innerHTML = rows.length ? rows.map(function (o) {
       var status = o.test ? "<span class='pill test'>Teste</span>" : o.paid ? "<span class='pill paid'>Pago</span>" : "<span class='pill pending'>Aguardando</span>";
+      var u = o.utm || {};
+      var origem = u.utm_content ? "<b>" + esc(u.utm_content) + "</b>" + (u.utm_campaign ? "<span class='muted'>" + esc(u.utm_campaign) + "</span>" : "") : (u.utm_source ? esc(u.utm_source) : "<span class='muted'>direto</span>");
       return "<tr><td>" + when(o.createdAt) + (o.paidAt ? "<span class='muted'>pago " + when(o.paidAt) + "</span>" : "") + "</td>" +
         "<td><b>" + esc(o.name) + "</b><span class='muted'>" + esc(o.email) + "</span></td>" +
-        "<td>" + esc(o.phone || "—") + "</td><td>" + brl(o.amount) + "</td><td>" + status + "</td>" +
+        "<td>" + origem + "</td><td>" + brl(o.amount) + "</td><td>" + status + "</td>" +
         "<td><span class='muted'>" + esc(o.id) + "</span></td></tr>";
     }).join("") : "<tr><td colspan='6' class='empty'>Nenhum pedido encontrado.</td></tr>";
   }
@@ -241,8 +243,10 @@
   function download(url, name) { var a = document.createElement("a"); a.href = url; a.download = name; a.click(); setTimeout(function () { URL.revokeObjectURL(url); }, 1000); }
   $("exportOrders").onclick = function () {
     download(csv(data.orders, [["data", function (o) { return o.createdAt; }], ["pago_em", function (o) { return o.paidAt || ""; }], ["nome", function (o) { return o.name; }],
-      ["email", function (o) { return o.email; }], ["telefone", function (o) { return o.phone; }], ["valor", function (o) { return o.amount; }],
-      ["status", function (o) { return o.test ? "teste" : o.paid ? "pago" : "aguardando"; }], ["id_lofypay", function (o) { return o.id; }]]), "pedidos.csv");
+      ["email", function (o) { return o.email; }], ["valor", function (o) { return o.amount; }],
+      ["status", function (o) { return o.test ? "teste" : o.paid ? "pago" : "aguardando"; }],
+      ["utm_source", function (o) { return (o.utm || {}).utm_source || ""; }], ["utm_campaign", function (o) { return (o.utm || {}).utm_campaign || ""; }],
+      ["utm_content", function (o) { return (o.utm || {}).utm_content || ""; }], ["id_lofypay", function (o) { return o.id; }]]), "pedidos.csv");
   };
   $("exportMembers").onclick = function () {
     download(csv(data.members, [["nome", function (m) { return m.name; }], ["email", function (m) { return m.email; }], ["telefone", function (m) { return m.phone; }],
