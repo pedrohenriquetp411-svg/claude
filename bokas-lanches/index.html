@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bokas Lanches | Lanchonete em Três Pontas – MG · Drive-thru e entrega</title>
+<meta name="description" content="Bokas Lanches: sanduíche na chapa, omelete caprichado e lanche feito na hora em Três Pontas – MG. Coma no local, passe no drive-thru ou peça com entrega sem contato. Aberto até meia-noite.">
+<meta name="theme-color" content="#17110E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Bokas Lanches">
+<meta property="og:title" content="Bokas Lanches · Abre a boca, Três Pontas.">
+<meta property="og:description" content="Sanduíche na chapa, omelete caprichado e lanche feito na hora. Comer no local, drive-thru e entrega sem contato, até a meia-noite.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%2317110E'/%3E%3Cpath d='M9 22C9 14 15.5 9 24 9s15 5 15 13q0 2-2 2H11q-2 0-2-2Z' fill='%23FFC21A'/%3E%3Crect x='7' y='26' width='34' height='6' rx='3' fill='%23E2332A'/%3E%3Cpath d='M10 34h28q1.5 0 1 1.6C38 39 36 40 33 40H15c-3 0-5-1-6-4.4Q8.5 34 10 34Z' fill='%23FFC21A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Caveat+Brush&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FastFoodRestaurant",
+  "name": "Bokas Lanches",
+  "description": "Lanchonete em Três Pontas – MG com sanduíches na chapa e omeletes. Comer no local, drive-thru e entrega sem contato.",
+  "servesCuisine": ["Lanches", "Sanduíches", "Omeletes"],
+  "telephone": "+55 35 99945-4423",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Sen. Josino de Brito, 380 - Jardim das Oliveiras",
+    "addressLocality": "Três Pontas",
+    "addressRegion": "MG",
+    "postalCode": "37190-000",
+    "addressCountry": "BR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -21.376437, "longitude": -45.513688 },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Bokas%20Lanches%20Tr%C3%AAs%20Pontas"
+}
+</script>
+<style>
+  :root {
+    --char:#17110E; --char-2:#211814; --char-3:#2E231D;
+    --ketchup:#E2332A; --ketchup-d:#BF241C;
+    --mustard:#FFC21A; --mustard-d:#E9A800;
+    --lettuce:#5DBB46;
+    --cream:#FFF3DE; --paper:#FFFAF1; --line:#EBDCC3;
+    --ink:#1E1612; --muted:#6B5D55; --muted-dark:#CBBBA8;
+    --display:"Archivo","Arial Narrow",Impact,system-ui,sans-serif;
+    --body:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --hand:"Caveat Brush","Comic Sans MS",cursive;
+    --radius:22px;
+    --shadow:6px 6px 0 var(--char);
+    color-scheme:light;
+  }
+  *, *::before, *::after { box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; scroll-padding-top:84px; }
+  body { margin:0; font-family:var(--body); font-size:17px; line-height:1.6; color:var(--ink); background:var(--paper); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+  img, svg { display:block; max-width:100%; }
+  a { color:inherit; }
+  h1, h2, h3 { margin:0; font-family:var(--display); font-stretch:74%; font-weight:900; text-transform:uppercase; line-height:.92; letter-spacing:-.005em; }
+  p { margin:0; }
+  :focus-visible { outline:3px solid var(--ketchup); outline-offset:3px; border-radius:6px; }
+  .on-dark :focus-visible { outline-color:var(--mustard); }
+  .wrap { width:100%; max-width:1200px; margin:0 auto; padding-inline:clamp(16px, 4vw, 32px); }
+  .ic { width:20px; height:20px; flex:none; }
+  .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .skip { position:absolute; left:16px; top:-60px; z-index:100; background:var(--mustard); color:var(--char); font-weight:800; padding:10px 16px; border-radius:10px; text-decoration:none; }
+  .skip:focus { top:12px; }
+
+  /* Buttons */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; font:inherit; font-weight:800; font-size:16px; line-height:1;
+         padding:17px 24px; border-radius:999px; border:2px solid var(--char); cursor:pointer; text-decoration:none; white-space:nowrap;
+         transition:transform .15s ease, box-shadow .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease; }
+  .btn .ic { width:20px; height:20px; }
+  .btn-primary { background:var(--mustard); color:var(--char); box-shadow:4px 4px 0 var(--char); }
+  .btn-primary:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--char); }
+  .btn-primary:active { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--char); }
+  .on-dark .btn-primary { border-color:var(--mustard); box-shadow:4px 4px 0 var(--ketchup); }
+  .on-dark .btn-primary:hover { box-shadow:6px 6px 0 var(--ketchup); }
+  .on-dark .btn-primary:active { box-shadow:1px 1px 0 var(--ketchup); }
+  .btn-ghost { background:transparent; color:var(--cream); border-color:rgba(255,243,222,.4); }
+  .btn-ghost:hover { border-color:var(--cream); background:rgba(255,243,222,.08); }
+  .btn-outline { background:transparent; color:var(--char); }
+  .btn-outline:hover { background:var(--char); color:var(--cream); }
+  .btn-dark { background:var(--char); color:var(--cream); box-shadow:4px 4px 0 var(--ketchup); }
+  .btn-dark:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ketchup); }
+  .btn-sm { padding:12px 18px; font-size:15px; }
+
+  /* Header */
+  .site-header { position:sticky; top:0; z-index:50; background:rgba(23,17,14,.93); -webkit-backdrop-filter:blur(10px) saturate(1.2); backdrop-filter:blur(10px) saturate(1.2); border-bottom:1px solid rgba(255,243,222,.08); }
+  .site-header .wrap { display:flex; align-items:center; justify-content:space-between; gap:20px; height:72px; }
+  .brand { display:inline-flex; align-items:center; gap:12px; color:var(--cream); text-decoration:none; }
+  .brand-mark { width:44px; height:44px; flex:none; }
+  .brand-name { display:flex; flex-direction:column; line-height:1; }
+  .brand-name b { font-family:var(--display); font-stretch:74%; font-weight:900; font-size:28px; letter-spacing:.015em; }
+  .brand-name small { font-weight:700; font-size:10.5px; letter-spacing:.36em; color:var(--mustard); margin-top:3px; }
+  .nav { display:flex; align-items:center; gap:28px; }
+  .nav a { color:var(--muted-dark); font-weight:600; font-size:15px; text-decoration:none; transition:color .15s; }
+  .nav a:hover { color:var(--cream); }
+
+  /* Hero */
+  .hero { position:relative; isolation:isolate; overflow:hidden; background:var(--char); color:var(--cream); }
+  .hero::before { content:""; position:absolute; inset:0; z-index:-2;
+                  background:radial-gradient(55% 65% at 78% 46%, rgba(226,51,42,.42), transparent 70%),
+                             radial-gradient(40% 50% at 0% 100%, rgba(255,194,26,.10), transparent 70%); }
+  .hero::after { content:""; position:absolute; inset:0; z-index:-1; background-image:radial-gradient(rgba(255,243,222,.10) 1.3px, transparent 1.7px); background-size:20px 20px;
+                 -webkit-mask-image:linear-gradient(to bottom, #000, transparent 85%); mask-image:linear-gradient(to bottom, #000, transparent 85%); }
+  .hero-grid { display:grid; grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr); gap:40px; align-items:center; padding-top:64px; padding-bottom:104px; }
+  .eyebrow { display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--mustard);
+             padding:8px 14px; border:1.5px solid rgba(255,194,26,.45); border-radius:999px; }
+  .eyebrow .dot { width:8px; height:8px; border-radius:50%; background:var(--ketchup); box-shadow:0 0 0 4px rgba(226,51,42,.28); }
+  .hero h1 { font-size:clamp(50px, 7.4vw, 98px); line-height:.98; margin:24px 0; }
+  .hero h1 .line { display:block; }
+  .hero h1 em { position:relative; font-style:normal; color:var(--mustard); white-space:nowrap; }
+  .hero h1 em::after { content:""; position:absolute; left:2%; right:2%; bottom:-.02em; height:.12em;
+                       background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 8'%3E%3Cpath d='M0 4Q5 0 10 4T20 4T30 4T40 4' fill='none' stroke='%23E2332A' stroke-width='3'/%3E%3C/svg%3E") repeat-x 0 0/auto 100%; }
+  .hero-lead { font-size:clamp(17px, 1.55vw, 20px); color:var(--muted-dark); max-width:34em; margin-bottom:32px; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:14px; }
+  .hero-facts { display:flex; flex-wrap:wrap; gap:12px 26px; list-style:none; margin:36px 0 0; padding:0; font-weight:600; font-size:15px; }
+  .hero-facts li { display:flex; align-items:center; gap:9px; }
+  .hero-facts .ic { color:var(--mustard); }
+
+  .hero-art { position:relative; width:100%; max-width:540px; margin-inline:auto; aspect-ratio:1 / 1; }
+  .burst { position:absolute; inset:-6%; border-radius:50%;
+           background:repeating-conic-gradient(from 0deg, rgba(255,194,26,.16) 0 7deg, transparent 7deg 20deg);
+           -webkit-mask-image:radial-gradient(circle, #000 28%, transparent 68%); mask-image:radial-gradient(circle, #000 28%, transparent 68%);
+           animation:spin 80s linear infinite; }
+  .plate { position:absolute; inset:6%; border-radius:50%; background:var(--ketchup); box-shadow:inset 0 -18px 0 rgba(0,0,0,.14);
+           outline:2px dashed rgba(255,194,26,.55); outline-offset:14px; }
+  .burger-wrap { position:absolute; left:10%; right:10%; top:25%; animation:bob 5s ease-in-out infinite; }
+  .burger-wrap .burger { width:100%; height:auto; filter:drop-shadow(0 26px 30px rgba(0,0,0,.45)); }
+  .steam { position:absolute; left:50%; top:-18%; width:34%; transform:translateX(-50%); }
+  .steam path { fill:none; stroke:rgba(255,243,222,.55); stroke-width:5; stroke-linecap:round; opacity:0; transform-box:fill-box; animation:steam 3.4s ease-in-out infinite; }
+  .steam path:nth-child(2) { animation-delay:1.1s; }
+  .steam path:nth-child(3) { animation-delay:2.2s; }
+  .sticker { position:absolute; top:3%; right:-1%; width:clamp(100px, 27%, 142px); filter:drop-shadow(4px 4px 0 var(--char)); }
+  .sticker .ring { transform-origin:70px 70px; animation:spin 22s linear infinite; }
+  .sticker text { font-family:var(--display); font-stretch:80%; font-weight:900; font-size:13px; letter-spacing:2.4px; fill:var(--char); }
+  .hand-note { position:absolute; top:7%; left:0; display:flex; flex-direction:column; align-items:flex-start; font-family:var(--hand); font-size:clamp(20px, 2.2vw, 27px); line-height:1; color:var(--mustard); transform:rotate(-9deg); }
+  .hand-note svg { width:64px; height:auto; margin:6px 0 0 44px; color:var(--mustard); }
+  .night-card { position:absolute; left:-2%; bottom:5%; display:flex; align-items:center; gap:12px; max-width:260px; padding:12px 16px 12px 12px;
+                background:var(--paper); color:var(--ink); border:2px solid var(--char); border-radius:16px; box-shadow:5px 5px 0 var(--mustard); transform:rotate(-3deg); }
+  .night-card .badge { width:44px; height:44px; flex:none; border-radius:12px; background:var(--char); color:var(--mustard); display:grid; place-items:center; }
+  .night-card .badge .ic { width:22px; height:22px; }
+  .night-card b { display:block; font-size:15px; line-height:1.2; }
+  .night-card span { display:block; font-size:14px; line-height:1.3; color:var(--muted); }
+
+  /* Marquee band */
+  .band-wrap { position:relative; z-index:2; overflow:hidden; padding:26px 0; background:linear-gradient(to bottom, var(--char) 50%, var(--paper) 50%); }
+  .band { width:104%; margin-left:-2%; transform:rotate(-2deg); background:var(--ketchup); border-block:3px solid var(--char); overflow:hidden; }
+  .band-track { display:flex; width:max-content; animation:marquee 34s linear infinite; }
+  .band-track span { display:flex; align-items:center; gap:28px; padding:14px 28px 14px 0; font-family:var(--display); font-stretch:74%; font-weight:900; text-transform:uppercase;
+                     font-size:clamp(22px, 2.8vw, 34px); line-height:1; color:var(--cream); white-space:nowrap; }
+  .band-track span::after { content:""; width:12px; height:12px; border-radius:50%; background:var(--mustard); box-shadow:0 0 0 3px var(--char); }
+
+  /* Sections */
+  .sec { padding:clamp(72px, 10vw, 120px) 0; }
+  .sec-head { max-width:720px; margin-bottom:52px; }
+  .kicker { display:inline-flex; align-items:center; gap:10px; font-weight:800; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--ketchup); margin-bottom:16px; }
+  .kicker::before { content:""; width:24px; height:3px; border-radius:2px; background:currentColor; }
+  .sec h2 { font-size:clamp(42px, 6vw, 74px); }
+  .sec-head p { font-size:18px; color:var(--muted); margin-top:18px; max-width:36em; }
+
+  .grid3 { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:28px; }
+
+  /* Services */
+  .svc { position:relative; background:#fff; border:2px solid var(--char); border-radius:var(--radius); padding:30px 28px 32px; box-shadow:var(--shadow); transition:transform .2s ease, box-shadow .2s ease; }
+  .svc:hover { transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--char); }
+  .svc-ic { width:64px; height:64px; border-radius:18px; background:var(--mustard); color:var(--char); border:2px solid var(--char); display:grid; place-items:center; margin-bottom:22px; }
+  .svc-ic .ic { width:30px; height:30px; }
+  .svc:nth-child(2) .svc-ic { background:var(--ketchup); color:#fff; }
+  .svc:nth-child(3) .svc-ic { background:var(--lettuce); }
+  .svc .num { position:absolute; top:20px; right:24px; font-family:var(--display); font-stretch:74%; font-weight:900; font-size:48px; line-height:1; color:var(--line); }
+  .svc h3 { font-size:30px; margin-bottom:12px; }
+  .svc p { color:var(--muted); }
+
+  /* Menu */
+  .menu { background:var(--cream); }
+  .checker { height:22px; background:repeating-conic-gradient(var(--ketchup) 0 25%, var(--paper) 0 50%) 0 0 / 22px 22px; border-block:2px solid var(--char); }
+  .dish { display:flex; flex-direction:column; background:var(--paper); border:2px solid var(--char); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .2s ease, box-shadow .2s ease; }
+  .dish:hover { transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--char); }
+  .dish-art { position:relative; isolation:isolate; aspect-ratio:16 / 10; display:grid; place-items:center; border-bottom:2px solid var(--char); overflow:hidden; }
+  .dish-art::before { content:""; position:absolute; inset:0; z-index:-1; background-image:radial-gradient(rgba(255,255,255,.14) 1.3px, transparent 1.7px); background-size:16px 16px; }
+  .dish-art svg { width:68%; height:auto; transition:transform .35s ease; }
+  .dish:hover .dish-art svg { transform:scale(1.05) rotate(-2deg); }
+  .art-char { background:var(--char); }
+  .art-ketchup { background:var(--ketchup); }
+  .art-mustard { background:var(--mustard); }
+  .art-mustard::before { background-image:radial-gradient(rgba(23,17,14,.12) 1.3px, transparent 1.7px); }
+  .dish-body { padding:24px 26px 28px; }
+  .tag { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:6px 11px; border-radius:999px; background:var(--char); color:var(--mustard); margin-bottom:14px; }
+  .dish h3 { font-size:32px; margin-bottom:10px; }
+  .dish p { color:var(--muted); }
+  .menu-cta { margin-top:44px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:22px 32px; padding:28px 32px; border-radius:24px; background:var(--char); color:var(--cream); }
+  .menu-cta p { font-size:19px; font-weight:600; max-width:32em; }
+  .menu-cta p b { color:var(--mustard); }
+
+  /* Reviews */
+  .reviews { background:var(--mustard); }
+  .reviews .kicker { color:var(--char); }
+  .reviews-grid { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:56px; align-items:center; }
+  .reviews-intro .lead { font-size:18px; color:#3B2D23; margin-top:18px; max-width:30em; }
+  .rating { display:flex; align-items:center; gap:18px; width:fit-content; margin:30px 0 30px; padding:16px 22px; background:var(--paper); border:2px solid var(--char); border-radius:18px; box-shadow:5px 5px 0 var(--char); }
+  .rating strong { font-family:var(--display); font-stretch:74%; font-weight:900; font-size:58px; line-height:.85; }
+  .rating small { display:block; font-size:14px; color:var(--muted); margin-top:5px; }
+  .stars { display:flex; gap:3px; }
+  .stars svg { width:20px; height:20px; fill:var(--mustard); stroke:var(--char); stroke-width:1.6; stroke-linejoin:round; }
+  .stars .off { fill:transparent; }
+  .quotes { display:grid; gap:26px; }
+  .quote { position:relative; margin:0; padding:30px 30px 26px; background:var(--paper); border:2px solid var(--char); border-radius:24px; box-shadow:6px 6px 0 var(--char); }
+  .quote blockquote { margin:14px 0 20px; font-size:19px; line-height:1.5; font-weight:500; }
+  .quote.big { background:var(--char); color:var(--cream); box-shadow:6px 6px 0 var(--ketchup); }
+  .quote.big blockquote { font-family:var(--display); font-stretch:76%; font-weight:900; text-transform:uppercase; font-size:clamp(30px, 3.4vw, 44px); line-height:.98; margin-top:4px; }
+  .quote .qmark { position:absolute; top:-24px; right:26px; width:52px; height:52px; border-radius:50%; background:var(--ketchup); color:#fff; border:2px solid var(--char); display:grid; place-items:center; }
+  .quote .qmark .ic { width:24px; height:24px; }
+  .quote figcaption { display:flex; align-items:center; gap:12px; font-size:14px; color:var(--muted); }
+  .quote.big figcaption { color:var(--muted-dark); }
+  .quote figcaption b { display:block; color:var(--ink); font-size:15px; }
+  .avatar { width:42px; height:42px; flex:none; border-radius:50%; background:var(--ketchup); color:#fff; font-weight:800; display:grid; place-items:center; border:2px solid var(--char); }
+  .g-badge { width:42px; height:42px; flex:none; border-radius:50%; background:var(--mustard); color:var(--char); display:grid; place-items:center; font-weight:900; font-size:18px; }
+
+  /* How to order */
+  .how { background:var(--char); color:var(--cream); }
+  .how .kicker { color:var(--mustard); }
+  .how .sec-head p { color:var(--muted-dark); }
+  .steps { position:relative; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:28px; list-style:none; margin:0; padding:0; }
+  .step { position:relative; padding:30px 28px 32px; background:var(--char-2); border:1.5px solid rgba(255,243,222,.12); border-radius:var(--radius); }
+  .step:not(:last-child)::after { content:""; position:absolute; z-index:1; top:50%; right:-28px; width:40px; height:40px; margin:-20px -6px 0 0; border-radius:50%;
+                                  background:var(--mustard) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317110E' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/20px no-repeat;
+                                  border:2px solid var(--char); }
+  .step-n { display:block; font-family:var(--display); font-stretch:74%; font-weight:900; font-size:66px; line-height:1; color:var(--mustard); margin-bottom:12px; }
+  .step h3 { font-size:28px; margin-bottom:10px; }
+  .step p { color:var(--muted-dark); }
+  .how-actions { display:flex; flex-wrap:wrap; align-items:center; gap:16px 24px; margin-top:48px; }
+  .how-actions .alt { color:var(--muted-dark); font-weight:500; }
+  .how-actions .alt a { color:var(--cream); font-weight:700; text-decoration:none; border-bottom:2px solid var(--mustard); }
+
+  /* Visit */
+  .visit-grid { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:48px; align-items:stretch; }
+  .info-list { list-style:none; margin:32px 0 34px; padding:0; display:grid; gap:22px; }
+  .info-list li { display:grid; grid-template-columns:52px 1fr; gap:16px; align-items:start; }
+  .info-ic { width:52px; height:52px; border-radius:16px; background:var(--cream); border:2px solid var(--char); display:grid; place-items:center; }
+  .info-ic .ic { width:24px; height:24px; }
+  .info-list b { display:block; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ketchup); margin-bottom:4px; }
+  .info-list div > span { display:block; font-size:17px; font-weight:600; line-height:1.45; }
+  .info-list small { display:block; font-size:15px; color:var(--muted); margin-top:2px; }
+  .info-list a { text-decoration:none; }
+  .info-list a:hover { text-decoration:underline; text-decoration-color:var(--ketchup); text-underline-offset:3px; }
+  .visit-actions { display:flex; flex-wrap:wrap; gap:14px; }
+  .map { position:relative; min-height:460px; border:2px solid var(--char); border-radius:26px; overflow:hidden; box-shadow:var(--shadow);
+         background:var(--cream) repeating-linear-gradient(45deg, transparent 0 18px, rgba(23,17,14,.04) 18px 19px); }
+  .map iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .map-fallback { position:absolute; inset:0; display:grid; place-items:center; text-align:center; padding:24px; color:var(--muted); font-weight:600; }
+
+  /* Final CTA */
+  .cta-final { position:relative; isolation:isolate; overflow:hidden; background:var(--ketchup); color:var(--cream); text-align:center; }
+  .cta-final::before { content:""; position:absolute; inset:0; z-index:-1; background-image:radial-gradient(rgba(23,17,14,.16) 1.4px, transparent 1.8px); background-size:18px 18px; }
+  .cta-final h2 { font-size:clamp(58px, 10vw, 136px); }
+  .cta-final h2 span { color:var(--mustard); -webkit-text-stroke:0; }
+  .cta-final p { font-size:20px; max-width:30em; margin:20px auto 36px; color:#FFE8E2; }
+  .cta-final .hero-actions { justify-content:center; }
+  .cta-final .btn-primary { border-color:var(--char); box-shadow:5px 5px 0 var(--char); }
+  .cta-final .btn-primary:hover { box-shadow:7px 7px 0 var(--char); }
+  .cta-final .btn-ghost { border-color:rgba(255,243,222,.6); }
+  .cta-final :focus-visible { outline-color:var(--mustard); }
+
+  /* Footer */
+  .footer { background:var(--char); color:var(--muted-dark); font-size:15px; padding:68px 0 32px; }
+  .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:36px; }
+  .footer .brand { margin-bottom:18px; }
+  .footer p { max-width:28em; }
+  .footer h4 { margin:0 0 14px; color:var(--cream); font-size:13px; letter-spacing:.16em; text-transform:uppercase; }
+  .footer ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; }
+  .footer a { text-decoration:none; transition:color .15s; }
+  .footer a:hover { color:var(--cream); }
+  .footer-bottom { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; margin-top:52px; padding-top:24px; border-top:1px solid rgba(255,243,222,.1); font-size:13.5px; }
+
+  /* Mobile action bar */
+  .mobile-bar { display:none; }
+
+  /* Reveal on scroll */
+  .js .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity:1; transform:none; }
+  .grid3 > .reveal:nth-child(2), .steps > .reveal:nth-child(2) { transition-delay:.1s; }
+  .grid3 > .reveal:nth-child(3), .steps > .reveal:nth-child(3) { transition-delay:.2s; }
+
+  @keyframes spin { to { transform:rotate(360deg); } }
+  @keyframes bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+  @keyframes marquee { to { transform:translateX(-50%); } }
+  @keyframes steam { 0% { opacity:0; transform:translateY(14px); } 35% { opacity:1; } 100% { opacity:0; transform:translateY(-22px); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    *, *::before, *::after { animation:none !important; transition:none !important; }
+    .js .reveal { opacity:1; transform:none; }
+    .steam path { opacity:.5; }
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .footer-grid > :first-child { grid-column:1 / -1; }
+  }
+  @media (max-width: 920px) {
+    .nav { display:none; }
+    .hero-grid { grid-template-columns:1fr; gap:24px; padding-top:44px; padding-bottom:80px; }
+    .hero-art { max-width:440px; }
+    .hero h1 { font-size:clamp(46px, 14vw, 96px); }
+    .grid3, .steps { grid-template-columns:1fr; gap:24px; }
+    .grid3 { max-width:560px; margin-inline:auto; }
+    .steps { max-width:560px; }
+    .step:not(:last-child)::after { top:auto; bottom:-31px; right:50%; margin:0 -20px 0 0; transform:rotate(90deg); }
+    .reviews-grid, .visit-grid { grid-template-columns:1fr; gap:44px; }
+    .map { min-height:360px; }
+  }
+  @media (max-width: 760px) {
+    body { padding-bottom:84px; }
+    .header-cta { display:none; }
+    .site-header .wrap { height:64px; }
+    .mobile-bar { position:fixed; left:0; right:0; bottom:0; z-index:60; display:grid; grid-template-columns:1fr auto; gap:10px;
+                  padding:10px 16px calc(10px + env(safe-area-inset-bottom)); background:rgba(23,17,14,.96); border-top:1px solid rgba(255,243,222,.1);
+                  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+    .mobile-bar .btn { padding:15px 18px; }
+    .mobile-bar .btn-primary { box-shadow:3px 3px 0 var(--ketchup); }
+    .menu-cta { padding:26px 22px; }
+    .menu-cta .btn { width:100%; }
+    .footer-grid { grid-template-columns:1fr; }
+  }
+  @media (max-width: 480px) {
+    body { font-size:16px; }
+    .hero-actions .btn { width:100%; }
+    .hero-facts { gap:10px 18px; font-size:14px; }
+    .hand-note { display:none; }
+    .night-card { left:0; bottom:0; max-width:230px; padding:10px 12px 10px 10px; }
+    .night-card .badge { width:38px; height:38px; }
+    .night-card b { font-size:14px; }
+    .night-card span { font-size:13px; }
+    .svc, .step { padding:26px 22px 28px; }
+    .quote { padding:28px 22px 22px; }
+    .rating { gap:14px; padding:14px 18px; }
+    .rating strong { font-size:50px; }
+    .visit-actions .btn { flex:1 1 100%; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- Ícones e ilustrações reutilizados na página -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="bunTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7BF68"/><stop offset="1" stop-color="#D7832F"/></linearGradient>
+    <linearGradient id="bunLow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9A04B"/><stop offset="1" stop-color="#C2732A"/></linearGradient>
+  </defs>
+  <symbol id="burger" viewBox="0 0 400 340">
+    <ellipse cx="200" cy="328" rx="150" ry="10" fill="#000" opacity=".22"/>
+    <path d="M46 282H354Q366 282 363 296Q356 322 326 324H74Q44 322 37 296Q34 282 46 282Z" fill="url(#bunLow)"/>
+    <rect x="34" y="236" width="332" height="50" rx="25" fill="#5B2C17"/>
+    <g fill="#3F1E0E"><circle cx="70" cy="272" r="3.5"/><circle cx="118" cy="279" r="3"/><circle cx="158" cy="270" r="3.5"/><circle cx="214" cy="279" r="3"/><circle cx="252" cy="268" r="3.5"/><circle cx="306" cy="277" r="3"/><circle cx="340" cy="266" r="3"/></g>
+    <path d="M40 228H360L352 244H300L292 270Q288 280 284 270L276 244H190L182 262Q178 270 174 262L166 244H112L104 276Q100 286 96 276L88 244H48Z" fill="#FFC21A"/>
+    <rect x="48" y="210" width="304" height="24" rx="12" fill="#E2332A"/>
+    <rect x="66" y="215" width="110" height="5" rx="2.5" fill="#fff" opacity=".28"/>
+    <path d="M28 196H372Q382 206 368 214Q356 226 342 214Q328 228 312 214Q296 228 280 214Q264 228 248 214Q232 228 216 214Q200 228 184 214Q168 228 152 214Q136 228 120 214Q104 228 88 214Q72 228 58 214Q44 226 32 214Q18 206 28 196Z" fill="#5DBB46"/>
+    <path d="M48 204Q30 204 33 186C44 102 112 46 200 46C288 46 356 102 367 186Q370 204 352 204Z" fill="url(#bunTop)"/>
+    <path d="M88 132C104 96 142 72 182 66" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="10" stroke-linecap="round"/>
+    <g fill="#FFF3DE">
+      <ellipse cx="150" cy="96" rx="7" ry="3.6" transform="rotate(-28 150 96)"/>
+      <ellipse cx="198" cy="80" rx="7" ry="3.6" transform="rotate(-6 198 80)"/>
+      <ellipse cx="246" cy="90" rx="7" ry="3.6" transform="rotate(18 246 90)"/>
+      <ellipse cx="290" cy="114" rx="7" ry="3.6" transform="rotate(32 290 114)"/>
+      <ellipse cx="124" cy="138" rx="7" ry="3.6" transform="rotate(-34 124 138)"/>
+      <ellipse cx="172" cy="122" rx="7" ry="3.6" transform="rotate(-12 172 122)"/>
+      <ellipse cx="222" cy="116" rx="7" ry="3.6" transform="rotate(8 222 116)"/>
+      <ellipse cx="268" cy="136" rx="7" ry="3.6" transform="rotate(24 268 136)"/>
+      <ellipse cx="316" cy="152" rx="7" ry="3.6" transform="rotate(36 316 152)"/>
+      <ellipse cx="146" cy="166" rx="7" ry="3.6" transform="rotate(-20 146 166)"/>
+      <ellipse cx="200" cy="154" rx="7" ry="3.6"/>
+      <ellipse cx="252" cy="168" rx="7" ry="3.6" transform="rotate(16 252 168)"/>
+      <ellipse cx="96" cy="172" rx="7" ry="3.6" transform="rotate(-38 96 172)"/>
+    </g>
+  </symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 22 2l-9 19-2-8-8-2Z"/></g></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></g></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></g></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></g></symbol>
+  <symbol id="i-utensils" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></g></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5Z"/></g></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.95 6.55.92-4.75 4.6 1.15 6.5L12 17.5l-5.85 3.07 1.15-6.5-4.75-4.6 6.55-.92Z"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path fill="currentColor" d="M10 5.5C6.4 6.7 4 9.7 4 13.6V19h6.2v-6.2H7.1c.2-2.2 1.6-3.9 3.7-4.8L10 5.5Zm10 0c-3.6 1.2-6 4.2-6 8.1V19h6.2v-6.2h-3.1c.2-2.2 1.6-3.9 3.7-4.8L20 5.5Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g></symbol>
+  <symbol id="brand-mark" viewBox="0 0 48 48">
+    <mask id="bite"><rect width="48" height="48" fill="#fff"/><circle cx="43" cy="7" r="6.5" fill="#000"/><circle cx="47.5" cy="16" r="5" fill="#000"/><circle cx="35" cy="2" r="4.5" fill="#000"/></mask>
+    <g mask="url(#bite)">
+      <path d="M7 21C7 12.5 14.5 7 24 7s17 5.5 17 14q0 2-2 2H9q-2 0-2-2Z" fill="#FFC21A"/>
+      <rect x="5" y="26" width="38" height="6" rx="3" fill="#E2332A"/>
+      <path d="M8 35h32q1.4 0 1 1.5C40 40 37.5 41 34 41H14c-3.5 0-6-1-7-4.5Q6.6 35 8 35Z" fill="#FFC21A"/>
+      <g fill="#17110E"><ellipse cx="18" cy="14" rx="1.6" ry="1"/><ellipse cx="24.5" cy="12" rx="1.6" ry="1"/><ellipse cx="30" cy="15" rx="1.6" ry="1"/></g>
+    </g>
+  </symbol>
+</svg>
+
+<header class="site-header on-dark">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="Bokas Lanches – início">
+      <svg class="brand-mark" aria-hidden="true"><use href="#brand-mark"/></svg>
+      <span class="brand-name"><b>BOKAS</b><small>LANCHES</small></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#servicos">Do seu jeito</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#como-pedir">Como pedir</a>
+      <a href="#onde-estamos">Onde estamos</a>
+    </nav>
+    <a class="btn btn-primary btn-sm header-cta" href="https://wa.me/5535999454423?text=Ol%C3%A1%2C%20Bokas%20Lanches!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">
+      <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Pedir agora
+    </a>
+  </div>
+</header>
+
+<main id="conteudo">
+  <!-- HERO -->
+  <section class="hero on-dark" id="topo">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Lanchonete · Três Pontas – MG</span>
+        <h1><span class="line">Abre a <em>boca</em>,</span> <span class="line">Três Pontas.</span></h1>
+        <p class="hero-lead">Sanduíche na chapa, omelete caprichado e lanche feito na hora, do jeito que mata a fome de verdade. Coma aqui, passe no drive-thru ou receba em casa com entrega sem contato.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/5535999454423?text=Ol%C3%A1%2C%20Bokas%20Lanches!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">
+            <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Pedir pelo WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="#onde-estamos">
+            <svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Como chegar
+          </a>
+        </div>
+        <ul class="hero-facts">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>Aberto até 00h</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg>Drive-thru</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg>Entrega sem contato</li>
+        </ul>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="burst"></div>
+        <div class="plate"></div>
+        <div class="burger-wrap">
+          <svg class="steam" viewBox="0 0 120 80"><path d="M24 76c-10-14 10-22 0-38s8-22 2-34"/><path d="M60 76c-10-14 10-22 0-38s8-22 2-34"/><path d="M96 76c-10-14 10-22 0-38s8-22 2-34"/></svg>
+          <svg class="burger" viewBox="0 0 400 340"><use href="#burger"/></svg>
+        </div>
+        <svg class="sticker" viewBox="0 0 140 140">
+          <defs><path id="sticker-circle" d="M70 70m-51 0a51 51 0 1 1 102 0a51 51 0 1 1-102 0"/></defs>
+          <circle cx="70" cy="70" r="67" fill="#FFC21A" stroke="#17110E" stroke-width="3"/>
+          <g class="ring"><text><textPath href="#sticker-circle">FEITO NA HORA • BOKAS LANCHES •</textPath></text></g>
+          <circle cx="70" cy="70" r="31" fill="#E2332A" stroke="#17110E" stroke-width="3"/>
+          <svg x="52" y="52" width="36" height="36" style="color:#FFF3DE"><use href="#i-flame"/></svg>
+        </svg>
+        <div class="hand-note">
+          saindo da chapa!
+          <svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4c8 22 26 32 52 34"/><path d="M44 28l12 10-14 4"/></svg>
+        </div>
+        <div class="night-card">
+          <span class="badge"><svg class="ic"><use href="#i-moon"/></svg></span>
+          <span><b>Fome de madrugada?</b><span>A chapa fica ligada até 00h.</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band-wrap" aria-hidden="true">
+    <div class="band">
+      <div class="band-track">
+        <span>Sanduíche na chapa</span><span>Omelete caprichado</span><span>Drive-thru</span><span>Entrega sem contato</span><span>Aberto até meia-noite</span><span>Feito na hora</span>
+        <span>Sanduíche na chapa</span><span>Omelete caprichado</span><span>Drive-thru</span><span>Entrega sem contato</span><span>Aberto até meia-noite</span><span>Feito na hora</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section class="sec" id="servicos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Do seu jeito</span>
+        <h2>Do balcão até o seu sofá.</h2>
+        <p>Comer aqui, pegar no carro ou receber em casa: no Bokas, o lanche chega até você do jeito que for mais prático.</p>
+      </div>
+      <div class="grid3">
+        <article class="svc reveal">
+          <span class="num" aria-hidden="true">01</span>
+          <div class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></div>
+          <h3>Comer no local</h3>
+          <p>Puxa a cadeira e come quentinho, saindo da chapa. Lugar simples e sem frescura, do jeito que lanchonete raiz tem que ser.</p>
+        </article>
+        <article class="svc reveal">
+          <span class="num" aria-hidden="true">02</span>
+          <div class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg></div>
+          <h3>Drive-thru</h3>
+          <p>Tá com pressa? Passa de carro, pega o lanche e segue o caminho, sem nem precisar descer.</p>
+        </article>
+        <article class="svc reveal">
+          <span class="num" aria-hidden="true">03</span>
+          <div class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg></div>
+          <h3>Entrega sem contato</h3>
+          <p>Pediu pelo WhatsApp, chegou na sua porta. Entrega sem contato, prática e segura, com o lanche no ponto.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDÁPIO -->
+  <div class="checker" aria-hidden="true"></div>
+  <section class="sec menu" id="cardapio">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Cardápio</span>
+        <h2>O que sai da nossa chapa.</h2>
+        <p>Os clássicos que fizeram a fama da casa, preparados na hora do seu pedido.</p>
+      </div>
+      <!-- Para listar itens com preço, copie um bloco .dish e troque título, texto e etiqueta. -->
+      <div class="grid3">
+        <article class="dish reveal">
+          <div class="dish-art art-char" aria-hidden="true"><svg viewBox="0 0 400 340"><use href="#burger"/></svg></div>
+          <div class="dish-body">
+            <span class="tag">Carro-chefe</span>
+            <h3>Sanduíches</h3>
+            <p>Pão macio, chapa bem quente e recheio caprichado. É o lanche que cliente chama de “o melhor da cidade”.</p>
+          </div>
+        </article>
+        <article class="dish reveal">
+          <div class="dish-art art-ketchup" aria-hidden="true">
+            <svg viewBox="0 0 200 140">
+              <ellipse cx="96" cy="128" rx="62" ry="6" fill="#000" opacity=".18"/>
+              <rect x="134" y="66" width="62" height="14" rx="7" fill="#17110E"/>
+              <circle cx="90" cy="72" r="54" fill="#2B211C" stroke="#17110E" stroke-width="4"/>
+              <circle cx="90" cy="72" r="44" fill="#3A2E28"/>
+              <path d="M52 84C52 60 68 46 90 46s38 14 38 38Q90 96 52 84Z" fill="#FFC21A" stroke="#E9A800" stroke-width="2"/>
+              <path d="M58 82Q90 92 122 82" fill="none" stroke="#E9A800" stroke-width="3" stroke-linecap="round"/>
+              <g fill="#E9A800" opacity=".75"><ellipse cx="78" cy="62" rx="7" ry="4"/><ellipse cx="104" cy="58" rx="5" ry="3"/><ellipse cx="96" cy="74" rx="6" ry="3.5"/></g>
+              <g fill="#5DBB46"><rect x="68" y="54" width="7" height="3" rx="1.5" transform="rotate(-30 71 55)"/><rect x="110" y="68" width="7" height="3" rx="1.5" transform="rotate(20 113 69)"/><rect x="86" y="50" width="6" height="3" rx="1.5" transform="rotate(10 89 51)"/><rect x="74" y="74" width="6" height="3" rx="1.5" transform="rotate(-15 77 75)"/></g>
+              <g fill="#E2332A"><circle cx="92" cy="64" r="3.2"/><circle cx="114" cy="76" r="2.8"/><circle cx="66" cy="70" r="2.8"/></g>
+              <path d="M74 30c-5-6 5-10 0-17M96 28c-5-6 5-10 0-17" fill="none" stroke="#FFF3DE" stroke-opacity=".6" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="dish-body">
+            <span class="tag">Elogiado</span>
+            <h3>Omeletes</h3>
+            <p>Feito na hora, bem recheado e servido quentinho. Pra quem quer matar a fome com sustância.</p>
+          </div>
+        </article>
+        <article class="dish reveal">
+          <div class="dish-art art-mustard" aria-hidden="true">
+            <svg viewBox="0 0 200 140">
+              <ellipse cx="100" cy="132" rx="34" ry="5" fill="#000" opacity=".16"/>
+              <rect x="104" y="2" width="9" height="42" rx="3" fill="#17110E" transform="rotate(14 108 40)"/>
+              <rect x="106.5" y="4" width="4" height="40" rx="2" fill="#FFF3DE" opacity=".35" transform="rotate(14 108 40)"/>
+              <path d="M70 40H130L121 130H79Z" fill="#E2332A" stroke="#17110E" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M74 72H126L123.3 100H76.7Z" fill="#FFF3DE" stroke="#17110E" stroke-width="3" stroke-linejoin="round"/>
+              <text x="100" y="92" text-anchor="middle" font-family="Archivo, Arial Narrow, sans-serif" font-weight="900" font-size="15" letter-spacing="1" fill="#17110E" style="font-stretch:74%">BOKAS</text>
+              <rect x="62" y="30" width="76" height="13" rx="6.5" fill="#FFF3DE" stroke="#17110E" stroke-width="3"/>
+              <g fill="#FFF3DE" opacity=".8"><circle cx="86" cy="54" r="2.5"/><circle cx="112" cy="58" r="2"/><circle cx="92" cy="114" r="2"/><circle cx="110" cy="112" r="2.5"/></g>
+              <g fill="none" stroke="#17110E" stroke-width="3" stroke-linecap="round" opacity=".55"><path d="M40 60l8 4M38 78h10M40 96l8-4M160 60l-8 4M162 78h-10M160 96l-8-4"/></g>
+            </svg>
+          </div>
+          <div class="dish-body">
+            <span class="tag">Pra acompanhar</span>
+            <h3>Bebidas geladas</h3>
+            <p>Uma bebida trincando de gelada pra fechar o pedido do jeito certo.</p>
+          </div>
+        </article>
+      </div>
+      <div class="menu-cta on-dark reveal">
+        <p>Quer ver o <b>cardápio completo</b>, com todas as opções e os preços atualizados? É só chamar a gente no WhatsApp.</p>
+        <a class="btn btn-primary" href="https://wa.me/5535999454423?text=Ol%C3%A1%2C%20Bokas%20Lanches!%20Pode%20me%20mandar%20o%20card%C3%A1pio%20de%20hoje%3F" target="_blank" rel="noopener">
+          <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Ver cardápio no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVALIAÇÕES -->
+  <section class="sec reviews" id="avaliacoes">
+    <div class="wrap reviews-grid">
+      <div class="reviews-intro reveal">
+        <span class="kicker">Avaliações</span>
+        <h2>Quem prova, volta.</h2>
+        <p class="lead">A gente deixa os clientes falarem. Sanduíche caprichado, omelete de respeito e rapidez no pedido estão entre os elogios no Google.</p>
+        <div class="rating">
+          <strong>4,0</strong>
+          <div>
+            <div class="stars" role="img" aria-label="Nota 4 de 5 estrelas">
+              <svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg class="off" aria-hidden="true"><use href="#i-star"/></svg>
+            </div>
+            <small>13 avaliações no Google</small>
+          </div>
+        </div>
+        <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Bokas%20Lanches%20Tr%C3%AAs%20Pontas" target="_blank" rel="noopener">
+          Ver avaliações no Google<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+      <div class="quotes">
+        <figure class="quote big reveal">
+          <span class="qmark" aria-hidden="true"><svg class="ic"><use href="#i-quote"/></svg></span>
+          <blockquote>“Melhor sanduíche da cidade… muito rápido.”</blockquote>
+          <figcaption><span class="g-badge" aria-hidden="true">G</span><span><b style="color:var(--cream)">Destaque das avaliações</b>Resumo de avaliações no Google</span></figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <div class="stars" role="img" aria-label="5 de 5 estrelas">
+            <svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg>
+          </div>
+          <blockquote>“Sanduíche e omelete excepcional, atendimento excepcional ao cliente e agilidade na entrega. […] Só compro lá, melhor da cidade!”</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">L</span><span><b>Leandro F. O.</b>Avaliação no Google</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO PEDIR -->
+  <section class="sec how on-dark" id="como-pedir">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Como pedir</span>
+        <h2>Pedir é rapidinho.</h2>
+        <p>Em três passos o seu lanche já está saindo da chapa.</p>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">01</span>
+          <h3>Chama no WhatsApp</h3>
+          <p>Manda um “oi” pro (35) 99945-4423 e peça o cardápio do dia.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">02</span>
+          <h3>Escolhe o lanche</h3>
+          <p>Monte o seu pedido e diga como prefere receber: entrega, drive-thru ou na mesa.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">03</span>
+          <h3>É só abrir a boca</h3>
+          <p>O lanche é preparado na hora e chega quentinho até você.</p>
+        </li>
+      </ol>
+      <div class="how-actions reveal">
+        <a class="btn btn-primary" href="https://wa.me/5535999454423?text=Ol%C3%A1%2C%20Bokas%20Lanches!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">
+          <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Fazer meu pedido
+        </a>
+        <span class="alt">ou ligue: <a href="tel:+5535999454423">(35) 99945-4423</a></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONDE ESTAMOS -->
+  <section class="sec" id="onde-estamos">
+    <div class="wrap visit-grid">
+      <div class="reveal">
+        <span class="kicker">Onde estamos</span>
+        <h2>Vem pro Bokas.</h2>
+        <ul class="info-list">
+          <li>
+            <span class="info-ic"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span>
+            <div><b>Endereço</b><span>Av. Sen. Josino de Brito, 380<br>Jardim das Oliveiras, Três Pontas – MG</span><small>CEP 37190-000 · Plus Code JFFP+CG</small></div>
+          </li>
+          <li>
+            <!-- Quando tiver o horário completo (dias e abertura), atualize aqui e no rodapé. -->
+            <span class="info-ic"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <div><b>Funcionamento</b><span>Aberto até 00h</span><small>A chapa fica ligada até a meia-noite.</small></div>
+          </li>
+          <li>
+            <span class="info-ic"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <div><b>Telefone e WhatsApp</b><span><a href="tel:+5535999454423">(35) 99945-4423</a></span><small>Pedidos, dúvidas e cardápio do dia.</small></div>
+          </li>
+          <li>
+            <span class="info-ic"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg></span>
+            <div><b>Serviços</b><span>Comer no local · Drive-thru · Entrega sem contato</span></div>
+          </li>
+        </ul>
+        <div class="visit-actions">
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bokas%20Lanches%2C%20Av.%20Sen.%20Josino%20de%20Brito%2C%20380%20-%20Jardim%20das%20Oliveiras%2C%20Tr%C3%AAs%20Pontas%20-%20MG%2C%2037190-000" target="_blank" rel="noopener">
+            <svg class="ic" aria-hidden="true"><use href="#i-nav"/></svg>Traçar rota
+          </a>
+          <a class="btn btn-outline" href="tel:+5535999454423"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Ligar agora</a>
+        </div>
+      </div>
+      <div class="map reveal">
+        <div class="map-fallback">Av. Sen. Josino de Brito, 380 · Três Pontas – MG</div>
+        <iframe title="Mapa com a localização do Bokas Lanches em Três Pontas – MG" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+          src="https://maps.google.com/maps?q=Bokas%20Lanches%2C%20Av.%20Sen.%20Josino%20de%20Brito%2C%20380%20-%20Jardim%20das%20Oliveiras%2C%20Tr%C3%AAs%20Pontas%20-%20MG%2C%2037190-000&amp;z=16&amp;output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="sec cta-final">
+    <div class="wrap reveal">
+      <h2>Bateu a <span>fome?</span></h2>
+      <p>A chapa tá quente e o seu lanche sai rapidinho. Faça seu pedido agora mesmo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/5535999454423?text=Ol%C3%A1%2C%20Bokas%20Lanches!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">
+          <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Pedir pelo WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="tel:+5535999454423"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>(35) 99945-4423</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer on-dark">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#topo" aria-label="Bokas Lanches – voltar ao topo">
+          <svg class="brand-mark" aria-hidden="true"><use href="#brand-mark"/></svg>
+          <span class="brand-name"><b>BOKAS</b><small>LANCHES</small></span>
+        </a>
+        <p>Lanchonete em Três Pontas – MG. Sanduíche na chapa, omelete e lanche feito na hora, para comer aqui, levar pelo drive-thru ou receber em casa.</p>
+      </div>
+      <div>
+        <h4>Visite</h4>
+        <ul>
+          <li>Av. Sen. Josino de Brito, 380</li>
+          <li>Jardim das Oliveiras</li>
+          <li>Três Pontas – MG, 37190-000</li>
+          <li>Aberto até 00h</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Peça</h4>
+        <ul>
+          <li><a href="https://wa.me/5535999454423?text=Ol%C3%A1%2C%20Bokas%20Lanches!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="tel:+5535999454423">(35) 99945-4423</a></li>
+          <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bokas%20Lanches%2C%20Av.%20Sen.%20Josino%20de%20Brito%2C%20380%20-%20Jardim%20das%20Oliveiras%2C%20Tr%C3%AAs%20Pontas%20-%20MG%2C%2037190-000" target="_blank" rel="noopener">Traçar rota</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Navegue</h4>
+        <ul>
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#servicos">Do seu jeito</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#onde-estamos">Onde estamos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="ano">2026</span> Bokas Lanches. Todos os direitos reservados.</span>
+      <span>Feito com fome em Três Pontas – MG</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-bar on-dark">
+  <a class="btn btn-primary" href="https://wa.me/5535999454423?text=Ol%C3%A1%2C%20Bokas%20Lanches!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">
+    <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Pedir pelo WhatsApp
+  </a>
+  <a class="btn btn-ghost" href="tel:+5535999454423" aria-label="Ligar para o Bokas Lanches"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Ligar</a>
+</div>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || reduce) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>
