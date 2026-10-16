@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Buteco da Esquina | Cerveja gelada e petisco em Três Pontas</title>
 <meta name="description" content="Buteco da Esquina em Três Pontas (MG): cerveja trincando, petiscos e boa prosa de quarta a sábado, das 17h às 23h. Delivery pelo WhatsApp.">
-<meta property="og:title" content="Buteco da Esquina 🍻">
+<meta property="og:title" content="Buteco da Esquina">
 <meta property="og:description" content="Cerveja trincando e petisco de quarta a sábado, das 17h às 23h, em Três Pontas (MG). Delivery pelo WhatsApp.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#123d2c">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍻</text></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23f2b705'/%3E%3Cg fill='none' stroke='%23123d2c' stroke-width='2' stroke-linejoin='round' stroke-linecap='round' transform='translate(1.5 0.5) scale(.85)'%3E%3Cpath d='M5 8h10v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8Z'/%3E%3Cpath d='M15 11h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2'/%3E%3Cpath d='M5 8a2.5 2.5 0 0 1 2.5-4.5 3 3 0 0 1 5 0A2.5 2.5 0 0 1 15 8'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Caveat:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
@@ -51,7 +51,8 @@
   .topbar { position:sticky; top:0; z-index:20; background:rgba(18,61,44,.94); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:var(--creme); border-bottom:3px solid var(--cerveja); }
   .topbar .wrap { display:flex; align-items:center; justify-content:space-between; gap:16px; height:64px; }
   .logo { display:flex; align-items:center; gap:10px; text-decoration:none; font-family:var(--display); font-size:1.25rem; white-space:nowrap; }
-  .logo .mug { font-size:1.5rem; }
+  .logo .mark { width:38px; height:38px; border-radius:50%; background:var(--cerveja); color:var(--verde); display:grid; place-items:center; flex:none; border:2px solid var(--espuma); }
+  .logo .mark svg { width:24px; height:24px; }
   .nav { display:flex; gap:22px; font-weight:500; font-size:.95rem; }
   .nav a { text-decoration:none; opacity:.85; }
   .nav a:hover { opacity:1; color:var(--cerveja-2); }
@@ -75,18 +76,19 @@
   .hero-meta div { display:flex; align-items:center; gap:8px; }
   .hero-meta svg { width:18px; height:18px; color:var(--cerveja); }
 
-  .glass-scene { position:relative; justify-self:center; width:min(360px, 100%); }
-  .glass-scene svg { display:block; width:100%; height:auto; filter:drop-shadow(0 24px 30px rgba(0,0,0,.35)); }
-  .bubble { animation:rise 3.2s linear infinite; }
-  .bubble:nth-child(2){animation-delay:.6s} .bubble:nth-child(3){animation-delay:1.3s} .bubble:nth-child(4){animation-delay:2s} .bubble:nth-child(5){animation-delay:2.6s} .bubble:nth-child(6){animation-delay:1.7s}
-  @keyframes rise { 0%{transform:translateY(0);opacity:0} 15%{opacity:.9} 100%{transform:translateY(-190px);opacity:0} }
-  .sticker { position:absolute; right:-6px; top:8%; background:var(--tinto); color:var(--espuma); font-family:var(--display); font-size:1rem; line-height:1.05; text-align:center; width:108px; height:108px; border-radius:50%; display:grid; place-items:center; transform:rotate(12deg); border:3px dashed rgba(255,248,231,.6); box-shadow:0 8px 20px rgba(0,0,0,.3); }
+  .hero-photos { position:relative; justify-self:center; width:min(480px, 100%); aspect-ratio:1/1.08; }
+  .photo { position:absolute; margin:0; background:var(--espuma); padding:10px 10px 12px; border-radius:6px; box-shadow:0 18px 34px rgba(0,0,0,.4); }
+  .photo img { display:block; width:100%; height:100%; object-fit:cover; border-radius:3px; }
+  .photo-main { left:14%; top:0; width:70%; height:90%; transform:rotate(3deg); }
+  .photo-a { left:0; bottom:0; width:44%; height:34%; transform:rotate(-7deg); }
+  .photo-b { right:0; top:30%; width:40%; height:30%; transform:rotate(6deg); }
+  .sticker { position:absolute; right:-4px; top:-14px; z-index:2; background:var(--tinto); color:var(--espuma); font-family:var(--display); font-size:1rem; line-height:1.05; text-align:center; width:108px; height:108px; border-radius:50%; display:grid; place-items:center; transform:rotate(12deg); border:3px dashed rgba(255,248,231,.6); box-shadow:0 8px 20px rgba(0,0,0,.3); }
   @media (max-width: 860px) {
-    .hero .wrap { grid-template-columns:1fr; padding:48px 0 80px; text-align:left; }
-    .glass-scene { width:min(260px, 80%); order:-1; }
-    .sticker { width:88px; height:88px; font-size:.85rem; right:-10px; }
+    .hero .wrap { grid-template-columns:1fr; padding:40px 0 80px; text-align:left; }
+    .hero-photos { width:min(340px, 92%); order:-1; margin-bottom:8px; }
+    .sticker { width:84px; height:84px; font-size:.8rem; right:-6px; }
   }
-  @media (prefers-reduced-motion: reduce) { .bubble, .dot.open { animation:none; } html { scroll-behavior:auto; } }
+  @media (prefers-reduced-motion: reduce) { .dot.open { animation:none; } html { scroll-behavior:auto; } }
 
   /* Faixa de azulejo */
   .azulejo { height:44px; background-color:#f4f1ea; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' fill='%23f4f1ea'/%3E%3Cpath d='M22 4 L28 16 L40 22 L28 28 L22 40 L16 28 L4 22 L16 16Z' fill='%231f4e8c'/%3E%3Ccircle cx='22' cy='22' r='4.5' fill='%23f4f1ea'/%3E%3Cpath d='M0 0h8L0 8zM44 0h-8l8 8zM0 44h8l-8-8zM44 44h-8l8-8z' fill='%231f4e8c'/%3E%3C/svg%3E"); background-size:44px 44px; border-block:3px solid var(--azulejo); }
@@ -101,7 +103,8 @@
   .cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; margin-top:44px; }
   .card { background:#fffaf0; border:2px solid var(--tinta); border-radius:var(--radius); padding:28px 24px; box-shadow:6px 6px 0 var(--tinta); transition:transform .15s ease, box-shadow .15s ease; }
   .card:hover { transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--tinta); }
-  .card .ico { width:64px; height:64px; border-radius:16px; display:grid; place-items:center; font-size:2rem; margin-bottom:18px; border:2px solid var(--tinta); }
+  .card .ico { width:64px; height:64px; border-radius:16px; display:grid; place-items:center; margin-bottom:18px; border:2px solid var(--tinta); color:var(--tinta); }
+  .card .ico svg { width:34px; height:34px; }
   .card:nth-child(1) .ico { background:var(--cerveja); }
   .card:nth-child(2) .ico { background:#f08a4b; }
   .card:nth-child(3) .ico { background:#7cc49a; }
@@ -127,7 +130,6 @@
 
   /* Delivery */
   .sec-delivery { background:var(--tinto); color:var(--espuma); position:relative; overflow:hidden; }
-  .sec-delivery::after { content:"🍺"; position:absolute; right:-20px; bottom:-40px; font-size:260px; opacity:.12; transform:rotate(-14deg); pointer-events:none; }
   .delivery { display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; position:relative; z-index:1; }
   .sec-delivery .eyebrow { color:var(--cerveja-2); }
   .sec-delivery .sec-title { color:var(--espuma); }
@@ -135,7 +137,10 @@
   .steps { list-style:none; margin:30px 0 0; padding:0; display:grid; gap:14px; }
   .steps li { display:flex; gap:14px; align-items:flex-start; font-size:1.05rem; }
   .steps b { flex:none; width:34px; height:34px; border-radius:50%; background:var(--cerveja); color:var(--tinta); display:grid; place-items:center; font-family:var(--display); font-weight:400; }
-  .phone-card { background:var(--espuma); color:var(--tinta); border-radius:var(--radius); padding:30px 26px; text-align:center; box-shadow:8px 8px 0 var(--tinto-d); border:2px solid var(--tinta); }
+  .delivery-side { position:relative; }
+  .delivery-photo { margin:0 0 -48px 24px; background:var(--espuma); padding:10px; border-radius:6px; transform:rotate(3deg); box-shadow:0 16px 30px rgba(0,0,0,.35); }
+  .delivery-photo img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; border-radius:3px; }
+  .phone-card { position:relative; background:var(--espuma); color:var(--tinta); border-radius:var(--radius); padding:30px 26px; text-align:center; box-shadow:8px 8px 0 var(--tinto-d); border:2px solid var(--tinta); }
   .phone-card .num { font-family:var(--display); font-size:clamp(1.5rem, 3.4vw, 2rem); color:var(--verde); margin:6px 0 20px; letter-spacing:.5px; }
   .phone-card small { display:block; color:var(--muted); margin-top:14px; }
   @media (max-width: 860px) { .delivery { grid-template-columns:1fr; } }
@@ -170,6 +175,8 @@
   footer a { text-decoration:none; }
   footer a:hover { color:var(--cerveja-2); }
   .legal { width:100%; border-top:1px solid rgba(246,236,217,.15); padding-top:20px; margin-top:6px; font-size:.85rem; text-align:center; }
+  .credits { width:100%; margin:0; font-size:.75rem; text-align:center; opacity:.6; }
+  .credits a { text-decoration:underline; }
   .legal strong { color:var(--cerveja-2); font-weight:700; }
   @media (min-width: 821px) { footer { padding-bottom:44px; } }
 
@@ -186,12 +193,14 @@
   <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5a7 7 0 1 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
   <symbol id="i-bike" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M15 6h2l3 11M5.5 17 9 9h6l-4 8h-5.5M9 9 8 6H6"/></g></symbol>
+  <symbol id="i-mug" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M5 8h10v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8Z"/><path d="M15 11h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"/><path d="M5 8a2.5 2.5 0 0 1 2.5-4.5 3 3 0 0 1 5 0A2.5 2.5 0 0 1 15 8"/><path d="M8.5 12v5M11.5 12v5"/></g></symbol>
+  <symbol id="i-fries" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M5 10h14l-2 11H7L5 10Z"/><path d="M8 10V4M11 10V3M14 10V4M17 10V6"/><path d="M5 10c2 2 5 2 7 0 2 2 5 2 7 0"/></g></symbol>
   <symbol id="i-insta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
 </svg>
 
 <header class="topbar">
   <div class="wrap">
-    <a href="#topo" class="logo"><span class="mug" aria-hidden="true">🍻</span> Buteco da Esquina</a>
+    <a href="#topo" class="logo"><span class="mark" aria-hidden="true"><svg><use href="#i-mug"/></svg></span> Buteco da Esquina</a>
     <nav class="nav" aria-label="Seções">
       <a href="#o-que-tem">O que tem</a>
       <a href="#horario">Horário</a>
@@ -220,40 +229,11 @@
         </div>
       </div>
 
-      <div class="glass-scene" aria-hidden="true">
-        <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="beer" x1="0" x2="1">
-              <stop offset="0" stop-color="#e09a00"/><stop offset=".45" stop-color="#ffc21a"/><stop offset="1" stop-color="#d48a00"/>
-            </linearGradient>
-            <clipPath id="cup"><path d="M62 92 L238 92 L218 352 Q216 362 206 362 L94 362 Q84 362 82 352 Z"/></clipPath>
-          </defs>
-          <!-- copo americano -->
-          <g clip-path="url(#cup)">
-            <rect x="40" y="120" width="220" height="250" fill="url(#beer)"/>
-            <g fill="#fff8e7" opacity=".85">
-              <circle class="bubble" cx="110" cy="345" r="4"/>
-              <circle class="bubble" cx="150" cy="350" r="3"/>
-              <circle class="bubble" cx="185" cy="340" r="4.5"/>
-              <circle class="bubble" cx="130" cy="352" r="2.5"/>
-              <circle class="bubble" cx="170" cy="355" r="3"/>
-              <circle class="bubble" cx="200" cy="350" r="2.5"/>
-            </g>
-            <!-- facetas do copo americano -->
-            <g stroke="#fff" stroke-opacity=".28" stroke-width="5">
-              <path d="M88 92 L104 362"/><path d="M118 92 L126 362"/><path d="M150 92 L150 362"/><path d="M182 92 L174 362"/><path d="M212 92 L196 362"/>
-            </g>
-          </g>
-          <!-- espuma -->
-          <path d="M56 128 Q56 86 92 90 Q100 58 134 68 Q150 44 176 64 Q206 54 214 86 Q248 84 246 120 Q248 140 226 138 L74 138 Q54 140 56 128 Z" fill="#fff8e7"/>
-          <path d="M80 132 Q96 124 112 132 Q128 124 144 132 Q160 124 176 132 Q192 124 208 132 Q222 126 232 132" fill="none" stroke="#f0e2bf" stroke-width="4" stroke-linecap="round"/>
-          <!-- contorno do copo -->
-          <path d="M62 92 L238 92 L218 352 Q216 362 206 362 L94 362 Q84 362 82 352 Z" fill="none" stroke="#fff8e7" stroke-opacity=".7" stroke-width="5" stroke-linejoin="round"/>
-          <path d="M70 160 L84 330" stroke="#fff" stroke-opacity=".55" stroke-width="8" stroke-linecap="round"/>
-          <!-- gotinhas -->
-          <g fill="#fff8e7" opacity=".7"><ellipse cx="228" cy="200" rx="3" ry="5"/><ellipse cx="222" cy="260" rx="2.5" ry="4"/><ellipse cx="76" cy="240" rx="2.5" ry="4"/></g>
-        </svg>
-        <div class="sticker">Trincando<br>desde<br>sempre</div>
+      <div class="hero-photos">
+        <figure class="photo photo-main"><img src="img/copo-americano.webp" width="760" height="1014" alt="Copo americano de cerveja gelada ao lado de uma porção de petiscos na mesa do bar" fetchpriority="high"></figure>
+        <figure class="photo photo-a"><img src="img/bolinho-bacalhau.webp" width="900" height="675" alt="Bolinhos fritos crocantes servidos como petisco" loading="lazy"></figure>
+        <figure class="photo photo-b"><img src="img/batata-frita.webp" width="800" height="637" alt="Porção de batata frita sobre toalha xadrez" loading="lazy"></figure>
+        <div class="sticker" aria-hidden="true">Trincando<br>desde<br>sempre</div>
       </div>
     </div>
   </section>
@@ -267,17 +247,17 @@
       <p class="sec-sub">Sem frescura: mesa na calçada, copo americano suando e a turma reunida.</p>
       <div class="cards">
         <article class="card">
-          <div class="ico" aria-hidden="true">🍺</div>
+          <div class="ico" aria-hidden="true"><svg><use href="#i-mug"/></svg></div>
           <h3>Cerveja trincando</h3>
           <p>Garrafa estupidamente gelada, do jeito que mineiro gosta. Pediu, chegou suando na mesa.</p>
         </article>
         <article class="card">
-          <div class="ico" aria-hidden="true">🍟</div>
+          <div class="ico" aria-hidden="true"><svg><use href="#i-fries"/></svg></div>
           <h3>Petiscos & porções</h3>
           <p>Porção caprichada pra dividir com a mesa toda e pedir mais uma rodada.</p>
         </article>
         <article class="card">
-          <div class="ico" aria-hidden="true">🛵</div>
+          <div class="ico" aria-hidden="true"><svg><use href="#i-bike"/></svg></div>
           <h3>Delivery</h3>
           <p>Não deu pra sair de casa? Chama no WhatsApp que o buteco vai até você.</p>
         </article>
@@ -304,7 +284,7 @@
           <li data-day="5"><span class="d">Sexta</span><span>17h – 23h</span></li>
           <li data-day="6"><span class="d">Sábado</span><span>17h – 23h</span></li>
         </ul>
-        <p class="foot">♥ cerveja gelada todo dia aberto ♥</p>
+        <p class="foot">~ cerveja gelada todo dia aberto ~</p>
       </div>
     </div>
   </section>
@@ -321,11 +301,14 @@
           <li><b>3</b><span>Recebe tudo gelado e quentinho em casa. Saúde!</span></li>
         </ol>
       </div>
+      <div class="delivery-side">
+      <figure class="delivery-photo"><img src="img/pastel.webp" width="1000" height="750" alt="Pastel frito sequinho, recheado de queijo" loading="lazy"></figure>
       <div class="phone-card">
         <svg aria-hidden="true" width="44" height="44" style="color:#25d366"><use href="#i-zap"/></svg>
         <div class="num">(35) 98815-6759</div>
         <a class="btn btn-zap js-zap" href="https://wa.me/5535988156759" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-zap"/></svg>Fazer meu pedido</a>
         <small>Pedidos de quarta a sábado, das 17h às 23h.</small>
+      </div>
       </div>
     </div>
   </section>
@@ -364,13 +347,14 @@
 <footer>
   <div class="wrap">
     <div>
-      <a href="#topo" class="logo"><span class="mug" aria-hidden="true">🍻</span> Buteco da Esquina</a>
+      <a href="#topo" class="logo"><span class="mark" aria-hidden="true"><svg><use href="#i-mug"/></svg></span> Buteco da Esquina</a>
       <p style="margin:10px 0 0">Av. Senador Josino de Brito, 380 · Três Pontas – MG</p>
     </div>
     <div>
       <p style="margin:0">Qua a Sáb · 17h às 23h</p>
       <p style="margin:6px 0 0"><a href="https://wa.me/5535988156759" target="_blank" rel="noopener">WhatsApp (35) 98815-6759</a> · <a href="https://www.instagram.com/butecodaesquinatp/" target="_blank" rel="noopener">Instagram</a></p>
     </div>
+    <p class="credits">Fotos ilustrativas (Wikimedia Commons): <a href="https://commons.wikimedia.org/wiki/File:A_typical_night_of_Football_ritual_and_beer_in_the_American_glass_cup.jpg" target="_blank" rel="noopener">Meanders2001</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Bolinhos_de_bacalhau.jpg" target="_blank" rel="noopener">Eduardo P</a>, CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Pub_fries_with_ketchup_2021_001.jpg" target="_blank" rel="noopener">Adam S. Keck</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Brazilian_pastel.jpg" target="_blank" rel="noopener">BuenosAiresPhotographer</a>, CC BY-SA 2.0</p>
     <p class="legal"><strong>Beba com moderação.</strong> Se beber, não dirija. Venda proibida para menores de 18 anos.</p>
   </div>
 </footer>
@@ -380,7 +364,7 @@
 <script>
   (function () {
     var PHONE = "5535988156759";
-    var MSG = "Olá, Buteco da Esquina! Quero fazer um pedido 🍻";
+    var MSG = "Olá, Buteco da Esquina! Quero fazer um pedido!";
     var OPEN_DAYS = [3, 4, 5, 6]; // quarta a sábado
     var OPEN_H = 17, CLOSE_H = 23;
 

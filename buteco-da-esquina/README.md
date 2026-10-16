@@ -10,3 +10,18 @@ Para mudar telefone ou horário, edite o `<script>` no fim do `index.html` (`PHO
 e os textos correspondentes na página.
 
 Para publicar: crie um projeto no Cloudflare Pages com diretório de saída `buteco-da-esquina`.
+
+## Fotos
+
+As fotos em `img/` são ilustrativas, tiradas do Wikimedia Commons com licença CC BY-SA, e os créditos estão no
+rodapé da página. Quando tiver fotos do próprio bar (do Instagram, por exemplo), substitua os arquivos mantendo os
+mesmos nomes e remova a linha de créditos (`<p class="credits">`) do rodapé.
+
+| Arquivo | Autor | Licença |
+| --- | --- | --- |
+| `copo-americano.webp` | [Meanders2001](https://commons.wikimedia.org/wiki/File:A_typical_night_of_Football_ritual_and_beer_in_the_American_glass_cup.jpg) | CC BY-SA 4.0 |
+| `bolinho-bacalhau.webp` | [Eduardo P](https://commons.wikimedia.org/wiki/File:Bolinhos_de_bacalhau.jpg) | CC BY-SA 3.0 |
+| `batata-frita.webp` | [Adam S. Keck](https://commons.wikimedia.org/wiki/File:Pub_fries_with_ketchup_2021_001.jpg) | CC BY-SA 4.0 |
+| `pastel.webp` | [BuenosAiresPhotographer](https://commons.wikimedia.org/wiki/File:Brazilian_pastel.jpg) | CC BY-SA 2.0 |
+
+Ícones e logo são SVG embutidos no `index.html` (nenhum emoji).
