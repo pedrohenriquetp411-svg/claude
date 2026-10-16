@@ -9,7 +9,12 @@ quarta a sábado, 17h às 23h; WhatsApp/delivery (35) 98815-6759.
 Para mudar telefone ou horário, edite o `<script>` no fim do `index.html` (`PHONE`, `OPEN_DAYS`, `OPEN_H`, `CLOSE_H`)
 e os textos correspondentes na página.
 
-Para publicar: crie um projeto no Cloudflare Pages com diretório de saída `buteco-da-esquina`.
+## No ar
+
+Publicado em **https://buteco-da-esquina.pedrohenriquetp411.workers.dev** como o Worker `buteco-da-esquina` no
+Cloudflare. O Worker traz a página e as imagens embutidas no próprio código. Por isso, depois de editar arquivos
+aqui é preciso publicar de novo, porque o deploy não é automático pelo GitHub. Para usar um domínio próprio,
+adicione uma rota ou um custom domain a esse Worker no painel da Cloudflare.
 
 ## Fotos
 
