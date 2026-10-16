@@ -11,10 +11,10 @@ e os textos correspondentes na página.
 
 ## No ar
 
-Publicado em **https://buteco-da-esquina.pedrohenriquetp411.workers.dev** como o Worker `buteco-da-esquina` no
+Publicado em **https://butecodaesquina.site** (e `www.`; também em https://buteco-da-esquina.pedrohenriquetp411.workers.dev) como o Worker `buteco-da-esquina` no
 Cloudflare. O Worker traz a página e as imagens embutidas no próprio código. Por isso, depois de editar arquivos
-aqui é preciso publicar de novo, porque o deploy não é automático pelo GitHub. Para usar um domínio próprio,
-adicione uma rota ou um custom domain a esse Worker no painel da Cloudflare.
+aqui é preciso publicar de novo, porque o deploy não é automático pelo GitHub. O DNS do domínio é gerenciado pela
+Cloudflare (nameservers trocados na Hostinger), e o domínio está ligado ao Worker como custom domain.
 
 ## Fotos
 
