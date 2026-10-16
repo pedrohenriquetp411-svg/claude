@@ -5,6 +5,16 @@ Três Pontas – MG). É um único arquivo, `index.html`, sem build e sem depend
 navegador e pode ser publicado em qualquer hospedagem estática (Hostinger, Cloudflare Pages, Netlify,
 GitHub Pages…). Basta enviar o arquivo como `index.html` na raiz do site.
 
+## Publicação
+
+No ar em **https://bokas-lanches.pages.dev**: projeto Cloudflare Pages `bokas-lanches`, na mesma conta
+do site de bolos e separado dele.
+
+- **Atualizar:** depois de editar o `index.html`, rode
+  `npx wrangler pages deploy bokas-lanches --project-name bokas-lanches --branch main`
+  ou, no painel, vá em Workers & Pages → bokas-lanches → Create deployment e envie a pasta.
+- **Domínio próprio:** Workers & Pages → bokas-lanches → Custom domains.
+
 ## O que tem na página
 
 - **Hero** com chamada, botão de pedido no WhatsApp e "Como chegar".
