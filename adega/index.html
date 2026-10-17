@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adega Restaurante &amp; Choperia · Desde 1977 · Três Pontas – MG</title>
+  <meta name="description" content="Adega Restaurante & Choperia, desde 1977 no Centro de Três Pontas (MG). Almoço todos os dias das 11h às 14h. Ambiente perfeito para você e sua família. (35) 3265-4161 | (35) 99875-4994.">
+  <meta name="theme-color" content="#1c1a17">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="restaurant">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Adega Restaurante & Choperia · Desde 1977">
+  <meta property="og:description" content="Almoço todos os dias das 11h às 14h, no Centro de Três Pontas – MG. Adega, sua melhor opção!">
+  <meta property="og:image" content="img/buffet-quente.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Manrope:wght@400;500;600;700&family=Oswald:wght@500;600&family=Rye&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Adega Restaurante & Choperia",
+    "alternateName": "Adega Restaurante",
+    "slogan": "Adega, sua melhor opção!",
+    "foundingDate": "1977",
+    "servesCuisine": ["Brasileira", "Comida caseira"],
+    "telephone": "+55-35-3265-4161",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Praça Presidente Vargas, 62 – Centro",
+      "addressLocality": "Três Pontas",
+      "addressRegion": "MG",
+      "postalCode": "37190-000",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:00",
+      "closes": "14:00"
+    }],
+    "sameAs": ["https://www.instagram.com/adegarestauranteoficial/"],
+    "image": "img/buffet-quente.jpg"
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #161411;
+      --board: #1e1c19;
+      --board-2: #282521;
+      --line-dark: rgba(246, 239, 226, .12);
+      --cream: #f6efe2;
+      --paper: #fbf7ef;
+      --paper-2: #f1e8d8;
+      --line-light: #e2d6c1;
+      --text: #2b241c;
+      --text-soft: #6b5e4e;
+      --text-on-dark: #f3ece0;
+      --muted-on-dark: #b8ae9f;
+      --amber: #e3a43a;
+      --amber-deep: #b87a17;
+      --brick: #a23e26;
+      --whatsapp: #1fa855;
+      --radius: 14px;
+      --shadow: 0 18px 40px -18px rgba(22, 20, 17, .45);
+      --wrap: 1160px;
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --condensed: "Oswald", "Arial Narrow", sans-serif;
+      --western: "Rye", "Fraunces", Georgia, serif;
+      --chalk: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    figure { margin: 0; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--serif); line-height: 1.12; margin: 0; letter-spacing: -.01em; }
+    p { margin: 0; }
+    :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+
+    .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+    .eyebrow {
+      font-family: var(--condensed);
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: var(--amber-deep);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+    .dark .eyebrow { color: var(--amber); }
+
+    .section { padding: 88px 0; }
+    @media (min-width: 900px) { .section { padding: 120px 0; } }
+    .section-title { font-size: clamp(32px, 4.4vw, 52px); font-weight: 700; margin-top: 14px; }
+    .lead { font-size: 19px; color: var(--text-soft); max-width: 620px; margin-top: 18px; }
+    .dark { background: var(--board) var(--chalk); color: var(--text-on-dark); }
+    .dark .lead { color: var(--muted-on-dark); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 15px 26px; border-radius: 999px;
+      font-family: var(--sans); font-weight: 700; font-size: 16px; text-decoration: none;
+      border: 2px solid transparent; cursor: pointer;
+      transition: transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn svg { width: 20px; height: 20px; flex: none; }
+    .btn-primary { background: var(--amber); color: #1d160a; }
+    .btn-primary:hover { background: #efb553; }
+    .btn-ghost { border-color: rgba(246, 239, 226, .35); color: var(--text-on-dark); }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+    .btn-dark { background: var(--ink); color: var(--cream); }
+    .btn-dark:hover { background: #2d2925; }
+
+    /* Header */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      transition: background-color .3s ease, box-shadow .3s ease, padding .3s ease;
+      padding: 18px 0;
+    }
+    .site-header.scrolled {
+      background: rgba(22, 20, 17, .92);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 var(--line-dark);
+      padding: 10px 0;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-on-dark); }
+    .brand svg { width: 46px; height: 46px; flex: none; }
+    .brand-name { font-family: var(--western); font-size: 22px; letter-spacing: .04em; line-height: 1; }
+    .brand-sub { display: block; font-family: var(--condensed); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted-on-dark); margin-top: 4px; }
+    .nav-links { display: none; list-style: none; margin: 0; padding: 0; gap: 30px; }
+    .nav-links a { color: var(--text-on-dark); text-decoration: none; font-weight: 600; font-size: 15px; opacity: .85; transition: opacity .2s, color .2s; }
+    .nav-links a:hover { opacity: 1; color: var(--amber); }
+    .nav-cta { display: none; }
+    @media (min-width: 960px) {
+      .nav-links { display: flex; }
+      .nav-cta { display: inline-flex; padding: 11px 20px; font-size: 15px; }
+    }
+    .menu-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px; border-radius: 12px;
+      background: rgba(246, 239, 226, .08); border: 1px solid var(--line-dark); color: var(--text-on-dark);
+      cursor: pointer;
+    }
+    .menu-toggle svg { width: 22px; height: 22px; }
+    @media (min-width: 960px) { .menu-toggle { display: none; } }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 49;
+      background: var(--board) var(--chalk);
+      padding: 110px 24px 40px;
+      flex-direction: column; gap: 6px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a:not(.btn) {
+      color: var(--text-on-dark); text-decoration: none;
+      font-family: var(--serif); font-size: 30px; font-weight: 700;
+      padding: 12px 0; border-bottom: 1px solid var(--line-dark);
+    }
+    .mobile-menu .btn { margin-top: 28px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: radial-gradient(1200px 600px at 78% 40%, rgba(227, 164, 58, .14), transparent 60%), var(--board) var(--chalk);
+      color: var(--text-on-dark);
+      padding: 130px 0 72px;
+      overflow: hidden;
+    }
+    @media (min-width: 900px) { .hero { padding: 170px 0 110px; } }
+    .hero-grid { display: grid; gap: 56px; align-items: center; }
+    @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.1fr .9fr; } }
+    .hero h1 { font-size: clamp(46px, 7.6vw, 92px); font-weight: 800; margin-top: 18px; }
+    .hero h1 em { font-style: italic; color: var(--amber); font-weight: 700; }
+    .hero .lead { font-size: clamp(18px, 2vw, 21px); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .hero-facts {
+      display: grid; gap: 14px; margin-top: 46px; padding-top: 28px;
+      border-top: 1px solid var(--line-dark);
+    }
+    @media (min-width: 620px) { .hero-facts { grid-template-columns: repeat(3, 1fr); } }
+    .fact { display: flex; gap: 12px; align-items: flex-start; }
+    .fact svg { width: 22px; height: 22px; color: var(--amber); flex: none; margin-top: 3px; }
+    .fact strong { display: block; font-size: 15px; }
+    .fact span { display: block; font-size: 14px; color: var(--muted-on-dark); line-height: 1.45; }
+    .fact a { text-decoration: none; }
+    .fact a:hover { color: var(--amber); }
+
+    .hero-visual { position: relative; width: min(400px, 84vw); margin: 0 auto 24px; }
+    .hero-photo {
+      position: relative; background: #fff; padding: 14px 14px 54px; border-radius: 4px;
+      transform: rotate(3deg); box-shadow: 0 34px 60px -24px rgba(0, 0, 0, .7);
+    }
+    .hero-photo img { aspect-ratio: 1; object-fit: cover; width: 100%; }
+    .hero-photo figcaption {
+      position: absolute; left: 0; right: 22px; bottom: 14px; text-align: right;
+      font-family: var(--serif); font-style: italic; font-size: 19px; color: #4b4037;
+    }
+    .hero-badge {
+      position: absolute; z-index: 2; left: -16px; bottom: -34px; width: min(140px, 34vw);
+      filter: drop-shadow(0 16px 26px rgba(0, 0, 0, .55)); transform: rotate(-8deg);
+    }
+    @media (min-width: 900px) { .hero-badge { left: -64px; bottom: -40px; width: 180px; } }
+
+    /* Stats strip */
+    .stats { background: var(--amber); color: #1d160a; }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 800px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+    .stat { padding: 26px 12px; text-align: center; border-right: 1px solid rgba(29, 22, 10, .15); border-bottom: 1px solid rgba(29, 22, 10, .15); }
+    .stat:nth-child(2n) { border-right: 0; }
+    .stat:nth-child(n+3) { border-bottom: 0; }
+    @media (min-width: 800px) {
+      .stat { border-bottom: 0; border-right: 1px solid rgba(29, 22, 10, .15); }
+      .stat:nth-child(2n) { border-right: 1px solid rgba(29, 22, 10, .15); }
+      .stat:last-child { border-right: 0; }
+    }
+    .stat strong { display: block; font-family: var(--serif); font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; line-height: 1.1; }
+    .stat span { font-family: var(--condensed); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; }
+
+    /* A Casa */
+    .about-grid { display: grid; gap: 64px; align-items: center; }
+    @media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+    .about-text p + p { margin-top: 16px; }
+    .about-text .lead { margin-bottom: 8px; }
+    .about-text p:not(.lead) { color: var(--text-soft); }
+    .ticks { list-style: none; padding: 0; margin: 30px 0 0; display: grid; gap: 14px; }
+    .ticks li { display: flex; gap: 12px; align-items: flex-start; font-weight: 600; }
+    .ticks svg { width: 22px; height: 22px; color: var(--brick); flex: none; margin-top: 2px; }
+
+    .polaroids { position: relative; min-height: 440px; }
+    .polaroid {
+      position: absolute; background: #fff; padding: 12px 12px 46px; border-radius: 4px;
+      box-shadow: var(--shadow); width: min(330px, 58%);
+    }
+    .polaroid img { aspect-ratio: 1; object-fit: cover; width: 100%; }
+    .polaroid figcaption {
+      position: absolute; left: 0; right: 0; bottom: 12px; text-align: center;
+      font-family: var(--serif); font-style: italic; font-size: 17px; color: #4b4037;
+    }
+    .polaroid.p1 { left: 0; top: 0; transform: rotate(-5deg); z-index: 1; }
+    .polaroid.p1 figcaption { text-align: left; padding-left: 16px; }
+    .polaroid.p2 { right: 0; bottom: 0; transform: rotate(4deg); z-index: 2; }
+    .polaroid .pin {
+      position: absolute; top: -10px; left: 50%; width: 20px; height: 20px; margin-left: -10px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #e66a4c, var(--brick) 60%, #6a2414);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, .35);
+    }
+
+    /* Almoço */
+    .lunch { background: var(--paper-2); }
+    .lunch-head { display: grid; gap: 28px; align-items: end; }
+    @media (min-width: 900px) { .lunch-head { grid-template-columns: 1.2fr .8fr; } }
+    .hours-card {
+      background: var(--ink) var(--chalk); color: var(--text-on-dark);
+      border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 18px;
+    }
+    .hours-card svg { width: 46px; height: 46px; color: var(--amber); flex: none; }
+    .hours-card small { display: block; font-family: var(--condensed); letter-spacing: .2em; text-transform: uppercase; font-size: 12px; color: var(--muted-on-dark); }
+    .hours-card strong { display: block; font-family: var(--serif); font-size: 30px; line-height: 1.15; }
+    .hours-card span { color: var(--muted-on-dark); font-size: 15px; }
+
+    .dishes { display: grid; gap: 26px; margin-top: 56px; }
+    @media (min-width: 760px) { .dishes { grid-template-columns: repeat(3, 1fr); } }
+    .dish {
+      background: var(--paper); border: 1px solid var(--line-light); border-radius: var(--radius);
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .dish:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .dish-img { aspect-ratio: 4 / 3; overflow: hidden; background: #ddd; }
+    .dish-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .dish:hover .dish-img img { transform: scale(1.04); }
+    .dish-body { padding: 22px 22px 26px; }
+    .dish h3 { font-size: 23px; }
+    .dish p { color: var(--text-soft); margin-top: 8px; font-size: 16px; }
+    .dish-tag {
+      display: inline-block; margin-bottom: 10px;
+      font-family: var(--condensed); font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--brick);
+    }
+
+    .note {
+      margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
+      padding: 22px 26px; border-radius: var(--radius); border: 1px dashed #c9b897; background: var(--paper);
+    }
+    .note p { font-weight: 600; }
+    .note p span { display: block; font-weight: 400; color: var(--text-soft); font-size: 15px; }
+
+    /* Choperia */
+    .chope { position: relative; overflow: hidden; }
+    .chope-grid { max-width: 820px; text-align: center; }
+    .chope-grid .eyebrow::after { content: ""; width: 28px; height: 2px; background: currentColor; }
+    .chope-grid .lead { margin-left: auto; margin-right: auto; }
+    .chope-grid .hero-actions { justify-content: center; }
+    .chope-list { display: grid; gap: 18px; margin-top: 40px; text-align: left; }
+    @media (min-width: 620px) { .chope-list { grid-template-columns: 1fr 1fr; } }
+    .chope-item { border: 1px solid var(--line-dark); border-radius: var(--radius); padding: 22px; background: rgba(246, 239, 226, .03); }
+    .chope-item svg { width: 28px; height: 28px; color: var(--amber); }
+    .chope-item h3 { font-size: 21px; margin-top: 12px; }
+    .chope-item p { color: var(--muted-on-dark); font-size: 15px; margin-top: 6px; }
+
+    /* Instagram band */
+    .insta {
+      background: linear-gradient(120deg, #2b1a10, #4a2414 45%, #7a3a16);
+      color: var(--text-on-dark); padding: 64px 0;
+    }
+    .insta-inner { display: grid; gap: 30px; align-items: center; }
+    @media (min-width: 860px) { .insta-inner { grid-template-columns: auto 1fr auto; } }
+    .insta-avatar {
+      width: 112px; height: 112px; border-radius: 50%; padding: 4px;
+      background: conic-gradient(from 200deg, #f9ce34, #ee2a7b, #6228d7, #f9ce34);
+    }
+    .insta-avatar svg { width: 100%; height: 100%; border-radius: 50%; display: block; }
+    .insta h2 { font-size: clamp(28px, 3.4vw, 38px); }
+    .insta-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 10px; color: #e9d9c4; }
+    .insta-meta b { color: #fff; }
+
+    /* Visite */
+    .visit-grid { display: grid; gap: 30px; margin-top: 50px; }
+    @media (min-width: 900px) { .visit-grid { grid-template-columns: .9fr 1.1fr; } }
+    .info-card {
+      background: var(--paper); border: 1px solid var(--line-light); border-radius: var(--radius);
+      padding: 30px; display: grid; gap: 26px; align-content: start;
+    }
+    .info-row { display: flex; gap: 16px; align-items: flex-start; }
+    .info-icon {
+      width: 46px; height: 46px; border-radius: 12px; flex: none;
+      background: var(--paper-2); color: var(--brick); display: grid; place-items: center;
+    }
+    .info-icon svg { width: 22px; height: 22px; }
+    .info-row h3 { font-family: var(--condensed); font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-soft); }
+    .info-row p, .info-row a { font-size: 18px; font-weight: 600; text-decoration: none; }
+    .info-row a:hover { color: var(--brick); }
+    .info-row small { display: block; color: var(--text-soft); font-size: 14px; font-weight: 400; margin-top: 2px; }
+    .info-actions { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 6px; }
+    .map {
+      border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-light);
+      min-height: 380px; background: var(--paper-2); box-shadow: var(--shadow);
+    }
+    .map iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; }
+
+    /* Final CTA */
+    .final { text-align: center; }
+    .final h2 { font-family: var(--western); font-weight: 400; font-size: clamp(34px, 5.4vw, 64px); letter-spacing: .02em; color: var(--cream); }
+    .final .lead { margin: 18px auto 0; }
+    .final .hero-actions { justify-content: center; }
+    .wheat-divider { display: flex; align-items: center; justify-content: center; gap: 16px; color: var(--amber); margin-bottom: 26px; }
+    .wheat-divider::before, .wheat-divider::after { content: ""; width: 70px; height: 2px; background: currentColor; opacity: .6; }
+    .wheat-divider svg { width: 54px; height: 22px; }
+
+    /* Footer */
+    .footer { background: var(--ink); color: var(--muted-on-dark); padding: 56px 0 34px; font-size: 15px; }
+    .footer-grid { display: grid; gap: 34px; }
+    @media (min-width: 800px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+    .footer h3 { font-family: var(--condensed); font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-on-dark); margin-bottom: 12px; }
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: var(--amber); }
+    .footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    .footer .brand { margin-bottom: 14px; }
+    .footer-bottom { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line-dark); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px; }
+
+    /* Floating WhatsApp */
+    .float-wa {
+      position: fixed; right: 18px; bottom: 18px; z-index: 40;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--whatsapp); color: #fff; display: grid; place-items: center;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, .5);
+      transition: transform .2s ease;
+    }
+    .float-wa:hover { transform: scale(1.07); }
+    .float-wa svg { width: 32px; height: 32px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .btn, .dish, .dish-img img, .float-wa { transition: none; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Ícones e símbolos reutilizados -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="wheat" viewBox="0 0 120 44">
+        <g fill="currentColor">
+          <path d="M4 22h86" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <ellipse cx="34" cy="13" rx="13" ry="6" transform="rotate(-28 34 13)"/>
+          <ellipse cx="34" cy="31" rx="13" ry="6" transform="rotate(28 34 31)"/>
+          <ellipse cx="56" cy="13" rx="13" ry="6" transform="rotate(-28 56 13)"/>
+          <ellipse cx="56" cy="31" rx="13" ry="6" transform="rotate(28 56 31)"/>
+          <ellipse cx="78" cy="13" rx="13" ry="6" transform="rotate(-28 78 13)"/>
+          <ellipse cx="78" cy="31" rx="13" ry="6" transform="rotate(28 78 31)"/>
+          <ellipse cx="100" cy="22" rx="15" ry="6.5"/>
+          <path d="M10 22 2 14M10 22 2 30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </g>
+      </symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.6 2.5L16 9.5"/></g></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 21 3l-8 18-2-8-8-2Z"/></g></symbol>
+      <symbol id="i-family" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="2.5"/><circle cx="16" cy="6" r="2.5"/><path d="M4 21v-6a4 4 0 0 1 8 0v6M12 21v-6a4 4 0 0 1 8 0v6"/></g></symbol>
+      <symbol id="i-glass" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Z"/><path d="M16 10h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2"/><path d="M6 7a2.5 2.5 0 0 1 2-4 3 3 0 0 1 5 0 2.5 2.5 0 0 1 3 4"/><path d="M10 11v6M13 11v6"/></g></symbol>
+      <symbol id="i-cheers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3-3 9a3 3 0 0 0 5.6 2L13 6Z"/><path d="m16 3 3 9a3 3 0 0 1-5.6 2L11 6Z"/><path d="M7.8 15 6 21M16.2 15 18 21M4 21h4M16 21h4"/></g></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+
+      <!-- Selo da Adega (recriado em vetor a partir do logo do Instagram) -->
+      <filter id="chalk-noise" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7" result="n"/>
+        <feColorMatrix in="n" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .16 0" result="speck"/>
+        <feComposite in="speck" in2="SourceGraphic" operator="in"/>
+      </filter>
+      <path id="arc-bottom" d="M 72 236 A 132 132 0 0 0 328 236"/>
+      <symbol id="adega-badge" viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="198" fill="#2c2a27"/>
+        <circle cx="200" cy="200" r="198" fill="#fff" filter="url(#chalk-noise)"/>
+        <circle cx="200" cy="200" r="190" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
+        <g fill="none" stroke="#f4efe6" stroke-width="5" stroke-linecap="round">
+          <path d="M 86 118 A 150 150 0 0 1 314 118"/>
+          <path d="M 58 262 A 152 152 0 0 0 342 262"/>
+          <path d="M 88 258 H 126 M 274 258 H 312"/>
+        </g>
+        <use href="#wheat" x="152" y="96" width="96" height="36" color="#f4efe6"/>
+        <text x="200" y="222" text-anchor="middle" font-family="Rye, Georgia, serif" font-size="68" fill="#f8f4ec" transform="rotate(-4 200 200)" letter-spacing="1">ADEGA</text>
+        <text x="200" y="268" text-anchor="middle" font-family="Oswald, 'Arial Narrow', sans-serif" font-weight="600" font-size="27" fill="#f4efe6" letter-spacing="1">DESDE 1977</text>
+        <use href="#wheat" x="160" y="278" width="80" height="30" color="#f4efe6"/>
+        <text font-family="Rye, Georgia, serif" font-size="19" fill="#f4efe6" letter-spacing="3">
+          <textPath href="#arc-bottom" startOffset="50%" text-anchor="middle" side="right">RESTAURANTE &amp; CHOPERIA</textPath>
+        </text>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Cabeçalho -->
+  <header class="site-header" id="topo">
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="Adega Restaurante & Choperia — início">
+        <svg aria-hidden="true"><use href="#adega-badge"/></svg>
+        <span>
+          <span class="brand-name">ADEGA</span>
+          <span class="brand-sub">Restaurante &amp; Choperia</span>
+        </span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#a-casa">A Casa</a></li>
+        <li><a href="#almoco">Almoço</a></li>
+        <li><a href="#choperia">Choperia</a></li>
+        <li><a href="#visite">Como chegar</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="https://wa.me/5535998754994?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Adega%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Fale no WhatsApp
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
+        <svg aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="menu-mobile" aria-label="Menu">
+    <a href="#a-casa">A Casa</a>
+    <a href="#almoco">Almoço</a>
+    <a href="#choperia">Choperia</a>
+    <a href="#visite">Como chegar</a>
+    <a class="btn btn-primary" href="https://wa.me/5535998754994?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Adega%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Fale no WhatsApp
+    </a>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Restaurante &amp; Choperia · Desde 1977</span>
+          <h1>Vem pra <em>Adega.</em></h1>
+          <p class="lead">Temos o ambiente perfeito para você e sua família. Almoço todos os dias, das 11h às 14h, no Centro de Três Pontas.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/5535998754994?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Adega%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Fale com a gente
+            </a>
+            <a class="btn btn-ghost" href="#visite">
+              <svg aria-hidden="true"><use href="#i-route"/></svg> Como chegar
+            </a>
+          </div>
+          <div class="hero-facts">
+            <div class="fact">
+              <svg aria-hidden="true"><use href="#i-clock"/></svg>
+              <div><strong>Almoço todos os dias</strong><span>Das 11h às 14h</span></div>
+            </div>
+            <div class="fact">
+              <svg aria-hidden="true"><use href="#i-pin"/></svg>
+              <div><strong>Praça Pres. Vargas, 62</strong><span>Centro · Três Pontas – MG</span></div>
+            </div>
+            <div class="fact">
+              <svg aria-hidden="true"><use href="#i-phone"/></svg>
+              <div><strong><a href="tel:+553532654161">(35) 3265-4161</a></strong><span><a href="https://wa.me/5535998754994" target="_blank" rel="noopener">(35) 99875-4994</a></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <figure class="hero-photo">
+            <img src="img/buffet-quente.jpg" alt="Buffet quente da Adega com arroz, feijão e farofa" width="388" height="388">
+            <figcaption>O almoço da Adega</figcaption>
+          </figure>
+          <svg class="hero-badge" viewBox="0 0 400 400" role="img" aria-label="Selo Adega — Restaurante & Choperia, desde 1977"><use href="#adega-badge"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Números -->
+    <section class="stats" aria-label="A Adega em números">
+      <div class="wrap stats-grid">
+        <div class="stat"><strong>1977</strong><span>Tradição desde</span></div>
+        <div class="stat"><strong>7 dias</strong><span>Almoço toda semana</span></div>
+        <div class="stat"><strong>11h–14h</strong><span>Horário do almoço</span></div>
+        <div class="stat"><strong>+8 mil</strong><span>Seguidores no Instagram</span></div>
+      </div>
+    </section>
+
+    <!-- A Casa -->
+    <section class="section" id="a-casa">
+      <div class="wrap about-grid">
+        <div class="about-text reveal">
+          <span class="eyebrow">A Casa</span>
+          <h2 class="section-title">Tradição no coração de Três Pontas.</h2>
+          <p class="lead">Desde 1977, a Adega é restaurante e choperia no Centro da cidade, a poucos passos da Igreja Matriz.</p>
+          <p>Uma das casas mais tradicionais de Três Pontas, com ambiente rústico e acolhedor — parede de pedra, ferro trabalhado e madeira — pensado para receber você, sua família e seus amigos.</p>
+          <ul class="ticks">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg> Ambiente perfeito para você e sua família</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg> Almoço todos os dias, das 11h às 14h</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg> Restaurante e choperia no mesmo lugar</li>
+          </ul>
+        </div>
+        <div class="polaroids reveal" aria-label="Fotos da Adega">
+          <figure class="polaroid p1">
+            <span class="pin" aria-hidden="true"></span>
+            <img src="img/ambiente.jpg" alt="Salão da Adega com parede de pedra, quadros e decoração em ferro" width="388" height="388" loading="lazy">
+            <figcaption>Nosso ambiente</figcaption>
+          </figure>
+          <figure class="polaroid p2">
+            <span class="pin" aria-hidden="true"></span>
+            <img src="img/fachada.jpg" alt="Fachada da Adega na Praça Presidente Vargas" width="388" height="388" loading="lazy">
+            <figcaption>Praça Presidente Vargas</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Almoço -->
+    <section class="section lunch" id="almoco">
+      <div class="wrap">
+        <div class="lunch-head">
+          <div class="reveal">
+            <span class="eyebrow">Almoço</span>
+            <h2 class="section-title">Comida caseira, todos os dias.</h2>
+            <p class="lead">Buffet com arroz, feijão, farofa e os pratos quentes do dia, além de saladas fresquinhas e molhos. Você monta o seu prato do seu jeito.</p>
+          </div>
+          <div class="hours-card reveal">
+            <svg aria-hidden="true"><use href="#i-clock"/></svg>
+            <div>
+              <small>Segunda a domingo</small>
+              <strong>11h às 14h</strong>
+              <span>Almoço todos os dias</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dishes">
+          <article class="dish reveal">
+            <div class="dish-img"><img src="img/buffet-quente.jpg" alt="Cubas do buffet quente com feijão, arroz e farofa" width="388" height="388" loading="lazy"></div>
+            <div class="dish-body">
+              <span class="dish-tag">Buffet quente</span>
+              <h3>Arroz, feijão e pratos do dia</h3>
+              <p>O básico bem-feito que todo almoço mineiro pede, sempre quentinho no buffet.</p>
+            </div>
+          </article>
+          <article class="dish reveal">
+            <div class="dish-img"><img src="img/buffet-saladas.jpg" alt="Saladas, molhos e temperos no buffet da Adega" width="388" height="388" loading="lazy"></div>
+            <div class="dish-body">
+              <span class="dish-tag">Saladas &amp; molhos</span>
+              <h3>Saladas e temperos à vontade</h3>
+              <p>Folhas, legumes, molhos e temperos para deixar o prato do seu jeito.</p>
+            </div>
+          </article>
+          <article class="dish reveal">
+            <div class="dish-img"><img src="img/ambiente.jpg" alt="Pratos servidos sobre o balcão rústico da Adega" width="388" height="388" loading="lazy"></div>
+            <div class="dish-body">
+              <span class="dish-tag">Para a família</span>
+              <h3>Almoço em boa companhia</h3>
+              <p>Mesa farta e ambiente acolhedor para reunir a família no meio da semana ou no domingo.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="note reveal">
+          <p>Quer saber o que tem no almoço de hoje?<span>Chama a gente no WhatsApp ou confira as novidades no Instagram.</span></p>
+          <a class="btn btn-dark" href="https://wa.me/5535998754994?text=Ol%C3%A1!%20O%20que%20tem%20no%20almo%C3%A7o%20de%20hoje%3F" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Perguntar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choperia -->
+    <section class="section dark chope" id="choperia">
+      <div class="wrap chope-grid">
+        <div class="reveal">
+          <span class="eyebrow">Choperia</span>
+          <h2 class="section-title">Chope gelado e boa conversa.</h2>
+          <p class="lead">A Adega também é choperia: o ponto de encontro para reunir os amigos, brindar e aproveitar o fim do dia no Centro de Três Pontas.</p>
+          <div class="chope-list">
+            <div class="chope-item">
+              <svg aria-hidden="true"><use href="#i-glass"/></svg>
+              <h3>Chope bem tirado</h3>
+              <p>Gelado na medida, do jeito que uma boa choperia serve.</p>
+            </div>
+            <div class="chope-item">
+              <svg aria-hidden="true"><use href="#i-cheers"/></svg>
+              <h3>Para reunir a turma</h3>
+              <p>Encontros com os amigos e a família. Chame a gente no WhatsApp para combinar.</p>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/5535998754994?text=Ol%C3%A1!%20Gostaria%20de%20saber%20os%20hor%C3%A1rios%20da%20choperia." target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Consultar horários
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instagram -->
+    <section class="insta" aria-label="Instagram da Adega">
+      <div class="wrap insta-inner">
+        <div class="insta-avatar"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#adega-badge"/></svg></div>
+        <div>
+          <h2>Siga @adegarestauranteoficial</h2>
+          <div class="insta-meta">
+            <span><b>2.116</b> posts</span>
+            <span><b>8.082</b> seguidores</span>
+            <span>Novidades, pratos e programação</span>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="https://www.instagram.com/adegarestauranteoficial/" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-instagram"/></svg> Seguir no Instagram
+        </a>
+      </div>
+    </section>
+
+    <!-- Visite -->
+    <section class="section" id="visite">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">Visite a Adega</span>
+          <h2 class="section-title">Estamos te esperando.</h2>
+          <p class="lead">No Centro de Três Pontas, na Praça Presidente Vargas, pertinho da Igreja Matriz.</p>
+        </div>
+
+        <div class="visit-grid">
+          <div class="info-card reveal">
+            <div class="info-row">
+              <div class="info-icon"><svg aria-hidden="true"><use href="#i-pin"/></svg></div>
+              <div>
+                <h3>Endereço</h3>
+                <p>Praça Presidente Vargas, 62 – Centro</p>
+                <small>Três Pontas – MG · CEP 37190-000</small>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></div>
+              <div>
+                <h3>Horário do almoço</h3>
+                <p>Todos os dias, das 11h às 14h</p>
+                <small>Choperia: consulte os horários pelo WhatsApp</small>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></div>
+              <div>
+                <h3>Telefones</h3>
+                <a href="tel:+553532654161">(35) 3265-4161</a>
+                <small><a href="https://wa.me/5535998754994" target="_blank" rel="noopener">(35) 99875-4994 · WhatsApp</a></small>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><svg aria-hidden="true"><use href="#i-instagram"/></svg></div>
+              <div>
+                <h3>Instagram</h3>
+                <a href="https://www.instagram.com/adegarestauranteoficial/" target="_blank" rel="noopener">@adegarestauranteoficial</a>
+              </div>
+            </div>
+            <div class="info-actions">
+              <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Adega%20Restaurante%2C%20Pra%C3%A7a%20Presidente%20Vargas%2C%2062%2C%20Tr%C3%AAs%20Pontas%20-%20MG" target="_blank" rel="noopener">
+                <svg aria-hidden="true"><use href="#i-route"/></svg> Abrir no Google Maps
+              </a>
+            </div>
+          </div>
+          <div class="map reveal">
+            <iframe title="Mapa: Adega, Praça Presidente Vargas, 62, Três Pontas – MG" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Adega%20Restaurante%2C%20Pra%C3%A7a%20Presidente%20Vargas%2C%2062%2C%20Tr%C3%AAs%20Pontas%20-%20MG&amp;z=17&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chamada final -->
+    <section class="section dark final">
+      <div class="wrap reveal">
+        <div class="wheat-divider" aria-hidden="true"><svg><use href="#wheat"/></svg></div>
+        <h2>Adega, sua melhor opção!</h2>
+        <p class="lead">Almoço todos os dias das 11h às 14h. Chame no WhatsApp ou ligue para a gente.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/5535998754994?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Adega%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> (35) 99875-4994
+          </a>
+          <a class="btn btn-ghost" href="tel:+553532654161">
+            <svg aria-hidden="true"><use href="#i-phone"/></svg> (35) 3265-4161
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#inicio" aria-label="Adega — voltar ao início">
+            <svg aria-hidden="true"><use href="#adega-badge"/></svg>
+            <span>
+              <span class="brand-name">ADEGA</span>
+              <span class="brand-sub">Restaurante &amp; Choperia</span>
+            </span>
+          </a>
+          <p>Desde 1977 no Centro de Três Pontas. Temos o ambiente perfeito para você e sua família.</p>
+        </div>
+        <div>
+          <h3>Contato</h3>
+          <ul>
+            <li><a href="tel:+553532654161">(35) 3265-4161</a></li>
+            <li><a href="https://wa.me/5535998754994" target="_blank" rel="noopener">(35) 99875-4994 · WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/adegarestauranteoficial/" target="_blank" rel="noopener">@adegarestauranteoficial</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Endereço</h3>
+          <ul>
+            <li>Praça Presidente Vargas, 62 – Centro</li>
+            <li>Três Pontas – MG · 37190-000</li>
+            <li>Almoço: todos os dias, 11h às 14h</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="ano">2026</span> Adega Restaurante &amp; Choperia</span>
+        <span>Adega, sua melhor opção!</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/5535998754994?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Adega%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+    <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+  </a>
+
+  <script>
+    (function () {
+      var header = document.querySelector('.site-header');
+      var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 24); };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      var toggle = document.querySelector('.menu-toggle');
+      var menu = document.getElementById('menu-mobile');
+      var setMenu = function (open) {
+        menu.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        toggle.querySelector('use').setAttribute('href', open ? '#i-close' : '#i-menu');
+        document.body.style.overflow = open ? 'hidden' : '';
+        if (open) header.classList.add('scrolled'); else onScroll();
+      };
+      toggle.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+      menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+      var items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        items.forEach(function (el) { io.observe(el); });
+      } else {
+        items.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      document.getElementById('ano').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
