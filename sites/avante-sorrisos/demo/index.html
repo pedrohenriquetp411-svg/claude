@@ -1,0 +1,1422 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.add('js');</script>
+  <title>Clínica Odontológica Avante Sorrisos e Saúde | Dentista em Varginha - MG</title>
+  <meta name="description" content="Dentista no Centro de Varginha - MG. Clínica Odontológica Avante Sorrisos e Saúde: atendimento humanizado com clínica geral, implantes, clareamento, ortodontia e odontopediatria. Agende pelo WhatsApp.">
+  <meta name="theme-color" content="#0f7b80">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Clínica Odontológica Avante Sorrisos e Saúde">
+  <meta property="og:description" content="Atendimento odontológico humanizado no Centro de Varginha - MG.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f7b80'/%3E%3Cpath d='M32 12c-8 0-12 6-11 13 1 7 2 13 4 19 1 4 4 3 5 0 1-3 2-5 2-5s1 2 2 5c1 3 4 4 5 0 2-6 3-12 4-19 1-7-3-13-11-13z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap">
+  <style>
+:root {
+  --primary: #0f7b80;
+  --primary-dark: #0a5a5e;
+  --navy: #0b2540;
+  --accent: #f4a261;
+  --gold: #f5b301;
+  --whatsapp: #0f7a3e;
+  --bg: #f6fbfb;
+  --surface: #ffffff;
+  --text: #17313a;
+  --muted: #5b7078;
+  --line: #d9e8ea;
+  --radius: 20px;
+  --shadow: 0 18px 40px -20px rgba(11, 37, 64, 0.25);
+  --font-head: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  line-height: 1.2;
+  color: var(--navy);
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--primary-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(1140px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--navy);
+  color: #fff;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Botões */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 12px 24px -12px rgba(15, 123, 128, 0.7);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+.btn-ghost:hover {
+  background: var(--navy);
+  color: #fff;
+}
+
+.btn-whatsapp {
+  background: var(--whatsapp);
+  color: #fff;
+}
+
+.btn-whatsapp:hover {
+  background: #0b5f30;
+  transform: translateY(-2px);
+}
+
+.btn-small {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.92rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Cabeçalho */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  border-color: var(--line);
+  box-shadow: 0 8px 24px -18px rgba(11, 37, 64, 0.4);
+}
+
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  color: var(--primary);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-text strong {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+}
+
+.brand-text small {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.nav a:not(.btn) {
+  position: relative;
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.25s ease;
+}
+
+.nav a:not(.btn):hover::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav-toggle span:not(.sr-only) {
+  display: block;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(4) {
+  transform: translateY(-7px) rotate(45deg);
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+  background:
+    radial-gradient(900px 480px at 88% -12%, #cdeeed 0%, transparent 60%),
+    radial-gradient(700px 380px at -8% 112%, #e4f1ff 0%, transparent 60%),
+    var(--bg);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 56ch;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1.6rem 0 1.4rem;
+}
+
+.rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-size: 0.95rem;
+}
+
+.stars {
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+/* Cena 3D do hero */
+
+.hero-visual {
+  min-width: 0;
+}
+
+.scene {
+  position: relative;
+  width: min(440px, 86vw);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  perspective: 1100px;
+  --rx: 0deg;
+  --ry: 0deg;
+}
+
+.scene-card {
+  position: absolute;
+  inset: 10%;
+  display: grid;
+  place-items: center;
+  border-radius: 36px;
+  background: linear-gradient(150deg, #13a0a6 0%, #0f7b80 42%, #0b2540 100%);
+  box-shadow:
+    0 50px 80px -40px rgba(11, 37, 64, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.tooth {
+  width: 46%;
+  height: auto;
+  color: #fff;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.25));
+  transform: translateZ(60px);
+  animation: bob 6s ease-in-out infinite;
+}
+
+.chip {
+  position: absolute;
+  padding: 0.5rem 0.9rem;
+  background: #fff;
+  color: var(--navy);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 16px 30px -12px rgba(0, 0, 0, 0.35);
+  transform: translateZ(90px);
+  animation: bob 5s ease-in-out infinite;
+}
+
+.chip-1 {
+  top: 4%;
+  left: -8%;
+}
+
+.chip-2 {
+  bottom: 12%;
+  left: -10%;
+  animation-delay: -1.5s;
+}
+
+.chip-3 {
+  top: 18%;
+  right: -12%;
+  animation-delay: -3s;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  animation: bob 7s ease-in-out infinite;
+}
+
+.orb-1 {
+  top: -2%;
+  right: 4%;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle at 30% 30%, #ffe2a8, var(--accent) 60%, #e76f51);
+  box-shadow: 0 20px 40px -12px rgba(231, 111, 81, 0.6);
+}
+
+.orb-2 {
+  bottom: 6%;
+  left: 8%;
+  width: 46px;
+  height: 46px;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #9fe3e0 70%);
+  animation-delay: -2s;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+/* Destaques */
+
+.stats {
+  background: var(--navy);
+  color: #fff;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}
+
+.stat {
+  padding: 1.6rem 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.stat:last-child {
+  border-right: 0;
+}
+
+.stat strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #fff;
+  line-height: 1.2;
+}
+
+.stat span {
+  font-size: 0.95rem;
+  color: #bcd6dc;
+}
+
+/* Seções */
+
+.section {
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.section-alt {
+  background: #eef7f7;
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.section-head > p:not(.eyebrow) {
+  color: var(--muted);
+}
+
+.card {
+  padding: 1.8rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Serviços */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.service {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.service:hover {
+  box-shadow: 0 30px 50px -28px rgba(11, 37, 64, 0.45);
+}
+
+.service p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.2rem;
+  padding: 13px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #e0f4f3, #c4e8e6);
+  color: var(--primary);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 10px 20px -12px rgba(15, 123, 128, 0.6);
+}
+
+/* Sobre */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.checklist {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.checklist li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 4px #d4eeee;
+}
+
+.about-visual {
+  min-width: 0;
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  max-width: 380px;
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
+  padding: 2rem;
+  border-radius: 32px;
+  background: linear-gradient(160deg, #0b2540 0%, #0f5f66 55%, #0f7b80 100%);
+  box-shadow: 0 40px 70px -35px rgba(11, 37, 64, 0.7);
+  color: #fff;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+.tooth-lg {
+  width: 42%;
+  height: auto;
+  color: #fff;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.3));
+  transform: translateZ(50px);
+  animation: bob 6s ease-in-out infinite;
+}
+
+.panel p {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transform: translateZ(40px);
+}
+
+/* Avaliações */
+
+.rating-big {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 1rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.rating-big strong {
+  font-family: var(--font-head);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--navy);
+}
+
+.rating-big .stars {
+  font-size: 1.5rem;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+}
+
+.testimonial::before {
+  content: '★★★★★';
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+.testimonial p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.testimonial footer {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.center-cta {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+/* Localização */
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.info-list {
+  display: grid;
+  gap: 1.2rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.info-list > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.info-list dt {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.info-list dd {
+  margin: 0;
+}
+
+.info-list a {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.map {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Contato */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-grid > div > p {
+  color: var(--muted);
+}
+
+.contact-grid > div > .btn {
+  margin-top: 0.5rem;
+}
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--navy);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: #fbfeff;
+  border: 1.5px solid #c9dfe2;
+  border-radius: 12px;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(15, 123, 128, 0.15);
+}
+
+.form .consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.form .consent input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: var(--primary);
+}
+
+/* Rodapé */
+
+.site-footer {
+  padding: 3.5rem 0 2rem;
+  background: var(--navy);
+  color: #cfe0e4;
+  font-size: 0.95rem;
+}
+
+.site-footer p {
+  margin: 0 0 0.6rem;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+.site-footer .brand {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.site-footer .brand-mark {
+  color: #7fd6d3;
+}
+
+.site-footer .brand-text small {
+  color: #9fb9bf;
+}
+
+.site-footer .small {
+  margin-top: 1.2rem;
+  color: #9fb9bf;
+  font-size: 0.85rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap: 2rem;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  color: #fff;
+  box-shadow: 0 16px 30px -10px rgba(15, 122, 62, 0.7);
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.06);
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Revelar ao rolar (só com JS ativo) */
+
+.js .reveal {
+  opacity: 0;
+  translate: 0 28px;
+  transition:
+    opacity 0.8s ease,
+    translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Responsivo */
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 1rem 1.5rem;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  .nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav a:not(.btn) {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav a:not(.btn)::after {
+    display: none;
+  }
+
+  .nav a.btn {
+    margin-top: 1rem;
+    justify-content: center;
+  }
+
+  .hero-grid,
+  .about-grid,
+  .location-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat span {
+    font-size: 0.85rem;
+  }
+
+  .card {
+    padding: 1.4rem;
+  }
+
+  .chip {
+    font-size: 0.78rem;
+  }
+
+  .info-list > div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+.demo-ribbon { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; padding: 0.55rem 1rem; background: #f5b301; color: #0b2540; font: 600 0.85rem/1.4 system-ui, sans-serif; text-align: center; }
+.whatsapp-float { bottom: 3.4rem; }
+</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Clínica Odontológica Avante Sorrisos e Saúde",
+    "telephone": "+55 35 3212-4798",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Rio Branco, 158",
+      "addressLocality": "Varginha",
+      "addressRegion": "MG",
+      "postalCode": "37002-016",
+      "addressCountry": "BR"
+    }
+  }
+  </script>
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <div class="demo-ribbon" role="note">Demonstração de layout com conteúdo baseado em dados públicos do Google.</div>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="tooth" viewBox="0 0 100 100">
+      <path fill="currentColor" stroke="none" d="M50 14C40 14 28 18 27 32C26 46 31 60 33 74C34 84 38 90 44 90C49 90 48 80 50 70C52 80 51 90 56 90C62 90 66 84 67 74C69 60 74 46 73 32C72 18 60 14 50 14Z"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#topo" aria-label="Clínica Avante Sorrisos e Saúde, início">
+        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#tooth" width="100" height="100"/></svg>
+        <span class="brand-text">
+          <strong>Avante</strong>
+          <small>Sorrisos e Saúde</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <nav id="menu" class="nav" aria-label="Principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#localizacao">Localização</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn-primary btn-small" href="#contato" data-wa>Agendar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="topo">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Dentista no Centro de Varginha</p>
+          <h1>Seu sorriso com cuidado, técnica e acolhimento.</h1>
+          <p class="lead">A Clínica Odontológica Avante Sorrisos e Saúde cuida da sua saúde bucal com atenção em cada etapa, da recepção ao fim do seu tratamento.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contato" data-wa>Agendar pelo WhatsApp</a>
+            <a class="btn btn-ghost" href="#servicos">Conhecer serviços</a>
+          </div>
+          <p class="rating-pill">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span><strong>4,9</strong> no Google · 100 avaliações</span>
+          </p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="scene">
+            <div class="scene-card">
+              <svg class="tooth" viewBox="0 0 100 100"><use href="#tooth" width="100" height="100"/></svg>
+              <span class="chip chip-1">★ 4,9 no Google</span>
+              <span class="chip chip-2">Atendimento acolhedor</span>
+              <span class="chip chip-3">Resposta rápida no WhatsApp</span>
+            </div>
+            <span class="orb orb-1"></span>
+            <span class="orb orb-2"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Destaques">
+      <div class="container stats-grid">
+        <div class="stat reveal"><strong>4,9</strong><span>nota média no Google</span></div>
+        <div class="stat reveal"><strong>100</strong><span>avaliações de pacientes</span></div>
+        <div class="stat reveal"><strong>Centro</strong><span>de Varginha, fácil acesso</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Serviços</p>
+          <h2>Tratamentos para toda a família</h2>
+          <p>Do check-up à reabilitação, com o plano de tratamento explicado antes de qualquer procedimento.</p>
+        </header>
+
+        <div class="services-grid">
+          <article class="card service tilt reveal">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>
+            <h3>Clínica geral</h3>
+            <p>Consultas, avaliação completa e plano de tratamento personalizado para você e sua família.</p>
+          </article>
+          <article class="card service tilt reveal">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/></svg>
+            <h3>Limpeza e prevenção</h3>
+            <p>Profilaxia, aplicação de flúor e orientação de higiene para manter a gengiva e os dentes saudáveis.</p>
+          </article>
+          <article class="card service tilt reveal">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#tooth" width="24" height="24" color="currentColor"/></svg>
+            <h3>Implantes dentários</h3>
+            <p>Reposição de dentes perdidos com planejamento individual e acompanhamento em cada fase.</p>
+          </article>
+          <article class="card service tilt reveal">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+            <h3>Clareamento dental</h3>
+            <p>Um sorriso mais claro, com avaliação prévia e orientação em todas as etapas do tratamento.</p>
+          </article>
+          <article class="card service tilt reveal">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="2"/><path d="M8 9v6M12 9v6M16 9v6"/></svg>
+            <h3>Ortodontia</h3>
+            <p>Aparelhos e alinhadores para corrigir a posição dos dentes e melhorar a mordida.</p>
+          </article>
+          <article class="card service tilt reveal">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/><path d="M9 9.5h.01M15 9.5h.01" stroke-width="2.6"/></svg>
+            <h3>Odontopediatria</h3>
+            <p>Atendimento pensado para crianças, criando uma relação de confiança com o dentista desde cedo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="sobre">
+      <div class="container about-grid">
+        <div class="reveal">
+          <p class="eyebrow">Sobre a clínica</p>
+          <h2>Uma clínica feita de cuidado e confiança</h2>
+          <p>Na Avante Sorrisos e Saúde, cada paciente é recebido com atenção desde a recepção. Explicamos o diagnóstico com linguagem simples e montamos um plano de tratamento que respeita o seu tempo e as suas possibilidades.</p>
+          <p>Somos um negócio liderado por mulheres empreendedoras, com o compromisso de tornar a saúde bucal mais tranquila para quem vive e trabalha em Varginha.</p>
+          <ul class="checklist">
+            <li>Atendimento humanizado e atencioso</li>
+            <li>Explicação clara antes de cada procedimento</li>
+            <li>Agendamento rápido pelo WhatsApp</li>
+            <li>Localização central, no Centro de Varginha</li>
+          </ul>
+          <a class="btn btn-primary" href="#contato" data-wa>Falar com a clínica</a>
+        </div>
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="panel tilt">
+            <svg class="tooth-lg" viewBox="0 0 100 100"><use href="#tooth" width="100" height="100"/></svg>
+            <p>Avante Sorrisos e Saúde</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="avaliacoes">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Avaliações</p>
+          <h2>O que dizem os nossos pacientes</h2>
+          <p class="rating-big">
+            <strong>4,9</strong>
+            <span class="stars" role="img" aria-label="nota 4,9 de 5">★★★★★</span>
+            <span>baseado em 100 avaliações no Google</span>
+          </p>
+        </header>
+
+        <div class="testimonials">
+          <blockquote class="card testimonial reveal">
+            <p>“Atendimento excelente nota mil. Meu tratamento com dr Lucas está sendo uma ótima experiência.”</p>
+            <footer>Paciente no Google</footer>
+          </blockquote>
+          <blockquote class="card testimonial reveal">
+            <p>“Ótima localização e rápido atendimento ao WhatsApp.”</p>
+            <footer>Paciente no Google</footer>
+          </blockquote>
+          <blockquote class="card testimonial reveal">
+            <p>“Super recomendo, atendimento ótimo, todos da clínica super atenciosos.”</p>
+            <footer>Paciente no Google</footer>
+          </blockquote>
+        </div>
+
+        <div class="center-cta reveal">
+          <a class="btn btn-ghost" href="https://www.google.com/search?q=Cl%C3%ADnica+Odontol%C3%B3gica+Avante+Sorrisos+e+Sa%C3%BAde+Varginha" target="_blank" rel="noopener">Ver todas as avaliações no Google</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="localizacao">
+      <div class="container location-grid">
+        <div class="reveal">
+          <p class="eyebrow">Localização</p>
+          <h2>Como nos encontrar</h2>
+          <dl class="info-list">
+            <div>
+              <dt>Endereço</dt>
+              <dd>Av. Rio Branco, 158 · Centro<br>Varginha – MG, 37002-016</dd>
+            </div>
+            <div>
+              <dt>Horário</dt>
+              <dd>Segunda a sexta: 08h às 19h<br>Sábado: consulte pelo WhatsApp</dd>
+            </div>
+            <div>
+              <dt>Telefone</dt>
+              <dd><a href="tel:+553532124798">(35) 3212-4798</a></dd>
+            </div>
+          </dl>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.+Rio+Branco,+158,+Varginha+-+MG,+37002-016" target="_blank" rel="noopener">Como chegar</a>
+          </div>
+        </div>
+        <div class="map reveal">
+          <iframe title="Mapa: Clínica Avante Sorrisos e Saúde, Av. Rio Branco, 158, Varginha" src="https://maps.google.com/maps?q=Av.+Rio+Branco,+158,+Centro,+Varginha+-+MG,+37002-016&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <p class="eyebrow">Agendamento</p>
+          <h2>Agende a sua avaliação</h2>
+          <p>Preencha o formulário e a sua solicitação segue direto para o WhatsApp da clínica. Usamos seus dados apenas para responder você.</p>
+          <a class="btn btn-whatsapp" href="#contato" data-wa>Chamar no WhatsApp</a>
+        </div>
+
+        <form class="card form reveal" id="form-agendar">
+          <label>
+            Nome completo
+            <input name="nome" type="text" autocomplete="name" required>
+          </label>
+          <label>
+            WhatsApp com DDD
+            <input name="telefone" type="tel" autocomplete="tel" placeholder="(35) 99999-9999" required>
+          </label>
+          <label>
+            Serviço de interesse
+            <select name="servico">
+              <option value="">Selecione (opcional)</option>
+              <option>Clínica geral</option>
+              <option>Limpeza e prevenção</option>
+              <option>Implantes dentários</option>
+              <option>Clareamento dental</option>
+              <option>Ortodontia</option>
+              <option>Odontopediatria</option>
+            </select>
+          </label>
+          <label>
+            Mensagem (opcional)
+            <textarea name="mensagem" rows="3"></textarea>
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="consentimento" required>
+            <span>Autorizo a clínica a usar meus dados apenas para responder esta solicitação.</span>
+          </label>
+          <button class="btn btn-whatsapp btn-block" type="submit">Enviar pelo WhatsApp</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand brand-light" href="#topo">
+          <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#tooth" width="100" height="100"/></svg>
+          <span class="brand-text">
+            <strong>Avante</strong>
+            <small>Sorrisos e Saúde</small>
+          </span>
+        </a>
+        <p>Clínica odontológica no Centro de Varginha, Minas Gerais.</p>
+      </div>
+      <div>
+        <p><strong>Av. Rio Branco, 158</strong><br>Centro · Varginha – MG, 37002-016</p>
+        <p><a href="tel:+553532124798">(35) 3212-4798</a></p>
+      </div>
+      <div>
+        <p>Responsável técnico: [nome do dentista] · CRO-MG [número]</p>
+        <p class="small">© <span id="ano">2026</span> Clínica Odontológica Avante Sorrisos e Saúde. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="#contato" data-wa aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>
+  </a>
+
+  <script>
+(() => {
+  const WHATSAPP = '553532124798';
+  const DEFAULT_MESSAGE = 'Olá! Gostaria de agendar uma avaliação na Clínica Avante Sorrisos e Saúde.';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canTilt = !reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  const whatsappUrl = (message) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+
+  // Todos os botões de WhatsApp apontam para o mesmo número.
+  document.querySelectorAll('[data-wa]').forEach((link) => {
+    link.href = whatsappUrl(link.dataset.wa || DEFAULT_MESSAGE);
+  });
+
+  // Menu mobile
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('menu');
+
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    menu.classList.toggle('is-open', !open);
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('is-open');
+    });
+  });
+
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Revela os blocos conforme entram na tela
+  const revealItems = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 },
+    );
+    revealItems.forEach((item) => observer.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add('is-visible'));
+  }
+
+  // Inclinação 3D acompanhando o ponteiro
+  const relativePosition = (event, element) => {
+    const rect = element.getBoundingClientRect();
+    return {
+      x: (event.clientX - rect.left) / rect.width - 0.5,
+      y: (event.clientY - rect.top) / rect.height - 0.5,
+    };
+  };
+
+  if (canTilt) {
+    const scene = document.querySelector('.scene');
+    scene.addEventListener('pointermove', (event) => {
+      const { x, y } = relativePosition(event, scene);
+      scene.style.setProperty('--ry', `${(x * 24).toFixed(1)}deg`);
+      scene.style.setProperty('--rx', `${(-y * 24).toFixed(1)}deg`);
+    });
+    scene.addEventListener('pointerleave', () => {
+      scene.style.setProperty('--rx', '0deg');
+      scene.style.setProperty('--ry', '0deg');
+    });
+
+    document.querySelectorAll('.tilt').forEach((card) => {
+      card.addEventListener('pointermove', (event) => {
+        const { x, y } = relativePosition(event, card);
+        card.style.transform = `perspective(900px) rotateX(${(-y * 12).toFixed(1)}deg) rotateY(${(x * 12).toFixed(1)}deg) translateY(-4px)`;
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // Formulário: monta a mensagem e abre o WhatsApp da clínica
+  const form = document.getElementById('form-agendar');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const lines = [
+      `Olá! Meu nome é ${data.get('nome').trim()}.`,
+      `Serviço de interesse: ${data.get('servico') || 'avaliação geral'}`,
+    ];
+    const message = data.get('mensagem').trim();
+    if (message) lines.push(`Mensagem: ${message}`);
+    lines.push(`Meu WhatsApp: ${data.get('telefone').trim()}`);
+
+    window.open(whatsappUrl(lines.join('\n')), '_blank', 'noopener');
+  });
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
