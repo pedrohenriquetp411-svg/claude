@@ -1,0 +1,396 @@
+<title>Clínica Exemplo Odontologia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: full-bleed dark hero with a 3D tooth on the right and a glow of particles behind it, then stacked sections on one column.
+   Single dark theme, committed on purpose: the look is a dark room lit by one pink light. */
+:root {
+  --bg: #07070a;
+  --fg: #f4eff0;
+  --muted: #a89ca1;
+  --accent: #ff9aa6;
+  --accent-ink: #2a0b12;
+  --line: rgba(255, 255, 255, 0.1);
+  --card: rgba(255, 255, 255, 0.03);
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+}
+img, svg, canvas { max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.wrap { width: min(1100px, 100%); margin-inline: auto; }
+
+/* Top bar */
+.topbar {
+  position: absolute; inset: 0 0 auto 0; z-index: 3;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-block: 22px;
+  padding-top: calc(22px + env(safe-area-inset-top, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.brand { font: 600 15px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; }
+.topbar nav { display: flex; gap: 22px; font-size: 14px; color: var(--muted); }
+.topbar nav a { text-decoration: none; }
+.topbar nav a:hover { color: var(--fg); }
+@media (max-width: 640px) { .topbar nav { display: none; } }
+
+/* Hero */
+.hero { position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; display: flex; align-items: center; }
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.hero-glow {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 78% 45%, rgba(255, 154, 166, 0.22), transparent 70%),
+    linear-gradient(180deg, transparent 60%, var(--bg) 100%);
+}
+.hero-text { position: relative; z-index: 2; padding-block: 140px 110px; max-width: 620px; }
+.kicker { font: 600 13px/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin: 0 0 22px; }
+.hero h1 {
+  font: 400 clamp(3.2rem, 8.4vw, 7rem)/0.94 var(--display);
+  letter-spacing: -0.02em; margin: 0 0 26px; text-wrap: balance;
+  font-variation-settings: "SOFT" 50, "WONK" 1;
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.lead { font-size: 18px; color: var(--muted); max-width: 46ch; margin: 0 0 36px; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 26px; border-radius: 999px; font: 700 15px/1 var(--body);
+  text-decoration: none; transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost { border: 1px solid rgba(255, 255, 255, 0.22); color: var(--fg); }
+.btn-ghost:hover { border-color: var(--accent); }
+.scroll-hint {
+  position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); bottom: 28px; z-index: 2;
+  font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
+}
+.nowebgl .hero-canvas { display: none; }
+
+/* Sections */
+section { padding-block: 104px; border-top: 1px solid var(--line); }
+.eyebrow { font: 600 12px/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin: 0 0 18px; }
+h2 { font: 400 clamp(2.1rem, 4.6vw, 3.4rem)/1.02 var(--display); letter-spacing: -0.015em; margin: 0 0 18px; text-wrap: balance; }
+.sec-lead { color: var(--muted); max-width: 56ch; margin: 0 0 48px; }
+
+.services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+  padding: 28px 24px; min-width: 0; transition: border-color .25s ease, transform .25s ease;
+}
+.card:hover { border-color: rgba(255, 154, 166, 0.55); transform: translateY(-4px); }
+.card svg { width: 34px; height: 34px; color: var(--accent); margin-bottom: 22px; }
+.card h3 { font: 400 1.5rem/1.1 var(--display); margin: 0 0 10px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+@media (max-width: 960px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.hours { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.hours li { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.hours span:last-child { color: var(--muted); }
+.quote { font: italic 400 clamp(1.5rem, 3vw, 2.1rem)/1.25 var(--display); color: var(--fg); margin: 0; text-wrap: balance; }
+.quote small { display: block; margin-top: 18px; font: 500 14px/1.4 var(--body); color: var(--muted); font-style: normal; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 40px; } }
+
+/* Contact */
+.contact { text-align: left; }
+.contact-box {
+  background: linear-gradient(135deg, rgba(255, 154, 166, 0.14), rgba(255, 154, 166, 0.02));
+  border: 1px solid rgba(255, 154, 166, 0.35); border-radius: 28px; padding: clamp(28px, 5vw, 56px);
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center;
+}
+.contact-box p { color: var(--muted); margin: 0; }
+.info { display: grid; gap: 14px; font-size: 15px; }
+.info b { display: block; font: 600 12px/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+@media (max-width: 860px) { .contact-box { grid-template-columns: 1fr; } }
+
+footer { border-top: 1px solid var(--line); padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; }
+footer p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .btn { transition: none; }
+}
+</style>
+
+<header class="topbar">
+  <a class="brand" href="#inicio">Clínica Exemplo</a>
+  <nav aria-label="Seções">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#horario">Horário</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio" style="border-top:0">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="kicker">Odontologia · Demonstração</p>
+        <h1>Um sorriso <em>que</em> dá vontade de mostrar.</h1>
+        <p class="lead">Cuidado odontológico completo em um só lugar: limpeza, clareamento, implantes e estética, com atendimento que começa pela sua história.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contato">Agendar avaliação</a>
+          <a class="btn btn-ghost" href="#servicos">Ver tratamentos</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Role para explorar</div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <p class="eyebrow">Tratamentos</p>
+      <h2>Do check-up ao sorriso planejado.</h2>
+      <p class="sec-lead">Cada tratamento começa com uma avaliação e um plano escrito, para você saber o que esperar antes de decidir.</p>
+      <div class="services">
+        <article class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-2.6 0-4.5 1.2-5.4 3.2C5 8.2 4.8 10 5.2 12.2c.5 2.6 1.4 6.8 2.6 8.3.6.8 1.6.6 2-.4.4-1 .6-2.3 1.2-2.3s.8 1.3 1.2 2.3c.4 1 1.4 1.2 2 .4 1.2-1.5 2.1-5.7 2.6-8.3.4-2.2.2-4-1.4-6-.9-2-2.8-3.2-5.4-3.2Z"/></svg>
+          <h3>Limpeza e prevenção</h3>
+          <p>Remoção de tártaro, polimento e orientação de escovação, a cada seis meses.</p>
+        </article>
+        <article class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>
+          <h3>Clareamento</h3>
+          <p>Clareamento em consultório com acompanhamento, com resultado mais uniforme e seguro.</p>
+        </article>
+        <article class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v5a5 5 0 0 0 10 0V3"/><path d="M12 13v8"/></svg>
+          <h3>Implantes</h3>
+          <p>Reposição de dentes com planejamento digital e acompanhamento até a recuperação completa.</p>
+        </article>
+        <article class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L19 9.5l-3.6 3.2 1.1 4.8L12 15.2 7.5 17.5l1.1-4.8L5 9.5l5.1-1.9Z"/></svg>
+          <h3>Estética e lentes</h3>
+          <p>Lentes de porcelana e harmonização do sorriso, pensadas para o seu rosto.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Sobre a clínica</p>
+        <h2>Atendimento calmo, com tempo para explicar.</h2>
+        <p class="sec-lead" style="margin-bottom:0">Consultas sem pressa, com plano de tratamento por escrito e um time que retorna suas dúvidas no mesmo dia.</p>
+      </div>
+      <blockquote class="quote">
+        “Eu saí da primeira consulta sabendo exatamente o que faríamos e quanto tempo levaria.”
+        <small>Paciente, depoimento de exemplo</small>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="horario">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Horário</p>
+        <h2>Atendemos de segunda a sábado.</h2>
+        <p class="sec-lead" style="margin-bottom:0">Horários de exemplo. Na versão final, esta lista segue o funcionamento real da clínica.</p>
+      </div>
+      <ul class="hours">
+        <li><span>Segunda a sexta</span><span>08h às 18h</span></li>
+        <li><span>Sábado</span><span>08h às 12h</span></li>
+        <li><span>Domingo</span><span>Fechado</span></li>
+        <li><span>Urgências</span><span>Atendimento com hora marcada</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <p class="eyebrow">Contato</p>
+          <h2 style="margin-bottom:16px">Marque sua avaliação.</h2>
+          <p>A primeira consulta inclui exame, radiografia e um plano escrito. Você decide depois, sem compromisso.</p>
+        </div>
+        <div class="info">
+          <div><b>Endereço</b>Av. Exemplo, 123 · Centro</div>
+          <div><b>Telefone</b>(00) 0000-0000 · exemplo</div>
+          <div><b>WhatsApp</b>(00) 00000-0000 · exemplo</div>
+          <div><a class="btn btn-primary" href="#contato" style="margin-top:8px">Pedir agendamento</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Clínica Exemplo Odontologia. Demonstração com dados fictícios.</p>
+    <p>Responsável técnico: nome e CRO a preencher.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  var hero = document.querySelector('.hero');
+  var canvas = document.querySelector('.hero-canvas');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function fallback() { hero.classList.add('nowebgl'); }
+
+  if (!window.THREE) { fallback(); return; }
+
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+  } catch (e) { fallback(); return; }
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+
+  // Lights: a soft fill, a warm key from the top right, and a pink rim from the left.
+  scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+  var key = new THREE.DirectionalLight(0xffffff, 1.15);
+  key.position.set(3, 4, 5);
+  scene.add(key);
+  var rim = new THREE.PointLight(0xff9aa6, 3, 14);
+  rim.position.set(-3.5, 1.5, 3);
+  scene.add(rim);
+
+  // Tooth: a molar silhouette (crown and two roots) extruded with rounded bevels, so it has real thickness when it turns.
+  var tooth = new THREE.Group();
+  var enamel = new THREE.MeshPhysicalMaterial({
+    color: 0xf3ecef, roughness: 0.3, metalness: 0, clearcoat: 0.8, clearcoatRoughness: 0.15,
+    emissive: 0x2a0f16, emissiveIntensity: 0.5
+  });
+  var outline = new THREE.Shape();
+  outline.moveTo(-0.62, 0.15);
+  outline.bezierCurveTo(-0.86, 0.5, -0.92, 1.0, -0.72, 1.2);
+  outline.quadraticCurveTo(-0.6, 1.34, -0.35, 1.3);
+  outline.quadraticCurveTo(0, 1.2, 0.35, 1.3);
+  outline.quadraticCurveTo(0.6, 1.34, 0.72, 1.2);
+  outline.bezierCurveTo(0.92, 1.0, 0.86, 0.5, 0.62, 0.15);
+  outline.bezierCurveTo(0.6, -0.4, 0.56, -0.9, 0.5, -1.35);
+  outline.quadraticCurveTo(0.3, -1.52, 0.12, -1.3);
+  outline.bezierCurveTo(0.1, -0.8, 0.08, -0.5, 0, -0.35);
+  outline.bezierCurveTo(-0.08, -0.5, -0.1, -0.8, -0.12, -1.3);
+  outline.quadraticCurveTo(-0.3, -1.52, -0.5, -1.35);
+  outline.bezierCurveTo(-0.56, -0.9, -0.6, -0.4, -0.62, 0.15);
+  var toothGeo = new THREE.ExtrudeGeometry(outline, {
+    depth: 0.32, bevelEnabled: true, bevelThickness: 0.16, bevelSize: 0.14,
+    bevelSegments: 10, curveSegments: 40
+  });
+  toothGeo.center();
+  var body = new THREE.Mesh(toothGeo, enamel);
+  tooth.add(body);
+
+  // A thin pink ring under the crown, same accent as the text.
+  var ring = new THREE.Mesh(
+    new THREE.TorusGeometry(1.25, 0.012, 8, 120),
+    new THREE.MeshBasicMaterial({ color: 0xff9aa6, transparent: true, opacity: 0.35 })
+  );
+  ring.rotation.x = Math.PI / 2;
+  ring.position.y = 0.55;
+  tooth.add(ring);
+
+  scene.add(tooth);
+
+  // Particles: a slow drift of small sparks, additive so they glow over the dark background.
+  var COUNT = 520;
+  var geo = new THREE.BufferGeometry();
+  var pos = new Float32Array(COUNT * 3);
+  var speed = new Float32Array(COUNT);
+  for (var i = 0; i < COUNT; i++) {
+    pos[i * 3] = (Math.random() - 0.5) * 18;
+    pos[i * 3 + 1] = (Math.random() - 0.5) * 11;
+    pos[i * 3 + 2] = (Math.random() - 0.5) * 6 - 1;
+    speed[i] = 0.002 + Math.random() * 0.006;
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var sparks = new THREE.Points(geo, new THREE.PointsMaterial({
+    color: 0xffb8c0, size: 0.05, transparent: true, opacity: 0.85,
+    blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+  }));
+  scene.add(sparks);
+
+  // Light streaks rising behind the tooth.
+  var streakGroup = new THREE.Group();
+  for (var s = 0; s < 9; s++) {
+    var g = new THREE.BufferGeometry();
+    var x = (Math.random() - 0.3) * 9;
+    g.setAttribute('position', new THREE.Float32BufferAttribute([x, -7, -2, x + 0.25, 7, -2], 3));
+    streakGroup.add(new THREE.Line(g, new THREE.LineBasicMaterial({
+      color: 0xff9aa6, transparent: true, opacity: 0.12 + Math.random() * 0.15,
+      blending: THREE.AdditiveBlending, depthWrite: false
+    })));
+  }
+  scene.add(streakGroup);
+
+  var baseY = 0;
+  var mouse = { x: 0, y: 0 }, target = { x: 0, y: 0 };
+  hero.addEventListener('pointermove', function (e) {
+    var r = hero.getBoundingClientRect();
+    target.x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+    target.y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+  });
+  hero.addEventListener('pointerleave', function () { target.x = 0; target.y = 0; });
+
+  function resize() {
+    var w = hero.clientWidth, h = hero.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    var wide = w > 820;
+    camera.position.set(0, 0, wide ? 7.2 : 9.4);
+    tooth.position.x = wide ? 2.1 : 0;
+    baseY = wide ? 0 : -1.3;
+    tooth.scale.setScalar(wide ? 1.05 : 0.72);
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  var t = 0;
+  function frame() {
+    t += 0.01;
+    mouse.x += (target.x - mouse.x) * 0.06;
+    mouse.y += (target.y - mouse.y) * 0.06;
+
+    tooth.rotation.y = t * 0.6 + mouse.x * 0.5;
+    tooth.rotation.x = mouse.y * 0.18;
+    tooth.position.y = baseY + Math.sin(t * 1.2) * 0.07;
+
+    var p = geo.attributes.position.array;
+    for (var k = 0; k < COUNT; k++) {
+      p[k * 3 + 1] += speed[k];
+      if (p[k * 3 + 1] > 5.5) p[k * 3 + 1] = -5.5;
+    }
+    geo.attributes.position.needsUpdate = true;
+    streakGroup.position.y = Math.sin(t * 0.3) * 0.3;
+
+    renderer.render(scene, camera);
+    if (!reduce) requestAnimationFrame(frame);
+  }
+
+  try {
+    frame();
+    if (reduce) renderer.render(scene, camera);
+  } catch (e) { fallback(); }
+})();
+</script>
