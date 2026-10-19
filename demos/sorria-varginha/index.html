@@ -14,14 +14,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-  }
-}
-</script>
 <style>
   :root {
     --bg: #07090a;
@@ -119,16 +111,6 @@
     align-items: center;
     padding: 150px 0 120px;
     overflow: hidden;
-  }
-  .hero__canvas {
-    position: absolute;
-    top: 50%;
-    right: -6%;
-    width: min(74vw, 820px);
-    height: min(74vw, 820px);
-    transform: translateY(-50%);
-    z-index: 0;
-    pointer-events: none;
   }
   .hero__content { position: relative; z-index: 1; max-width: 760px; }
   .hero__halo {
@@ -434,11 +416,7 @@
   @media (max-width: 860px) {
     .nav__links { display: none; }
     .about, .team, .contact { grid-template-columns: 1fr; }
-    .hero__canvas { right: -30%; width: 120vw; height: 120vw; opacity: 0.55; }
-    .hero { padding-bottom: 170px; }
-    .hero__stats { bottom: 28px; }
-  }
-  @media (max-width: 640px) {
+    @media (max-width: 640px) {
     .grid, .reviews { grid-template-columns: 1fr; }
     .card { min-height: 0; }
     .btn { height: 50px; padding: 0 22px; }
@@ -475,7 +453,6 @@
 
   <!-- Hero -->
   <div class="hero">
-    <canvas class="hero__canvas" id="hero-3d" aria-hidden="true"></canvas>
     <div class="hero__halo" aria-hidden="true"></div>
 
     <div class="wrap">
@@ -740,97 +717,6 @@
     });
   });
 
-  // Cena 3D do hero: vidro iridescente e pérolas em órbita
-  const canvas = document.getElementById('hero-3d');
-  try {
-    const THREE = await import('three');
-    const { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
-
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
-
-    const scene = new THREE.Scene();
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-
-    const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
-    camera.position.set(0, 0, 9);
-
-    const glass = new THREE.MeshPhysicalMaterial({
-      color: 0x9ff0d2,
-      roughness: 0.12,
-      metalness: 0.1,
-      clearcoat: 1,
-      clearcoatRoughness: 0.05,
-      iridescence: 0.5,
-      iridescenceIOR: 1.6,
-    });
-    const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.25, 0.42, 280, 40), glass);
-    scene.add(knot);
-
-    const pearlMaterial = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.2, clearcoat: 1 });
-    const pearls = Array.from({ length: 9 }, (_, i) => {
-      const pearl = new THREE.Mesh(new THREE.SphereGeometry(0.1 + (i % 3) * 0.06, 32, 24), pearlMaterial);
-      pearl.userData = {
-        angle: (i / 9) * Math.PI * 2,
-        radius: 1.9 + (i % 2) * 0.5,
-        speed: 0.12 + i * 0.01,
-        height: Math.sin(i * 1.7) * 1.4,
-      };
-      scene.add(pearl);
-      return pearl;
-    });
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.35));
-    const key = new THREE.DirectionalLight(0xffffff, 1.6);
-    key.position.set(4, 5, 6);
-    scene.add(key);
-    const rim = new THREE.PointLight(0x9ff0d2, 30, 20);
-    rim.position.set(-4, -2, 3);
-    scene.add(rim);
-
-    const pointer = { x: 0, y: 0 };
-    addEventListener('pointermove', (event) => {
-      pointer.x = (event.clientX / innerWidth) * 2 - 1;
-      pointer.y = (event.clientY / innerHeight) * 2 - 1;
-    });
-
-    const resize = () => {
-      const { clientWidth: w, clientHeight: h } = canvas;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    };
-    resize();
-    addEventListener('resize', resize);
-
-    let visible = true;
-    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }).observe(canvas);
-
-    const clock = new THREE.Clock();
-    const render = () => {
-      requestAnimationFrame(render);
-      if (!visible) return;
-      const t = clock.getElapsedTime();
-      const motion = reduce ? 0 : 1;
-      knot.rotation.x = t * 0.15 * motion + pointer.y * 0.3;
-      knot.rotation.y = t * 0.22 * motion + pointer.x * 0.4;
-      pearls.forEach((pearl) => {
-        const { angle, radius, speed, height } = pearl.userData;
-        const a = angle + t * speed * motion;
-        pearl.position.set(Math.cos(a) * radius, height + Math.sin(t + angle) * 0.2 * motion, Math.sin(a) * radius * 0.4);
-      });
-      camera.position.x += (pointer.x * 0.5 - camera.position.x) * 0.04;
-      camera.lookAt(0, 0, 0);
-      renderer.render(scene, camera);
-    };
-    render();
-  } catch (error) {
-    console.warn('Cena 3D indisponível; o site segue sem ela.', error);
-    canvas.hidden = true;
-  }
 </script>
 </body>
 </html>
